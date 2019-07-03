@@ -1,0 +1,815 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="hansungModelStoreContainer" CdmEntityContainer="hansungEntities">
+    <EntitySetMapping Name="billbuys">
+      <EntityTypeMapping TypeName="hansungModel.billbuy">
+        <MappingFragment StoreEntitySet="billbuy">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="orderdate" ColumnName="orderdate" />
+          <ScalarProperty Name="tradingmission" ColumnName="tradingmission" />
+          <ScalarProperty Name="terms" ColumnName="terms" />
+          <ScalarProperty Name="contractdate" ColumnName="contractdate" />
+          <ScalarProperty Name="orderingemployer" ColumnName="orderingemployer" />
+          <ScalarProperty Name="customer" ColumnName="customer" />
+          <ScalarProperty Name="warehouse" ColumnName="warehouse" />
+          <ScalarProperty Name="paymoney" ColumnName="paymoney" />
+          <ScalarProperty Name="ordernumber" ColumnName="ordernumber" />
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="dateconfirmation" ColumnName="dateconfirmation" />
+          <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+          <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+          <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+          <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+          <ScalarProperty Name="namewarehouse" ColumnName="namewarehouse" />
+          <ScalarProperty Name="codeid" ColumnName="codeid" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="notebill" ColumnName="notebill" />
+          <ScalarProperty Name="currency" ColumnName="currency" />
+          <ScalarProperty Name="paymentoption" ColumnName="paymentoption" />
+          <ScalarProperty Name="note" ColumnName="note" />
+          <ScalarProperty Name="money" ColumnName="money" />
+          <ScalarProperty Name="tolerancepercent" ColumnName="tolerancepercent" />
+          <ScalarProperty Name="tolerancemoney" ColumnName="tolerancemoney" />
+          <ScalarProperty Name="usance" ColumnName="usance" />
+          <ScalarProperty Name="datebeginpayment" ColumnName="datebeginpayment" />
+          <ScalarProperty Name="creditduedate" ColumnName="creditduedate" />
+          <ScalarProperty Name="orderbill" ColumnName="orderbill" />
+          <ScalarProperty Name="history" ColumnName="history" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="carships">
+      <EntityTypeMapping TypeName="hansungModel.carship">
+        <MappingFragment StoreEntitySet="carship">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="codebill" ColumnName="codebill" />
+          <ScalarProperty Name="codeid" ColumnName="codeid" />
+          <ScalarProperty Name="company" ColumnName="company" />
+          <ScalarProperty Name="numberofvehicles" ColumnName="numberofvehicles" />
+          <ScalarProperty Name="rate" ColumnName="rate" />
+          <ScalarProperty Name="verifyingacceptance" ColumnName="verifyingacceptance" />
+          <ScalarProperty Name="deliveryworker" ColumnName="deliveryworker" />
+          <ScalarProperty Name="shippingtime" ColumnName="shippingtime" />
+          <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+          <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+          <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+          <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+          <ScalarProperty Name="forwardingnumber" ColumnName="forwardingnumber" />
+          <ScalarProperty Name="numbill" ColumnName="numbill" />
+          <ScalarProperty Name="qltBox" ColumnName="qltBox" />
+          <ScalarProperty Name="ship" ColumnName="ship" />
+          <ScalarProperty Name="indexbox" ColumnName="indexbox" />
+          <ScalarProperty Name="agree" ColumnName="agree" />
+          <ScalarProperty Name="history" ColumnName="history" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="changewarehouses">
+      <EntityTypeMapping TypeName="hansungModel.changewarehouse">
+        <MappingFragment StoreEntitySet="changewarehouse">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="codedate" ColumnName="codedate" />
+          <ScalarProperty Name="worker" ColumnName="worker" />
+          <ScalarProperty Name="sendwarehouse" ColumnName="sendwarehouse" />
+          <ScalarProperty Name="rcvwarehouse" ColumnName="rcvwarehouse" />
+          <ScalarProperty Name="company" ColumnName="company" />
+          <ScalarProperty Name="carnum" ColumnName="carnum" />
+          <ScalarProperty Name="transportfee" ColumnName="transportfee" />
+          <ScalarProperty Name="verificatio" ColumnName="verificatio" />
+          <ScalarProperty Name="datecheck" ColumnName="datecheck" />
+          <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+          <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+          <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+          <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="codeid" ColumnName="codeid" />
+          <ScalarProperty Name="ordate" ColumnName="ordate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="container_location">
+      <EntityTypeMapping TypeName="hansungModel.container_location">
+        <MappingFragment StoreEntitySet="container_location">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="warehouse_location_id" ColumnName="warehouse_location_id" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="reg_date" ColumnName="reg_date" />
+          <ScalarProperty Name="reg_user" ColumnName="reg_user" />
+          <ScalarProperty Name="del_yn" ColumnName="del_yn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customers">
+      <EntityTypeMapping TypeName="hansungModel.customer">
+        <MappingFragment StoreEntitySet="customer">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="salesemployee" ColumnName="salesemployee" />
+          <ScalarProperty Name="zonecode" ColumnName="zonecode" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="registrationnumber" ColumnName="registrationnumber" />
+          <ScalarProperty Name="representative" ColumnName="representative" />
+          <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+          <ScalarProperty Name="fax" ColumnName="fax" />
+          <ScalarProperty Name="mobilephone" ColumnName="mobilephone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="headofficeaddress" ColumnName="headofficeaddress" />
+          <ScalarProperty Name="destinationphone" ColumnName="destinationphone" />
+          <ScalarProperty Name="destinationaddress" ColumnName="destinationaddress" />
+          <ScalarProperty Name="transactionbalance" ColumnName="transactionbalance" />
+          <ScalarProperty Name="creditlimit" ColumnName="creditlimit" />
+          <ScalarProperty Name="transactionaccountnumber" ColumnName="transactionaccountnumber" />
+          <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+          <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+          <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+          <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+          <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+          <ScalarProperty Name="idcode" ColumnName="idcode" />
+          <ScalarProperty Name="icondola" ColumnName="icondola" />
+          <ScalarProperty Name="iconwon" ColumnName="iconwon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="departments">
+      <EntityTypeMapping TypeName="hansungModel.department">
+        <MappingFragment StoreEntitySet="department">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="detail_car">
+      <EntityTypeMapping TypeName="hansungModel.detail_car">
+        <MappingFragment StoreEntitySet="detail_car">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ship" ColumnName="ship" />
+          <ScalarProperty Name="codeitem" ColumnName="codeitem" />
+          <ScalarProperty Name="qltbox" ColumnName="qltbox" />
+          <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+          <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+          <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+          <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+          <ScalarProperty Name="codecar" ColumnName="codecar" />
+          <ScalarProperty Name="codebill" ColumnName="codebill" />
+          <ScalarProperty Name="history" ColumnName="history" />
+          <ScalarProperty Name="iditem" ColumnName="iditem" />
+          <ScalarProperty Name="box" ColumnName="box" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="detailbillbuys">
+      <EntityTypeMapping TypeName="hansungModel.detailbillbuy">
+        <MappingFragment StoreEntitySet="detailbillbuy">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="iditem" ColumnName="iditem" />
+          <ScalarProperty Name="nameitem" ColumnName="nameitem" />
+          <ScalarProperty Name="standard" ColumnName="standard" />
+          <ScalarProperty Name="quantityincase" ColumnName="quantityincase" />
+          <ScalarProperty Name="qltcase" ColumnName="qltcase" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="pricesupply" ColumnName="pricesupply" />
+          <ScalarProperty Name="vat" ColumnName="vat" />
+          <ScalarProperty Name="totalamount" ColumnName="totalamount" />
+          <ScalarProperty Name="qltcontainer" ColumnName="qltcontainer" />
+          <ScalarProperty Name="sqm" ColumnName="sqm" />
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+          <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+          <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+          <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+          <ScalarProperty Name="codeitem" ColumnName="codeitem" />
+          <ScalarProperty Name="codebill" ColumnName="codebill" />
+          <ScalarProperty Name="codeid" ColumnName="codeid" />
+          <ScalarProperty Name="codeship" ColumnName="codeship" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="detailchangewarehouses">
+      <EntityTypeMapping TypeName="hansungModel.detailchangewarehouse">
+        <MappingFragment StoreEntitySet="detailchangewarehouse">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="codebill" ColumnName="codebill" />
+          <ScalarProperty Name="itemcode" ColumnName="itemcode" />
+          <ScalarProperty Name="standard" ColumnName="standard" />
+          <ScalarProperty Name="nameitem" ColumnName="nameitem" />
+          <ScalarProperty Name="qltincase" ColumnName="qltincase" />
+          <ScalarProperty Name="qltbox" ColumnName="qltbox" />
+          <ScalarProperty Name="serinum" ColumnName="serinum" />
+          <ScalarProperty Name="proplem" ColumnName="proplem" />
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+          <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+          <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+          <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+          <ScalarProperty Name="itemid" ColumnName="itemid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="detailorders">
+      <EntityTypeMapping TypeName="hansungModel.detailorder">
+        <MappingFragment StoreEntitySet="detailorder">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="codebill" ColumnName="codebill" />
+          <ScalarProperty Name="itemid" ColumnName="itemid" />
+          <ScalarProperty Name="itemcode" ColumnName="itemcode" />
+          <ScalarProperty Name="itemname" ColumnName="itemname" />
+          <ScalarProperty Name="standard" ColumnName="standard" />
+          <ScalarProperty Name="qltincase" ColumnName="qltincase" />
+          <ScalarProperty Name="qltcase" ColumnName="qltcase" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="pricesupply" ColumnName="pricesupply" />
+          <ScalarProperty Name="vat" ColumnName="vat" />
+          <ScalarProperty Name="totalamount" ColumnName="totalamount" />
+          <ScalarProperty Name="itemremarks" ColumnName="itemremarks" />
+          <ScalarProperty Name="serialNo" ColumnName="serialNo" />
+          <ScalarProperty Name="caseNo" ColumnName="caseNo" />
+          <ScalarProperty Name="PRODNo" ColumnName="PRODNo" />
+          <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+          <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+          <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+          <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+          <ScalarProperty Name="codeid" ColumnName="codeid" />
+          <ScalarProperty Name="history" ColumnName="history" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="detailships">
+      <EntityTypeMapping TypeName="hansungModel.detailship">
+        <MappingFragment StoreEntitySet="detailship">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="codebill" ColumnName="codebill" />
+          <ScalarProperty Name="codeid" ColumnName="codeid" />
+          <ScalarProperty Name="orderbill" ColumnName="orderbill" />
+          <ScalarProperty Name="numbership" ColumnName="numbership" />
+          <ScalarProperty Name="duedate" ColumnName="duedate" />
+          <ScalarProperty Name="departuredate" ColumnName="departuredate" />
+          <ScalarProperty Name="dateofarrival" ColumnName="dateofarrival" />
+          <ScalarProperty Name="conDuedate" ColumnName="conDuedate" />
+          <ScalarProperty Name="shipname" ColumnName="shipname" />
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+          <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+          <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+          <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+          <ScalarProperty Name="nameshipname" ColumnName="nameshipname" />
+          <ScalarProperty Name="qltbox" ColumnName="qltbox" />
+          <ScalarProperty Name="dateclearance" ColumnName="dateclearance" />
+          <ScalarProperty Name="customsday" ColumnName="customsday" />
+          <ScalarProperty Name="port" ColumnName="port" />
+          <ScalarProperty Name="containernumber" ColumnName="containernumber" />
+          <ScalarProperty Name="daycertificate" ColumnName="daycertificate" />
+          <ScalarProperty Name="sizefit" ColumnName="sizefit" />
+          <ScalarProperty Name="containerday" ColumnName="containerday" />
+          <ScalarProperty Name="conreturnday" ColumnName="conreturnday" />
+          <ScalarProperty Name="requestday" ColumnName="requestday" />
+          <ScalarProperty Name="confirmreceiptday" ColumnName="confirmreceiptday" />
+          <ScalarProperty Name="serinumber" ColumnName="serinumber" />
+          <ScalarProperty Name="prodcode" ColumnName="prodcode" />
+          <ScalarProperty Name="casenom" ColumnName="casenom" />
+          <ScalarProperty Name="proddate" ColumnName="proddate" />
+          <ScalarProperty Name="shipnum" ColumnName="shipnum" />
+          <ScalarProperty Name="indexbox" ColumnName="indexbox" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="detailwarehouses">
+      <EntityTypeMapping TypeName="hansungModel.detailwarehouse">
+        <MappingFragment StoreEntitySet="detailwarehouse">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="destination" ColumnName="destination" />
+          <ScalarProperty Name="rowdestination" ColumnName="rowdestination" />
+          <ScalarProperty Name="YajiSelection" ColumnName="YajiSelection" />
+          <ScalarProperty Name="rowYaji" ColumnName="rowYaji" />
+          <ScalarProperty Name="container" ColumnName="container" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="historybillsales">
+      <EntityTypeMapping TypeName="hansungModel.historybillsale">
+        <MappingFragment StoreEntitySet="historybillsale">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="idold" ColumnName="idold" />
+          <ScalarProperty Name="contenold" ColumnName="contenold" />
+          <ScalarProperty Name="contennew" ColumnName="contennew" />
+          <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+          <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+          <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+          <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+          <ScalarProperty Name="actions" ColumnName="actions" />
+          <ScalarProperty Name="codeid" ColumnName="codeid" />
+          <ScalarProperty Name="subcode" ColumnName="subcode" />
+          <ScalarProperty Name="inforbill" ColumnName="inforbill" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Inputwarehouses">
+      <EntityTypeMapping TypeName="hansungModel.Inputwarehouse">
+        <MappingFragment StoreEntitySet="Inputwarehouse">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="seriesnum" ColumnName="seriesnum" />
+          <ScalarProperty Name="destination" ColumnName="destination" />
+          <ScalarProperty Name="rowdestination" ColumnName="rowdestination" />
+          <ScalarProperty Name="YajiSelection" ColumnName="YajiSelection" />
+          <ScalarProperty Name="rowYaji" ColumnName="rowYaji" />
+          <ScalarProperty Name="container" ColumnName="container" />
+          <ScalarProperty Name="itemid" ColumnName="itemid" />
+          <ScalarProperty Name="itemcode" ColumnName="itemcode" />
+          <ScalarProperty Name="itemname" ColumnName="itemname" />
+          <ScalarProperty Name="size" ColumnName="size" />
+          <ScalarProperty Name="qltincase" ColumnName="qltincase" />
+          <ScalarProperty Name="qltbox" ColumnName="qltbox" />
+          <ScalarProperty Name="problems" ColumnName="problems" />
+          <ScalarProperty Name="defecttype" ColumnName="defecttype" />
+          <ScalarProperty Name="manufacturer" ColumnName="manufacturer" />
+          <ScalarProperty Name="remarksitem" ColumnName="remarksitem" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="purchasenotes" ColumnName="purchasenotes" />
+          <ScalarProperty Name="attachments" ColumnName="attachments" />
+          <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+          <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+          <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+          <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+          <ScalarProperty Name="inspnumber" ColumnName="inspnumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="inspections">
+      <EntityTypeMapping TypeName="hansungModel.inspection">
+        <MappingFragment StoreEntitySet="inspection">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="inspnumber" ColumnName="inspnumber" />
+          <ScalarProperty Name="codebill" ColumnName="codebill" />
+          <ScalarProperty Name="warehouse" ColumnName="warehouse" />
+          <ScalarProperty Name="workerone" ColumnName="workerone" />
+          <ScalarProperty Name="workertwo" ColumnName="workertwo" />
+          <ScalarProperty Name="remarks" ColumnName="remarks" />
+          <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+          <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+          <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+          <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+          <ScalarProperty Name="warehousename" ColumnName="warehousename" />
+          <ScalarProperty Name="employeeone" ColumnName="employeeone" />
+          <ScalarProperty Name="employeetwo" ColumnName="employeetwo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemLists">
+      <EntityTypeMapping TypeName="hansungModel.ItemList">
+        <MappingFragment StoreEntitySet="ItemList">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="itemcode" ColumnName="itemcode" />
+          <ScalarProperty Name="itemduzoncode" ColumnName="itemduzoncode" />
+          <ScalarProperty Name="itemname" ColumnName="itemname" />
+          <ScalarProperty Name="quantityincase" ColumnName="quantityincase" />
+          <ScalarProperty Name="specifiedarea" ColumnName="specifiedarea" />
+          <ScalarProperty Name="safetystockquantity" ColumnName="safetystockquantity" />
+          <ScalarProperty Name="manufacturer" ColumnName="manufacturer" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="itembrief" ColumnName="itembrief" />
+          <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+          <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+          <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+          <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+          <ScalarProperty Name="standard" ColumnName="standard" />
+          <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+          <ScalarProperty Name="width" ColumnName="width" />
+          <ScalarProperty Name="unitprice1" ColumnName="unitprice1" />
+          <ScalarProperty Name="unitprice2" ColumnName="unitprice2" />
+          <ScalarProperty Name="unitprice3" ColumnName="unitprice3" />
+          <ScalarProperty Name="height" ColumnName="height" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="jigo_location">
+      <EntityTypeMapping TypeName="hansungModel.jigo_location">
+        <MappingFragment StoreEntitySet="jigo_location">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="warehourse_location_id" ColumnName="warehourse_location_id" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="reg_date" ColumnName="reg_date" />
+          <ScalarProperty Name="reg_user" ColumnName="reg_user" />
+          <ScalarProperty Name="del_yn" ColumnName="del_yn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orderslips">
+      <EntityTypeMapping TypeName="hansungModel.orderslip">
+        <MappingFragment StoreEntitySet="orderslips">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="orderdate" ColumnName="orderdate" />
+          <ScalarProperty Name="salesrepresentative" ColumnName="salesrepresentative" />
+          <ScalarProperty Name="customercompany" ColumnName="customercompany" />
+          <ScalarProperty Name="customercontacts" ColumnName="customercontacts" />
+          <ScalarProperty Name="terms" ColumnName="terms" />
+          <ScalarProperty Name="receivables" ColumnName="receivables" />
+          <ScalarProperty Name="warehouse" ColumnName="warehouse" />
+          <ScalarProperty Name="issuedate" ColumnName="issuedate" />
+          <ScalarProperty Name="contactphone" ColumnName="contactphone" />
+          <ScalarProperty Name="frame" ColumnName="frame" />
+          <ScalarProperty Name="destinationaddress" ColumnName="destinationaddress" />
+          <ScalarProperty Name="remarks" ColumnName="remarks" />
+          <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+          <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+          <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+          <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+          <ScalarProperty Name="codeid" ColumnName="codeid" />
+          <ScalarProperty Name="transactionbalancectm" ColumnName="transactionbalancectm" />
+          <ScalarProperty Name="orderdatetime" ColumnName="orderdatetime" />
+          <ScalarProperty Name="history" ColumnName="history" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="payments">
+      <EntityTypeMapping TypeName="hansungModel.payment">
+        <MappingFragment StoreEntitySet="payment">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="codeorder" ColumnName="codeorder" />
+          <ScalarProperty Name="paymentdate" ColumnName="paymentdate" />
+          <ScalarProperty Name="employer" ColumnName="employer" />
+          <ScalarProperty Name="customer" ColumnName="customer" />
+          <ScalarProperty Name="transactionterms" ColumnName="transactionterms" />
+          <ScalarProperty Name="cashT_T" ColumnName="cashT_T" />
+          <ScalarProperty Name="billL_C" ColumnName="billL_C" />
+          <ScalarProperty Name="paymentaccount" ColumnName="paymentaccount" />
+          <ScalarProperty Name="feesmoney" ColumnName="feesmoney" />
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="codebill" ColumnName="codebill" />
+          <ScalarProperty Name="codeid" ColumnName="codeid" />
+          <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+          <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+          <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+          <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+          <ScalarProperty Name="employerstr" ColumnName="employerstr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="paymentOrders">
+      <EntityTypeMapping TypeName="hansungModel.paymentOrder">
+        <MappingFragment StoreEntitySet="paymentOrder">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="codeorder" ColumnName="codeorder" />
+          <ScalarProperty Name="paymentdate" ColumnName="paymentdate" />
+          <ScalarProperty Name="employer" ColumnName="employer" />
+          <ScalarProperty Name="customer" ColumnName="customer" />
+          <ScalarProperty Name="transactionterms" ColumnName="transactionterms" />
+          <ScalarProperty Name="cashT_T" ColumnName="cashT_T" />
+          <ScalarProperty Name="billL_C" ColumnName="billL_C" />
+          <ScalarProperty Name="paymentaccount" ColumnName="paymentaccount" />
+          <ScalarProperty Name="feesmoney" ColumnName="feesmoney" />
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="codebill" ColumnName="codebill" />
+          <ScalarProperty Name="codeid" ColumnName="codeid" />
+          <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+          <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+          <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+          <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+          <ScalarProperty Name="employerstr" ColumnName="employerstr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="plans">
+      <EntityTypeMapping TypeName="hansungModel.plan">
+        <MappingFragment StoreEntitySet="plans">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="worker" ColumnName="worker" />
+          <ScalarProperty Name="time" ColumnName="time" />
+          <ScalarProperty Name="money" ColumnName="money" />
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+          <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+          <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+          <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+          <ScalarProperty Name="codeid" ColumnName="codeid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="positions">
+      <EntityTypeMapping TypeName="hansungModel.position">
+        <MappingFragment StoreEntitySet="position">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rawyaji_location">
+      <EntityTypeMapping TypeName="hansungModel.rawyaji_location">
+        <MappingFragment StoreEntitySet="rawyaji_location">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="yaji_location_id" ColumnName="yaji_location_id" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="reg_date" ColumnName="reg_date" />
+          <ScalarProperty Name="reg_user" ColumnName="reg_user" />
+          <ScalarProperty Name="del_yn" ColumnName="del_yn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rowjigo_location">
+      <EntityTypeMapping TypeName="hansungModel.rowjigo_location">
+        <MappingFragment StoreEntitySet="rowjigo_location">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="jigo_location_id" ColumnName="jigo_location_id" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="reg_date" ColumnName="reg_date" />
+          <ScalarProperty Name="reg_user" ColumnName="reg_user" />
+          <ScalarProperty Name="del_yn" ColumnName="del_yn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="serinumbers">
+      <EntityTypeMapping TypeName="hansungModel.serinumber">
+        <MappingFragment StoreEntitySet="serinumber">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="codebill" ColumnName="codebill" />
+          <ScalarProperty Name="codeparent" ColumnName="codeparent" />
+          <ScalarProperty Name="seriNum" ColumnName="seriNum" />
+          <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+          <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+          <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+          <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ships">
+      <EntityTypeMapping TypeName="hansungModel.ship">
+        <MappingFragment StoreEntitySet="ship">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="codebill" ColumnName="codebill" />
+          <ScalarProperty Name="codeid" ColumnName="codeid" />
+          <ScalarProperty Name="orderbill" ColumnName="orderbill" />
+          <ScalarProperty Name="numbership" ColumnName="numbership" />
+          <ScalarProperty Name="duedate" ColumnName="duedate" />
+          <ScalarProperty Name="departuredate" ColumnName="departuredate" />
+          <ScalarProperty Name="dateofarrival" ColumnName="dateofarrival" />
+          <ScalarProperty Name="conDuedate" ColumnName="conDuedate" />
+          <ScalarProperty Name="shipname" ColumnName="shipname" />
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+          <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+          <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+          <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+          <ScalarProperty Name="nameshipname" ColumnName="nameshipname" />
+          <ScalarProperty Name="qltbox" ColumnName="qltbox" />
+          <ScalarProperty Name="dateclearance" ColumnName="dateclearance" />
+          <ScalarProperty Name="customsday" ColumnName="customsday" />
+          <ScalarProperty Name="port" ColumnName="port" />
+          <ScalarProperty Name="containernumber" ColumnName="containernumber" />
+          <ScalarProperty Name="daycertificate" ColumnName="daycertificate" />
+          <ScalarProperty Name="sizefit" ColumnName="sizefit" />
+          <ScalarProperty Name="containerday" ColumnName="containerday" />
+          <ScalarProperty Name="conreturnday" ColumnName="conreturnday" />
+          <ScalarProperty Name="requestday" ColumnName="requestday" />
+          <ScalarProperty Name="confirmreceiptday" ColumnName="confirmreceiptday" />
+          <ScalarProperty Name="serinumber" ColumnName="serinumber" />
+          <ScalarProperty Name="prodcode" ColumnName="prodcode" />
+          <ScalarProperty Name="casenom" ColumnName="casenom" />
+          <ScalarProperty Name="proddate" ColumnName="proddate" />
+          <ScalarProperty Name="shipnum" ColumnName="shipnum" />
+          <ScalarProperty Name="indexbox" ColumnName="indexbox" />
+          <ScalarProperty Name="history" ColumnName="history" />
+          <ScalarProperty Name="historydetail" ColumnName="historydetail" />
+          <ScalarProperty Name="codeship" ColumnName="codeship" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="styleItems">
+      <EntityTypeMapping TypeName="hansungModel.styleItem">
+        <MappingFragment StoreEntitySet="styleItem">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="size" ColumnName="size" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+          <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+          <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+          <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+          <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="subships">
+      <EntityTypeMapping TypeName="hansungModel.subship">
+        <MappingFragment StoreEntitySet="subship">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="idbill" ColumnName="idbill" />
+          <ScalarProperty Name="codebill" ColumnName="codebill" />
+          <ScalarProperty Name="numbership" ColumnName="numbership" />
+          <ScalarProperty Name="duedate" ColumnName="duedate" />
+          <ScalarProperty Name="departuredate" ColumnName="departuredate" />
+          <ScalarProperty Name="dateofarrival" ColumnName="dateofarrival" />
+          <ScalarProperty Name="conDuedate" ColumnName="conDuedate" />
+          <ScalarProperty Name="shipname" ColumnName="shipname" />
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+          <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+          <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+          <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="table_detail_erorr">
+      <EntityTypeMapping TypeName="hansungModel.table_detail_erorr">
+        <MappingFragment StoreEntitySet="table_detail_erorr">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Item_id" ColumnName="Item_id" />
+          <ScalarProperty Name="Defect_type" ColumnName="Defect_type" />
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="serinum" ColumnName="serinum" />
+          <ScalarProperty Name="Documents_attach" ColumnName="Documents_attach" />
+          <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+          <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+          <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+          <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+          <ScalarProperty Name="qltincase" ColumnName="qltincase" />
+          <ScalarProperty Name="qltbox" ColumnName="qltbox" />
+          <ScalarProperty Name="qltremove" ColumnName="qltremove" />
+          <ScalarProperty Name="remarkremove" ColumnName="remarkremove" />
+          <ScalarProperty Name="codebill" ColumnName="codebill" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_Erorr">
+      <EntityTypeMapping TypeName="hansungModel.Table_Erorr">
+        <MappingFragment StoreEntitySet="Table_Erorr">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="numbercode" ColumnName="numbercode" />
+          <ScalarProperty Name="poor_handling_charge" ColumnName="poor_handling_charge" />
+          <ScalarProperty Name="warehouse_id" ColumnName="warehouse_id" />
+          <ScalarProperty Name="defective_processing_type" ColumnName="defective_processing_type" />
+          <ScalarProperty Name="approved" ColumnName="approved" />
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+          <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+          <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+          <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+          <ScalarProperty Name="codeid" ColumnName="codeid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_qlt_erorr">
+      <EntityTypeMapping TypeName="hansungModel.Table_qlt_erorr">
+        <MappingFragment StoreEntitySet="Table_qlt_erorr">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="item_id" ColumnName="item_id" />
+          <ScalarProperty Name="qltincase" ColumnName="qltincase" />
+          <ScalarProperty Name="qltbox" ColumnName="qltbox" />
+          <ScalarProperty Name="serinum" ColumnName="serinum" />
+          <ScalarProperty Name="Defect_type" ColumnName="Defect_type" />
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+          <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+          <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+          <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+          <ScalarProperty Name="codebill" ColumnName="codebill" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tradingmissions">
+      <EntityTypeMapping TypeName="hansungModel.tradingmission">
+        <MappingFragment StoreEntitySet="tradingmission">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="warehouses">
+      <EntityTypeMapping TypeName="hansungModel.warehouse">
+        <MappingFragment StoreEntitySet="warehouse">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="warehousecode" ColumnName="warehousecode" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="brief" ColumnName="brief" />
+          <ScalarProperty Name="telephone" ColumnName="telephone" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+          <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+          <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+          <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+          <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+          <ScalarProperty Name="subname" ColumnName="subname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="warehouse_location">
+      <EntityTypeMapping TypeName="hansungModel.warehouse_location">
+        <MappingFragment StoreEntitySet="warehouse_location">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="reg_date" ColumnName="reg_date" />
+          <ScalarProperty Name="reg_user" ColumnName="reg_user" />
+          <ScalarProperty Name="del_yn" ColumnName="del_yn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="yaji_location">
+      <EntityTypeMapping TypeName="hansungModel.yaji_location">
+        <MappingFragment StoreEntitySet="yaji_location">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="warehouse_location_id" ColumnName="warehouse_location_id" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="reg_date" ColumnName="reg_date" />
+          <ScalarProperty Name="reg_user" ColumnName="reg_user" />
+          <ScalarProperty Name="del_yn" ColumnName="del_yn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ObjectPropertyPermissions">
+      <EntityTypeMapping TypeName="hansungModel.ObjectPropertyPermission">
+        <MappingFragment StoreEntitySet="ObjectPropertyPermission">
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsAllowView" ColumnName="IsAllowView" />
+          <ScalarProperty Name="PropertyName" ColumnName="PropertyName" />
+          <ScalarProperty Name="ObjectName" ColumnName="ObjectName" />
+          <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="employees">
+      <EntityTypeMapping TypeName="hansungModel.employee">
+        <MappingFragment StoreEntitySet="employee">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+          <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+          <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+          <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+          <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+          <ScalarProperty Name="attachments" ColumnName="attachments" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="department" ColumnName="department" />
+          <ScalarProperty Name="position" ColumnName="position" />
+          <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="permission" ColumnName="permission" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="employeecode" ColumnName="employeecode" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Menus">
+      <EntityTypeMapping TypeName="hansungModel.Menu">
+        <MappingFragment StoreEntitySet="Menu">
+          <ScalarProperty Name="MenuCode" ColumnName="MenuCode" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IndexInGrp" ColumnName="IndexInGrp" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Href" ColumnName="Href" />
+          <ScalarProperty Name="MenuGrpId" ColumnName="MenuGrpId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MenuGroups">
+      <EntityTypeMapping TypeName="hansungModel.MenuGroup">
+        <MappingFragment StoreEntitySet="MenuGroup">
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="GrpIndex" ColumnName="GrpIndex" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Class" ColumnName="Class" />
+          <ScalarProperty Name="Href" ColumnName="Href" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MenuActionPermissions">
+      <EntityTypeMapping TypeName="hansungModel.MenuActionPermission">
+        <MappingFragment StoreEntitySet="MenuActionPermission">
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsAllowExport" ColumnName="IsAllowExport" />
+          <ScalarProperty Name="IsAllowPrint" ColumnName="IsAllowPrint" />
+          <ScalarProperty Name="IsAllowUpload" ColumnName="IsAllowUpload" />
+          <ScalarProperty Name="IsAllowDelete" ColumnName="IsAllowDelete" />
+          <ScalarProperty Name="IsAllowUpdate" ColumnName="IsAllowUpdate" />
+          <ScalarProperty Name="IsAllowCreate" ColumnName="IsAllowCreate" />
+          <ScalarProperty Name="IsAllowRetrieve" ColumnName="IsAllowRetrieve" />
+          <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+          <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

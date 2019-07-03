@@ -1,0 +1,24 @@
+﻿table {
+    border-collapse: collapse;
+    width:100%!important;
+    font-size:12px;
+}
+    table th {
+       background-color:#efeeed !important
+    }
+table, th, td {
+    border: 1px solid black;
+    text-align: center;
+    font-size: 13px;
+    padding: 3px;
+}
+.charmoney{
+    float:left
+}
+.modal-title{
+    text-align:center
+}
+.td-right {
+    text-align: right;
+    min-width: 70px;
+}

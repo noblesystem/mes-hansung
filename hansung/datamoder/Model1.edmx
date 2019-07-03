@@ -1,0 +1,2549 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="hansungModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="billbuy">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="orderdate" Type="datetime" />
+          <Property Name="tradingmission" Type="int" />
+          <Property Name="terms" Type="nvarchar" MaxLength="250" />
+          <Property Name="contractdate" Type="datetime" />
+          <Property Name="orderingemployer" Type="int" />
+          <Property Name="customer" Type="int" />
+          <Property Name="warehouse" Type="int" />
+          <Property Name="paymoney" Type="float" />
+          <Property Name="ordernumber" Type="varchar" MaxLength="255" />
+          <Property Name="remark" Type="nvarchar(max)" />
+          <Property Name="dateconfirmation" Type="datetime" />
+          <Property Name="datecreate" Type="datetime" />
+          <Property Name="lastupdate" Type="datetime" />
+          <Property Name="usercreate" Type="int" />
+          <Property Name="userupdate" Type="int" />
+          <Property Name="namewarehouse" Type="nvarchar" MaxLength="250" />
+          <Property Name="codeid" Type="nvarchar" MaxLength="500" />
+          <Property Name="phone" Type="nvarchar" MaxLength="250" />
+          <Property Name="notebill" Type="nvarchar" MaxLength="500" />
+          <Property Name="currency" Type="nvarchar" MaxLength="50" />
+          <Property Name="paymentoption" Type="nvarchar" MaxLength="50" />
+          <Property Name="note" Type="nvarchar" MaxLength="500" />
+          <Property Name="money" Type="float" />
+          <Property Name="tolerancepercent" Type="float" />
+          <Property Name="tolerancemoney" Type="float" />
+          <Property Name="usance" Type="float" />
+          <Property Name="datebeginpayment" Type="datetime" />
+          <Property Name="creditduedate" Type="datetime" />
+          <Property Name="orderbill" Type="nvarchar" MaxLength="250" />
+          <Property Name="history" Type="ntext" />
+        </EntityType>
+        <EntityType Name="carship">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codebill" Type="nvarchar" MaxLength="250" />
+          <Property Name="codeid" Type="nvarchar" MaxLength="250" />
+          <Property Name="company" Type="int" />
+          <Property Name="numberofvehicles" Type="nvarchar" MaxLength="250" />
+          <Property Name="rate" Type="float" />
+          <Property Name="verifyingacceptance" Type="datetime" />
+          <Property Name="deliveryworker" Type="int" />
+          <Property Name="shippingtime" Type="datetime" />
+          <Property Name="datecreate" Type="datetime" />
+          <Property Name="lastupdate" Type="datetime" />
+          <Property Name="usercreate" Type="int" />
+          <Property Name="userupdate" Type="int" />
+          <Property Name="forwardingnumber" Type="nvarchar" MaxLength="500" />
+          <Property Name="numbill" Type="nvarchar" MaxLength="350" />
+          <Property Name="qltBox" Type="float" />
+          <Property Name="ship" Type="nvarchar" MaxLength="50" />
+          <Property Name="indexbox" Type="nchar" MaxLength="10" />
+          <Property Name="agree" Type="nvarchar" MaxLength="250" />
+          <Property Name="history" Type="ntext" />
+        </EntityType>
+        <EntityType Name="changewarehouse">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codedate" Type="nvarchar" MaxLength="500" />
+          <Property Name="worker" Type="int" />
+          <Property Name="sendwarehouse" Type="int" />
+          <Property Name="rcvwarehouse" Type="int" />
+          <Property Name="company" Type="int" />
+          <Property Name="carnum" Type="nvarchar" MaxLength="250" />
+          <Property Name="transportfee" Type="float" />
+          <Property Name="verificatio" Type="datetime" />
+          <Property Name="datecheck" Type="datetime" />
+          <Property Name="datecreate" Type="datetime" />
+          <Property Name="lastupdate" Type="datetime" />
+          <Property Name="usercreate" Type="int" />
+          <Property Name="userupdate" Type="int" />
+          <Property Name="remark" Type="nvarchar" MaxLength="500" />
+          <Property Name="codeid" Type="nvarchar" MaxLength="500" />
+          <Property Name="ordate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="container_location">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="warehouse_location_id" Type="int" />
+          <Property Name="location" Type="nvarchar" MaxLength="250" />
+          <Property Name="description" Type="nvarchar" MaxLength="500" />
+          <Property Name="reg_date" Type="datetime" />
+          <Property Name="reg_user" Type="nvarchar" MaxLength="250" />
+          <Property Name="del_yn" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="nvarchar" MaxLength="50" />
+          <Property Name="salesemployee" Type="int" />
+          <Property Name="zonecode" Type="nvarchar" MaxLength="50" />
+          <Property Name="name" Type="nvarchar" MaxLength="250" />
+          <Property Name="registrationnumber" Type="nvarchar" MaxLength="250" />
+          <Property Name="representative" Type="nvarchar" MaxLength="250" />
+          <Property Name="phonenumber" Type="nvarchar" MaxLength="250" />
+          <Property Name="fax" Type="nvarchar" MaxLength="250" />
+          <Property Name="mobilephone" Type="nvarchar" MaxLength="250" />
+          <Property Name="email" Type="nvarchar" MaxLength="250" />
+          <Property Name="headofficeaddress" Type="nvarchar" MaxLength="250" />
+          <Property Name="destinationphone" Type="nvarchar" MaxLength="250" />
+          <Property Name="destinationaddress" Type="nvarchar" MaxLength="250" />
+          <Property Name="transactionbalance" Type="float" />
+          <Property Name="creditlimit" Type="float" />
+          <Property Name="transactionaccountnumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="datecreate" Type="datetime" />
+          <Property Name="lastupdate" Type="datetime" />
+          <Property Name="usercreate" Type="int" />
+          <Property Name="userupdate" Type="int" />
+          <Property Name="isdelete" Type="bit" />
+          <Property Name="idcode" Type="int" />
+          <Property Name="icondola" Type="nvarchar" MaxLength="50" />
+          <Property Name="iconwon" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="department">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="250" />
+          <Property Name="isdelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="detail_car">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ship" Type="nvarchar(max)" />
+          <Property Name="codeitem" Type="nvarchar(max)" />
+          <Property Name="qltbox" Type="float" />
+          <Property Name="datecreate" Type="datetime" />
+          <Property Name="lastupdate" Type="datetime" />
+          <Property Name="usercreate" Type="int" />
+          <Property Name="userupdate" Type="int" />
+          <Property Name="codecar" Type="nvarchar(max)" />
+          <Property Name="codebill" Type="nvarchar(max)" />
+          <Property Name="history" Type="ntext" />
+          <Property Name="iditem" Type="int" />
+          <Property Name="box" Type="float" />
+        </EntityType>
+        <EntityType Name="detailbillbuy">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="iditem" Type="int" />
+          <Property Name="nameitem" Type="nvarchar" MaxLength="250" />
+          <Property Name="standard" Type="nvarchar" MaxLength="250" />
+          <Property Name="quantityincase" Type="float" />
+          <Property Name="qltcase" Type="float" />
+          <Property Name="price" Type="float" />
+          <Property Name="pricesupply" Type="float" />
+          <Property Name="vat" Type="float" />
+          <Property Name="totalamount" Type="float" />
+          <Property Name="qltcontainer" Type="int" />
+          <Property Name="sqm" Type="float" />
+          <Property Name="remark" Type="nvarchar(max)" />
+          <Property Name="datecreate" Type="datetime" />
+          <Property Name="lastupdate" Type="datetime" />
+          <Property Name="usercreate" Type="int" />
+          <Property Name="userupdate" Type="int" />
+          <Property Name="codeitem" Type="nvarchar" MaxLength="250" />
+          <Property Name="codebill" Type="nvarchar" MaxLength="500" />
+          <Property Name="codeid" Type="nvarchar" MaxLength="300" />
+          <Property Name="codeship" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="detailchangewarehouse">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codebill" Type="nvarchar" MaxLength="500" />
+          <Property Name="itemcode" Type="nvarchar" MaxLength="250" />
+          <Property Name="standard" Type="nvarchar" MaxLength="250" />
+          <Property Name="nameitem" Type="nvarchar" MaxLength="250" />
+          <Property Name="qltincase" Type="float" />
+          <Property Name="qltbox" Type="float" />
+          <Property Name="serinum" Type="nvarchar" MaxLength="250" />
+          <Property Name="proplem" Type="nvarchar" MaxLength="250" />
+          <Property Name="remark" Type="nvarchar" MaxLength="500" />
+          <Property Name="datecreate" Type="datetime" />
+          <Property Name="lastupdate" Type="datetime" />
+          <Property Name="usercreate" Type="int" />
+          <Property Name="userupdate" Type="int" />
+          <Property Name="itemid" Type="int" />
+        </EntityType>
+        <EntityType Name="detailorder">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codebill" Type="nvarchar(max)" />
+          <Property Name="itemid" Type="int" />
+          <Property Name="itemcode" Type="nvarchar" MaxLength="250" />
+          <Property Name="itemname" Type="nvarchar" MaxLength="250" />
+          <Property Name="standard" Type="nvarchar" MaxLength="250" />
+          <Property Name="qltincase" Type="float" />
+          <Property Name="qltcase" Type="float" />
+          <Property Name="price" Type="float" />
+          <Property Name="pricesupply" Type="float" />
+          <Property Name="vat" Type="float" />
+          <Property Name="totalamount" Type="float" />
+          <Property Name="itemremarks" Type="nvarchar" MaxLength="500" />
+          <Property Name="serialNo" Type="nvarchar" MaxLength="250" />
+          <Property Name="caseNo" Type="nvarchar" MaxLength="250" />
+          <Property Name="PRODNo" Type="nvarchar" MaxLength="250" />
+          <Property Name="datecreate" Type="datetime" />
+          <Property Name="lastupdate" Type="datetime" />
+          <Property Name="usercreate" Type="int" />
+          <Property Name="userupdate" Type="int" />
+          <Property Name="codeid" Type="nvarchar" MaxLength="350" />
+          <Property Name="history" Type="ntext" />
+        </EntityType>
+        <EntityType Name="detailship">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codebill" Type="nvarchar(max)" />
+          <Property Name="codeid" Type="nvarchar(max)" />
+          <Property Name="orderbill" Type="nvarchar" MaxLength="250" />
+          <Property Name="numbership" Type="nvarchar" MaxLength="250" />
+          <Property Name="duedate" Type="datetime" />
+          <Property Name="departuredate" Type="datetime" />
+          <Property Name="dateofarrival" Type="datetime" />
+          <Property Name="conDuedate" Type="datetime" />
+          <Property Name="shipname" Type="nvarchar" MaxLength="250" />
+          <Property Name="remark" Type="nvarchar(max)" />
+          <Property Name="datecreate" Type="datetime" />
+          <Property Name="lastupdate" Type="datetime" />
+          <Property Name="usercreate" Type="int" />
+          <Property Name="userupdate" Type="int" />
+          <Property Name="nameshipname" Type="nvarchar" MaxLength="500" />
+          <Property Name="qltbox" Type="float" />
+          <Property Name="dateclearance" Type="datetime" />
+          <Property Name="customsday" Type="datetime" />
+          <Property Name="port" Type="nvarchar" MaxLength="250" />
+          <Property Name="containernumber" Type="nvarchar" MaxLength="250" />
+          <Property Name="daycertificate" Type="datetime" />
+          <Property Name="sizefit" Type="nvarchar" MaxLength="50" />
+          <Property Name="containerday" Type="datetime" />
+          <Property Name="conreturnday" Type="datetime" />
+          <Property Name="requestday" Type="datetime" />
+          <Property Name="confirmreceiptday" Type="datetime" />
+          <Property Name="serinumber" Type="nvarchar(max)" />
+          <Property Name="prodcode" Type="nvarchar" MaxLength="250" />
+          <Property Name="casenom" Type="nvarchar" MaxLength="250" />
+          <Property Name="proddate" Type="datetime" />
+          <Property Name="shipnum" Type="nvarchar" MaxLength="50" />
+          <Property Name="indexbox" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="detailwarehouse">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="500" />
+          <Property Name="destination" Type="nvarchar" MaxLength="50" />
+          <Property Name="rowdestination" Type="nvarchar" MaxLength="50" />
+          <Property Name="YajiSelection" Type="nvarchar" MaxLength="50" />
+          <Property Name="rowYaji" Type="nvarchar" MaxLength="50" />
+          <Property Name="container" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="employeecode" Type="nvarchar" MaxLength="250" />
+          <Property Name="name" Type="nvarchar" MaxLength="250" />
+          <Property Name="permission" Type="nvarchar" MaxLength="50" />
+          <Property Name="email" Type="nvarchar" MaxLength="250" />
+          <Property Name="phonenumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="position" Type="int" />
+          <Property Name="department" Type="int" />
+          <Property Name="address" Type="nvarchar" MaxLength="250" />
+          <Property Name="attachments" Type="nvarchar(max)" />
+          <Property Name="datecreate" Type="datetime" />
+          <Property Name="lastupdate" Type="datetime" />
+          <Property Name="usercreate" Type="int" />
+          <Property Name="userupdate" Type="int" />
+          <Property Name="isdelete" Type="bit" />
+          <Property Name="Password" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="historybillsale">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idold" Type="int" />
+          <Property Name="contenold" Type="text" />
+          <Property Name="contennew" Type="text" />
+          <Property Name="datecreate" Type="datetime" />
+          <Property Name="lastupdate" Type="datetime" />
+          <Property Name="usercreate" Type="int" />
+          <Property Name="userupdate" Type="int" />
+          <Property Name="actions" Type="nvarchar" MaxLength="500" />
+          <Property Name="codeid" Type="nvarchar(max)" />
+          <Property Name="subcode" Type="nvarchar" MaxLength="500" />
+          <Property Name="inforbill" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Inputwarehouse">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="seriesnum" Type="nvarchar(max)" />
+          <Property Name="destination" Type="nvarchar" MaxLength="250" />
+          <Property Name="rowdestination" Type="nvarchar" MaxLength="250" />
+          <Property Name="YajiSelection" Type="nvarchar" MaxLength="250" />
+          <Property Name="rowYaji" Type="nvarchar" MaxLength="250" />
+          <Property Name="container" Type="nvarchar" MaxLength="250" />
+          <Property Name="itemid" Type="int" />
+          <Property Name="itemcode" Type="nvarchar" MaxLength="500" />
+          <Property Name="itemname" Type="nvarchar" MaxLength="500" />
+          <Property Name="size" Type="nvarchar" MaxLength="500" />
+          <Property Name="qltincase" Type="float" />
+          <Property Name="qltbox" Type="float" />
+          <Property Name="problems" Type="nvarchar" MaxLength="500" />
+          <Property Name="defecttype" Type="nvarchar" MaxLength="500" />
+          <Property Name="manufacturer" Type="nvarchar" MaxLength="500" />
+          <Property Name="remarksitem" Type="nvarchar" MaxLength="500" />
+          <Property Name="location" Type="nvarchar" MaxLength="500" />
+          <Property Name="purchasenotes" Type="nvarchar" MaxLength="500" />
+          <Property Name="attachments" Type="nvarchar(max)" />
+          <Property Name="datecreate" Type="datetime" />
+          <Property Name="lastupdate" Type="datetime" />
+          <Property Name="usercreate" Type="int" />
+          <Property Name="userupdate" Type="int" />
+          <Property Name="inspnumber" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="inspection">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="inspnumber" Type="nvarchar(max)" />
+          <Property Name="codebill" Type="nvarchar(max)" />
+          <Property Name="warehouse" Type="int" />
+          <Property Name="workerone" Type="int" />
+          <Property Name="workertwo" Type="int" />
+          <Property Name="remarks" Type="nvarchar(max)" />
+          <Property Name="datecreate" Type="datetime" />
+          <Property Name="lastupdate" Type="datetime" />
+          <Property Name="usercreate" Type="int" />
+          <Property Name="userupdate" Type="int" />
+          <Property Name="warehousename" Type="nvarchar" MaxLength="500" />
+          <Property Name="employeeone" Type="nvarchar" MaxLength="500" />
+          <Property Name="employeetwo" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="ItemList">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="itemcode" Type="nvarchar" MaxLength="250" />
+          <Property Name="itemduzoncode" Type="nvarchar" MaxLength="250" />
+          <Property Name="itemname" Type="nvarchar" MaxLength="250" />
+          <Property Name="quantityincase" Type="float" />
+          <Property Name="specifiedarea" Type="float" />
+          <Property Name="safetystockquantity" Type="float" />
+          <Property Name="manufacturer" Type="nvarchar" MaxLength="250" />
+          <Property Name="status" Type="nvarchar" MaxLength="250" />
+          <Property Name="itembrief" Type="nvarchar(max)" />
+          <Property Name="datecreate" Type="datetime" />
+          <Property Name="lastupdate" Type="datetime" />
+          <Property Name="usercreate" Type="int" />
+          <Property Name="userupdate" Type="int" />
+          <Property Name="standard" Type="nvarchar" MaxLength="250" />
+          <Property Name="isdelete" Type="bit" />
+          <Property Name="width" Type="float" />
+          <Property Name="unitprice1" Type="float" />
+          <Property Name="unitprice2" Type="float" />
+          <Property Name="unitprice3" Type="float" />
+          <Property Name="height" Type="float" />
+        </EntityType>
+        <EntityType Name="jigo_location">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="warehourse_location_id" Type="int" />
+          <Property Name="location" Type="nvarchar" MaxLength="250" />
+          <Property Name="description" Type="nvarchar" MaxLength="500" />
+          <Property Name="reg_date" Type="datetime" />
+          <Property Name="reg_user" Type="nvarchar" MaxLength="250" />
+          <Property Name="del_yn" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MenuGrpId" Type="int" Nullable="false" />
+          <Property Name="Href" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="IndexInGrp" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="MenuActionPermission">
+          <Key>
+            <PropertyRef Name="EmpId" />
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="EmpId" Type="int" Nullable="false" />
+          <Property Name="MenuId" Type="int" Nullable="false" />
+          <Property Name="IsAllowRetrieve" Type="bit" Nullable="false" />
+          <Property Name="IsAllowCreate" Type="bit" Nullable="false" />
+          <Property Name="IsAllowUpdate" Type="bit" Nullable="false" />
+          <Property Name="IsAllowDelete" Type="bit" Nullable="false" />
+          <Property Name="IsAllowUpload" Type="bit" Nullable="false" />
+          <Property Name="IsAllowPrint" Type="bit" Nullable="false" />
+          <Property Name="IsAllowExport" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="MenuGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Href" Type="nvarchar" MaxLength="200" />
+          <Property Name="Class" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="GrpIndex" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="ObjectPropertyPermission">
+          <Key>
+            <PropertyRef Name="EmpId" />
+            <PropertyRef Name="ObjectName" />
+            <PropertyRef Name="PropertyName" />
+          </Key>
+          <Property Name="EmpId" Type="int" Nullable="false" />
+          <Property Name="ObjectName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="PropertyName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="IsAllowView" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="orderslips">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="orderdate" Type="nvarchar" MaxLength="500" />
+          <Property Name="salesrepresentative" Type="int" />
+          <Property Name="customercompany" Type="int" />
+          <Property Name="customercontacts" Type="nvarchar" MaxLength="250" />
+          <Property Name="terms" Type="nvarchar" MaxLength="250" />
+          <Property Name="receivables" Type="bit" />
+          <Property Name="warehouse" Type="int" />
+          <Property Name="issuedate" Type="datetime" />
+          <Property Name="contactphone" Type="nvarchar" MaxLength="250" />
+          <Property Name="frame" Type="nvarchar" MaxLength="250" />
+          <Property Name="destinationaddress" Type="nvarchar" MaxLength="250" />
+          <Property Name="remarks" Type="nvarchar(max)" />
+          <Property Name="datecreate" Type="datetime" />
+          <Property Name="lastupdate" Type="datetime" />
+          <Property Name="usercreate" Type="int" />
+          <Property Name="userupdate" Type="int" />
+          <Property Name="codeid" Type="nvarchar" MaxLength="300" />
+          <Property Name="transactionbalancectm" Type="float" />
+          <Property Name="orderdatetime" Type="datetime" />
+          <Property Name="history" Type="ntext" />
+        </EntityType>
+        <EntityType Name="payment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codeorder" Type="nvarchar(max)" />
+          <Property Name="paymentdate" Type="datetime" />
+          <Property Name="employer" Type="int" />
+          <Property Name="customer" Type="int" />
+          <Property Name="transactionterms" Type="nvarchar" MaxLength="250" />
+          <Property Name="cashT_T" Type="float" />
+          <Property Name="billL_C" Type="float" />
+          <Property Name="paymentaccount" Type="nvarchar" MaxLength="250" />
+          <Property Name="feesmoney" Type="float" />
+          <Property Name="remark" Type="nvarchar(max)" />
+          <Property Name="codebill" Type="nvarchar(max)" />
+          <Property Name="codeid" Type="nvarchar(max)" />
+          <Property Name="datecreate" Type="datetime" />
+          <Property Name="lastupdate" Type="datetime" />
+          <Property Name="usercreate" Type="int" />
+          <Property Name="userupdate" Type="int" />
+          <Property Name="employerstr" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="paymentOrder">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codeorder" Type="nvarchar(max)" />
+          <Property Name="paymentdate" Type="datetime" />
+          <Property Name="employer" Type="int" />
+          <Property Name="customer" Type="int" />
+          <Property Name="transactionterms" Type="nvarchar" MaxLength="250" />
+          <Property Name="cashT_T" Type="float" />
+          <Property Name="billL_C" Type="float" />
+          <Property Name="paymentaccount" Type="nvarchar" MaxLength="250" />
+          <Property Name="feesmoney" Type="float" />
+          <Property Name="remark" Type="nvarchar(max)" />
+          <Property Name="codebill" Type="nvarchar(max)" />
+          <Property Name="codeid" Type="nvarchar(max)" />
+          <Property Name="datecreate" Type="datetime" />
+          <Property Name="lastupdate" Type="datetime" />
+          <Property Name="usercreate" Type="int" />
+          <Property Name="userupdate" Type="int" />
+          <Property Name="employerstr" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="plans">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="worker" Type="int" />
+          <Property Name="time" Type="date" />
+          <Property Name="money" Type="float" />
+          <Property Name="remark" Type="nvarchar(max)" />
+          <Property Name="datecreate" Type="datetime" />
+          <Property Name="lastupdate" Type="datetime" />
+          <Property Name="usercreate" Type="int" />
+          <Property Name="userupdate" Type="int" />
+          <Property Name="codeid" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="position">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="250" />
+          <Property Name="isdelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="rawyaji_location">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="yaji_location_id" Type="int" />
+          <Property Name="location" Type="nvarchar" MaxLength="250" />
+          <Property Name="description" Type="nvarchar" MaxLength="500" />
+          <Property Name="reg_date" Type="datetime" />
+          <Property Name="reg_user" Type="nvarchar" MaxLength="250" />
+          <Property Name="del_yn" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="rowjigo_location">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="jigo_location_id" Type="int" />
+          <Property Name="location" Type="nvarchar" MaxLength="250" />
+          <Property Name="description" Type="nvarchar" MaxLength="500" />
+          <Property Name="reg_date" Type="datetime" />
+          <Property Name="reg_user" Type="nvarchar" MaxLength="250" />
+          <Property Name="del_yn" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="serinumber">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codebill" Type="nvarchar(max)" />
+          <Property Name="codeparent" Type="nvarchar(max)" />
+          <Property Name="seriNum" Type="nvarchar(max)" />
+          <Property Name="datecreate" Type="datetime" />
+          <Property Name="lastupdate" Type="datetime" />
+          <Property Name="usercreate" Type="int" />
+          <Property Name="userupdate" Type="int" />
+        </EntityType>
+        <EntityType Name="ship">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codebill" Type="nvarchar(max)" />
+          <Property Name="codeid" Type="nvarchar(max)" />
+          <Property Name="orderbill" Type="nvarchar" MaxLength="250" />
+          <Property Name="numbership" Type="nvarchar" MaxLength="250" />
+          <Property Name="duedate" Type="datetime" />
+          <Property Name="departuredate" Type="datetime" />
+          <Property Name="dateofarrival" Type="datetime" />
+          <Property Name="conDuedate" Type="datetime" />
+          <Property Name="shipname" Type="nvarchar" MaxLength="250" />
+          <Property Name="remark" Type="nvarchar(max)" />
+          <Property Name="datecreate" Type="datetime" />
+          <Property Name="lastupdate" Type="datetime" />
+          <Property Name="usercreate" Type="int" />
+          <Property Name="userupdate" Type="int" />
+          <Property Name="nameshipname" Type="nvarchar" MaxLength="500" />
+          <Property Name="qltbox" Type="float" />
+          <Property Name="dateclearance" Type="datetime" />
+          <Property Name="customsday" Type="datetime" />
+          <Property Name="port" Type="nvarchar" MaxLength="250" />
+          <Property Name="containernumber" Type="nvarchar" MaxLength="250" />
+          <Property Name="daycertificate" Type="datetime" />
+          <Property Name="sizefit" Type="nvarchar" MaxLength="50" />
+          <Property Name="containerday" Type="datetime" />
+          <Property Name="conreturnday" Type="datetime" />
+          <Property Name="requestday" Type="datetime" />
+          <Property Name="confirmreceiptday" Type="datetime" />
+          <Property Name="serinumber" Type="nvarchar(max)" />
+          <Property Name="prodcode" Type="nvarchar" MaxLength="250" />
+          <Property Name="casenom" Type="nvarchar" MaxLength="250" />
+          <Property Name="proddate" Type="datetime" />
+          <Property Name="shipnum" Type="nvarchar" MaxLength="50" />
+          <Property Name="indexbox" Type="nvarchar" MaxLength="50" />
+          <Property Name="history" Type="text" />
+          <Property Name="historydetail" Type="ntext" />
+          <Property Name="codeship" Type="nvarchar" MaxLength="350" />
+        </EntityType>
+        <EntityType Name="styleItem">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="250" />
+          <Property Name="size" Type="float" />
+          <Property Name="code" Type="nvarchar" MaxLength="250" />
+          <Property Name="datecreate" Type="datetime" />
+          <Property Name="lastupdate" Type="datetime" />
+          <Property Name="usercreate" Type="int" />
+          <Property Name="userupdate" Type="int" />
+          <Property Name="isdelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="subship">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idbill" Type="bigint" />
+          <Property Name="codebill" Type="nvarchar(max)" />
+          <Property Name="numbership" Type="nvarchar" MaxLength="250" />
+          <Property Name="duedate" Type="datetime" />
+          <Property Name="departuredate" Type="datetime" />
+          <Property Name="dateofarrival" Type="datetime" />
+          <Property Name="conDuedate" Type="datetime" />
+          <Property Name="shipname" Type="nvarchar" MaxLength="250" />
+          <Property Name="remark" Type="nvarchar(max)" />
+          <Property Name="datecreate" Type="datetime" />
+          <Property Name="lastupdate" Type="datetime" />
+          <Property Name="usercreate" Type="int" />
+          <Property Name="userupdate" Type="int" />
+        </EntityType>
+        <EntityType Name="table_detail_erorr">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Item_id" Type="int" />
+          <Property Name="Defect_type" Type="nvarchar" MaxLength="250" />
+          <Property Name="remark" Type="nvarchar" MaxLength="250" />
+          <Property Name="serinum" Type="nvarchar" MaxLength="250" />
+          <Property Name="Documents_attach" Type="nvarchar" MaxLength="250" />
+          <Property Name="datecreate" Type="datetime" />
+          <Property Name="lastupdate" Type="datetime" />
+          <Property Name="usercreate" Type="int" />
+          <Property Name="userupdate" Type="int" />
+          <Property Name="qltincase" Type="float" />
+          <Property Name="qltbox" Type="float" />
+          <Property Name="qltremove" Type="float" />
+          <Property Name="remarkremove" Type="nvarchar" MaxLength="250" />
+          <Property Name="codebill" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="Table_Erorr">
+          <Key>
+            <PropertyRef Name="codeid" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="numbercode" Type="nvarchar" MaxLength="250" />
+          <Property Name="poor_handling_charge" Type="int" />
+          <Property Name="warehouse_id" Type="int" />
+          <Property Name="defective_processing_type" Type="nvarchar" MaxLength="250" />
+          <Property Name="approved" Type="datetime" />
+          <Property Name="remark" Type="nvarchar" MaxLength="250" />
+          <Property Name="datecreate" Type="datetime" />
+          <Property Name="lastupdate" Type="datetime" />
+          <Property Name="usercreate" Type="int" />
+          <Property Name="userupdate" Type="int" />
+          <Property Name="codeid" Type="nvarchar" MaxLength="300" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_qlt_erorr">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="item_id" Type="int" />
+          <Property Name="qltincase" Type="float" />
+          <Property Name="qltbox" Type="float" />
+          <Property Name="serinum" Type="nvarchar" MaxLength="250" />
+          <Property Name="Defect_type" Type="nvarchar" MaxLength="250" />
+          <Property Name="remark" Type="nvarchar(max)" />
+          <Property Name="datecreate" Type="datetime" />
+          <Property Name="lastupdate" Type="datetime" />
+          <Property Name="usercreate" Type="int" />
+          <Property Name="userupdate" Type="int" />
+          <Property Name="codebill" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="tradingmission">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="250" />
+          <Property Name="isdelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="warehouse">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="warehousecode" Type="nvarchar" MaxLength="250" />
+          <Property Name="name" Type="nvarchar" MaxLength="250" />
+          <Property Name="brief" Type="nvarchar(max)" />
+          <Property Name="telephone" Type="nvarchar" MaxLength="50" />
+          <Property Name="address" Type="nvarchar(max)" />
+          <Property Name="datecreate" Type="datetime" />
+          <Property Name="lastupdate" Type="datetime" />
+          <Property Name="usercreate" Type="int" />
+          <Property Name="userupdate" Type="int" />
+          <Property Name="isdelete" Type="bit" />
+          <Property Name="subname" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="warehouse_location">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="location" Type="nvarchar" MaxLength="250" />
+          <Property Name="description" Type="nvarchar" MaxLength="500" />
+          <Property Name="reg_date" Type="datetime" />
+          <Property Name="reg_user" Type="nvarchar" MaxLength="250" />
+          <Property Name="del_yn" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="yaji_location">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="warehouse_location_id" Type="int" />
+          <Property Name="location" Type="nvarchar" MaxLength="250" />
+          <Property Name="description" Type="nvarchar" MaxLength="500" />
+          <Property Name="reg_date" Type="datetime" />
+          <Property Name="reg_user" Type="nvarchar" MaxLength="250" />
+          <Property Name="del_yn" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK_rawyaji_location_jigo_location">
+          <End Role="jigo_location" Type="Self.jigo_location" Multiplicity="0..1" />
+          <End Role="rawyaji_location" Type="Self.rawyaji_location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jigo_location">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="rawyaji_location">
+              <PropertyRef Name="yaji_location_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_rowjigo_location_jigo_location">
+          <End Role="jigo_location" Type="Self.jigo_location" Multiplicity="0..1" />
+          <End Role="rowjigo_location" Type="Self.rowjigo_location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jigo_location">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="rowjigo_location">
+              <PropertyRef Name="jigo_location_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="hansungModelStoreContainer">
+          <EntitySet Name="billbuy" EntityType="Self.billbuy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="carship" EntityType="Self.carship" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="changewarehouse" EntityType="Self.changewarehouse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="container_location" EntityType="Self.container_location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="customer" EntityType="Self.customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="department" EntityType="Self.department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="detail_car" EntityType="Self.detail_car" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="detailbillbuy" EntityType="Self.detailbillbuy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="detailchangewarehouse" EntityType="Self.detailchangewarehouse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="detailorder" EntityType="Self.detailorder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="detailship" EntityType="Self.detailship" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="detailwarehouse" EntityType="Self.detailwarehouse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="employee" EntityType="Self.employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="historybillsale" EntityType="Self.historybillsale" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inputwarehouse" EntityType="Self.Inputwarehouse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="inspection" EntityType="Self.inspection" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemList" EntityType="Self.ItemList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="jigo_location" EntityType="Self.jigo_location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MenuActionPermission" EntityType="Self.MenuActionPermission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MenuGroup" EntityType="Self.MenuGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ObjectPropertyPermission" EntityType="Self.ObjectPropertyPermission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="orderslips" EntityType="Self.orderslips" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="payment" EntityType="Self.payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="paymentOrder" EntityType="Self.paymentOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="plans" EntityType="Self.plans" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="position" EntityType="Self.position" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rawyaji_location" EntityType="Self.rawyaji_location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rowjigo_location" EntityType="Self.rowjigo_location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="serinumber" EntityType="Self.serinumber" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ship" EntityType="Self.ship" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="styleItem" EntityType="Self.styleItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="subship" EntityType="Self.subship" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="table_detail_erorr" EntityType="Self.table_detail_erorr" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Erorr" EntityType="Self.Table_Erorr" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_qlt_erorr" EntityType="Self.Table_qlt_erorr" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tradingmission" EntityType="Self.tradingmission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="warehouse" EntityType="Self.warehouse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="warehouse_location" EntityType="Self.warehouse_location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="yaji_location" EntityType="Self.yaji_location" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_rawyaji_location_jigo_location" Association="Self.FK_rawyaji_location_jigo_location">
+            <End Role="jigo_location" EntitySet="jigo_location" />
+            <End Role="rawyaji_location" EntitySet="rawyaji_location" />
+          </AssociationSet>
+          <AssociationSet Name="FK_rowjigo_location_jigo_location" Association="Self.FK_rowjigo_location_jigo_location">
+            <End Role="jigo_location" EntitySet="jigo_location" />
+            <End Role="rowjigo_location" EntitySet="rowjigo_location" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="hansungModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="billbuy">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="orderdate" Type="DateTime" Precision="3" />
+          <Property Name="tradingmission" Type="Int32" />
+          <Property Name="terms" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="contractdate" Type="DateTime" Precision="3" />
+          <Property Name="orderingemployer" Type="Int32" />
+          <Property Name="customer" Type="Int32" />
+          <Property Name="warehouse" Type="Int32" />
+          <Property Name="paymoney" Type="Double" />
+          <Property Name="ordernumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="dateconfirmation" Type="DateTime" Precision="3" />
+          <Property Name="datecreate" Type="DateTime" Precision="3" />
+          <Property Name="lastupdate" Type="DateTime" Precision="3" />
+          <Property Name="usercreate" Type="Int32" />
+          <Property Name="userupdate" Type="Int32" />
+          <Property Name="namewarehouse" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="codeid" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="notebill" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="currency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="paymentoption" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="note" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="money" Type="Double" />
+          <Property Name="tolerancepercent" Type="Double" />
+          <Property Name="tolerancemoney" Type="Double" />
+          <Property Name="usance" Type="Double" />
+          <Property Name="datebeginpayment" Type="DateTime" Precision="3" />
+          <Property Name="creditduedate" Type="DateTime" Precision="3" />
+          <Property Name="orderbill" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="history" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="carship">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codebill" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="codeid" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="company" Type="Int32" />
+          <Property Name="numberofvehicles" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="rate" Type="Double" />
+          <Property Name="verifyingacceptance" Type="DateTime" Precision="3" />
+          <Property Name="deliveryworker" Type="Int32" />
+          <Property Name="shippingtime" Type="DateTime" Precision="3" />
+          <Property Name="datecreate" Type="DateTime" Precision="3" />
+          <Property Name="lastupdate" Type="DateTime" Precision="3" />
+          <Property Name="usercreate" Type="Int32" />
+          <Property Name="userupdate" Type="Int32" />
+          <Property Name="forwardingnumber" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="numbill" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Name="qltBox" Type="Double" />
+          <Property Name="ship" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="indexbox" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="agree" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="history" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="changewarehouse">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codedate" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="worker" Type="Int32" />
+          <Property Name="sendwarehouse" Type="Int32" />
+          <Property Name="rcvwarehouse" Type="Int32" />
+          <Property Name="company" Type="Int32" />
+          <Property Name="carnum" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="transportfee" Type="Double" />
+          <Property Name="verificatio" Type="DateTime" Precision="3" />
+          <Property Name="datecheck" Type="DateTime" Precision="3" />
+          <Property Name="datecreate" Type="DateTime" Precision="3" />
+          <Property Name="lastupdate" Type="DateTime" Precision="3" />
+          <Property Name="usercreate" Type="Int32" />
+          <Property Name="userupdate" Type="Int32" />
+          <Property Name="remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="codeid" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ordate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="container_location">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="warehouse_location_id" Type="Int32" />
+          <Property Name="location" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="reg_date" Type="DateTime" Precision="3" />
+          <Property Name="reg_user" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="del_yn" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="salesemployee" Type="Int32" />
+          <Property Name="zonecode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="registrationnumber" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="representative" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="phonenumber" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="fax" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="mobilephone" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="headofficeaddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="destinationphone" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="destinationaddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="transactionbalance" Type="Double" />
+          <Property Name="creditlimit" Type="Double" />
+          <Property Name="transactionaccountnumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="datecreate" Type="DateTime" Precision="3" />
+          <Property Name="lastupdate" Type="DateTime" Precision="3" />
+          <Property Name="usercreate" Type="Int32" />
+          <Property Name="userupdate" Type="Int32" />
+          <Property Name="isdelete" Type="Boolean" />
+          <Property Name="idcode" Type="Int32" />
+          <Property Name="icondola" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="iconwon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="department">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="isdelete" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="detail_car">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ship" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="codeitem" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="qltbox" Type="Double" />
+          <Property Name="datecreate" Type="DateTime" Precision="3" />
+          <Property Name="lastupdate" Type="DateTime" Precision="3" />
+          <Property Name="usercreate" Type="Int32" />
+          <Property Name="userupdate" Type="Int32" />
+          <Property Name="codecar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="codebill" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="history" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="iditem" Type="Int32" />
+          <Property Name="box" Type="Double" />
+        </EntityType>
+        <EntityType Name="detailbillbuy">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="iditem" Type="Int32" />
+          <Property Name="nameitem" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="standard" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="quantityincase" Type="Double" />
+          <Property Name="qltcase" Type="Double" />
+          <Property Name="price" Type="Double" />
+          <Property Name="pricesupply" Type="Double" />
+          <Property Name="vat" Type="Double" />
+          <Property Name="totalamount" Type="Double" />
+          <Property Name="qltcontainer" Type="Int32" />
+          <Property Name="sqm" Type="Double" />
+          <Property Name="remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="datecreate" Type="DateTime" Precision="3" />
+          <Property Name="lastupdate" Type="DateTime" Precision="3" />
+          <Property Name="usercreate" Type="Int32" />
+          <Property Name="userupdate" Type="Int32" />
+          <Property Name="codeitem" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="codebill" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="codeid" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="codeship" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="detailchangewarehouse">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codebill" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="itemcode" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="standard" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="nameitem" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="qltincase" Type="Double" />
+          <Property Name="qltbox" Type="Double" />
+          <Property Name="serinum" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="proplem" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="datecreate" Type="DateTime" Precision="3" />
+          <Property Name="lastupdate" Type="DateTime" Precision="3" />
+          <Property Name="usercreate" Type="Int32" />
+          <Property Name="userupdate" Type="Int32" />
+          <Property Name="itemid" Type="Int32" />
+        </EntityType>
+        <EntityType Name="detailorder">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codebill" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="itemid" Type="Int32" />
+          <Property Name="itemcode" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="itemname" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="standard" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="qltincase" Type="Double" />
+          <Property Name="qltcase" Type="Double" />
+          <Property Name="price" Type="Double" />
+          <Property Name="pricesupply" Type="Double" />
+          <Property Name="vat" Type="Double" />
+          <Property Name="totalamount" Type="Double" />
+          <Property Name="itemremarks" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="serialNo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="caseNo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PRODNo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="datecreate" Type="DateTime" Precision="3" />
+          <Property Name="lastupdate" Type="DateTime" Precision="3" />
+          <Property Name="usercreate" Type="Int32" />
+          <Property Name="userupdate" Type="Int32" />
+          <Property Name="codeid" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Name="history" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="detailship">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codebill" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="codeid" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="orderbill" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="numbership" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="duedate" Type="DateTime" Precision="3" />
+          <Property Name="departuredate" Type="DateTime" Precision="3" />
+          <Property Name="dateofarrival" Type="DateTime" Precision="3" />
+          <Property Name="conDuedate" Type="DateTime" Precision="3" />
+          <Property Name="shipname" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="datecreate" Type="DateTime" Precision="3" />
+          <Property Name="lastupdate" Type="DateTime" Precision="3" />
+          <Property Name="usercreate" Type="Int32" />
+          <Property Name="userupdate" Type="Int32" />
+          <Property Name="nameshipname" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="qltbox" Type="Double" />
+          <Property Name="dateclearance" Type="DateTime" Precision="3" />
+          <Property Name="customsday" Type="DateTime" Precision="3" />
+          <Property Name="port" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="containernumber" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="daycertificate" Type="DateTime" Precision="3" />
+          <Property Name="sizefit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="containerday" Type="DateTime" Precision="3" />
+          <Property Name="conreturnday" Type="DateTime" Precision="3" />
+          <Property Name="requestday" Type="DateTime" Precision="3" />
+          <Property Name="confirmreceiptday" Type="DateTime" Precision="3" />
+          <Property Name="serinumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="prodcode" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="casenom" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="proddate" Type="DateTime" Precision="3" />
+          <Property Name="shipnum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="indexbox" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="detailwarehouse">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="destination" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="rowdestination" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="YajiSelection" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="rowYaji" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="container" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="historybillsale">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idold" Type="Int32" />
+          <Property Name="contenold" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="contennew" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="datecreate" Type="DateTime" Precision="3" />
+          <Property Name="lastupdate" Type="DateTime" Precision="3" />
+          <Property Name="usercreate" Type="Int32" />
+          <Property Name="userupdate" Type="Int32" />
+          <Property Name="actions" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="codeid" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="subcode" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="inforbill" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Inputwarehouse">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="seriesnum" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="destination" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="rowdestination" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="YajiSelection" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="rowYaji" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="container" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="itemid" Type="Int32" />
+          <Property Name="itemcode" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="itemname" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="size" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="qltincase" Type="Double" />
+          <Property Name="qltbox" Type="Double" />
+          <Property Name="problems" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="defecttype" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="manufacturer" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="remarksitem" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="location" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="purchasenotes" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="attachments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="datecreate" Type="DateTime" Precision="3" />
+          <Property Name="lastupdate" Type="DateTime" Precision="3" />
+          <Property Name="usercreate" Type="Int32" />
+          <Property Name="userupdate" Type="Int32" />
+          <Property Name="inspnumber" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="inspection">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="inspnumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="codebill" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="warehouse" Type="Int32" />
+          <Property Name="workerone" Type="Int32" />
+          <Property Name="workertwo" Type="Int32" />
+          <Property Name="remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="datecreate" Type="DateTime" Precision="3" />
+          <Property Name="lastupdate" Type="DateTime" Precision="3" />
+          <Property Name="usercreate" Type="Int32" />
+          <Property Name="userupdate" Type="Int32" />
+          <Property Name="warehousename" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="employeeone" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="employeetwo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ItemList">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="itemcode" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="itemduzoncode" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="itemname" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="quantityincase" Type="Double" />
+          <Property Name="specifiedarea" Type="Double" />
+          <Property Name="safetystockquantity" Type="Double" />
+          <Property Name="manufacturer" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="itembrief" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="datecreate" Type="DateTime" Precision="3" />
+          <Property Name="lastupdate" Type="DateTime" Precision="3" />
+          <Property Name="usercreate" Type="Int32" />
+          <Property Name="userupdate" Type="Int32" />
+          <Property Name="standard" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="isdelete" Type="Boolean" />
+          <Property Name="width" Type="Double" />
+          <Property Name="unitprice1" Type="Double" />
+          <Property Name="unitprice2" Type="Double" />
+          <Property Name="unitprice3" Type="Double" />
+          <Property Name="height" Type="Double" />
+        </EntityType>
+        <EntityType Name="jigo_location">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="warehourse_location_id" Type="Int32" />
+          <Property Name="location" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="reg_date" Type="DateTime" Precision="3" />
+          <Property Name="reg_user" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="del_yn" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="rawyaji_location" Relationship="Self.FK_rawyaji_location_jigo_location" FromRole="jigo_location" ToRole="rawyaji_location" />
+          <NavigationProperty Name="rowjigo_location" Relationship="Self.FK_rowjigo_location_jigo_location" FromRole="jigo_location" ToRole="rowjigo_location" />
+        </EntityType>
+        <EntityType Name="orderslip">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="orderdate" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="salesrepresentative" Type="Int32" />
+          <Property Name="customercompany" Type="Int32" />
+          <Property Name="customercontacts" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="terms" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="receivables" Type="Boolean" />
+          <Property Name="warehouse" Type="Int32" />
+          <Property Name="issuedate" Type="DateTime" Precision="3" />
+          <Property Name="contactphone" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="frame" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="destinationaddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="datecreate" Type="DateTime" Precision="3" />
+          <Property Name="lastupdate" Type="DateTime" Precision="3" />
+          <Property Name="usercreate" Type="Int32" />
+          <Property Name="userupdate" Type="Int32" />
+          <Property Name="codeid" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="transactionbalancectm" Type="Double" />
+          <Property Name="orderdatetime" Type="DateTime" Precision="3" />
+          <Property Name="history" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="payment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codeorder" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="paymentdate" Type="DateTime" Precision="3" />
+          <Property Name="employer" Type="Int32" />
+          <Property Name="customer" Type="Int32" />
+          <Property Name="transactionterms" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="cashT_T" Type="Double" />
+          <Property Name="billL_C" Type="Double" />
+          <Property Name="paymentaccount" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="feesmoney" Type="Double" />
+          <Property Name="remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="codebill" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="codeid" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="datecreate" Type="DateTime" Precision="3" />
+          <Property Name="lastupdate" Type="DateTime" Precision="3" />
+          <Property Name="usercreate" Type="Int32" />
+          <Property Name="userupdate" Type="Int32" />
+          <Property Name="employerstr" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="paymentOrder">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codeorder" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="paymentdate" Type="DateTime" Precision="3" />
+          <Property Name="employer" Type="Int32" />
+          <Property Name="customer" Type="Int32" />
+          <Property Name="transactionterms" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="cashT_T" Type="Double" />
+          <Property Name="billL_C" Type="Double" />
+          <Property Name="paymentaccount" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="feesmoney" Type="Double" />
+          <Property Name="remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="codebill" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="codeid" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="datecreate" Type="DateTime" Precision="3" />
+          <Property Name="lastupdate" Type="DateTime" Precision="3" />
+          <Property Name="usercreate" Type="Int32" />
+          <Property Name="userupdate" Type="Int32" />
+          <Property Name="employerstr" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="plan">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="worker" Type="Int32" />
+          <Property Name="time" Type="DateTime" Precision="0" />
+          <Property Name="money" Type="Double" />
+          <Property Name="remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="datecreate" Type="DateTime" Precision="3" />
+          <Property Name="lastupdate" Type="DateTime" Precision="3" />
+          <Property Name="usercreate" Type="Int32" />
+          <Property Name="userupdate" Type="Int32" />
+          <Property Name="codeid" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="position">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="isdelete" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="rawyaji_location">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="yaji_location_id" Type="Int32" />
+          <Property Name="location" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="reg_date" Type="DateTime" Precision="3" />
+          <Property Name="reg_user" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="del_yn" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="jigo_location" Relationship="Self.FK_rawyaji_location_jigo_location" FromRole="rawyaji_location" ToRole="jigo_location" />
+        </EntityType>
+        <EntityType Name="rowjigo_location">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="jigo_location_id" Type="Int32" />
+          <Property Name="location" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="reg_date" Type="DateTime" Precision="3" />
+          <Property Name="reg_user" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="del_yn" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="jigo_location" Relationship="Self.FK_rowjigo_location_jigo_location" FromRole="rowjigo_location" ToRole="jigo_location" />
+        </EntityType>
+        <EntityType Name="serinumber">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codebill" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="codeparent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="seriNum" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="datecreate" Type="DateTime" Precision="3" />
+          <Property Name="lastupdate" Type="DateTime" Precision="3" />
+          <Property Name="usercreate" Type="Int32" />
+          <Property Name="userupdate" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ship">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codebill" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="codeid" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="orderbill" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="numbership" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="duedate" Type="DateTime" Precision="3" />
+          <Property Name="departuredate" Type="DateTime" Precision="3" />
+          <Property Name="dateofarrival" Type="DateTime" Precision="3" />
+          <Property Name="conDuedate" Type="DateTime" Precision="3" />
+          <Property Name="shipname" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="datecreate" Type="DateTime" Precision="3" />
+          <Property Name="lastupdate" Type="DateTime" Precision="3" />
+          <Property Name="usercreate" Type="Int32" />
+          <Property Name="userupdate" Type="Int32" />
+          <Property Name="nameshipname" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="qltbox" Type="Double" />
+          <Property Name="dateclearance" Type="DateTime" Precision="3" />
+          <Property Name="customsday" Type="DateTime" Precision="3" />
+          <Property Name="port" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="containernumber" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="daycertificate" Type="DateTime" Precision="3" />
+          <Property Name="sizefit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="containerday" Type="DateTime" Precision="3" />
+          <Property Name="conreturnday" Type="DateTime" Precision="3" />
+          <Property Name="requestday" Type="DateTime" Precision="3" />
+          <Property Name="confirmreceiptday" Type="DateTime" Precision="3" />
+          <Property Name="serinumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="prodcode" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="casenom" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="proddate" Type="DateTime" Precision="3" />
+          <Property Name="shipnum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="indexbox" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="history" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="historydetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="codeship" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="styleItem">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="size" Type="Double" />
+          <Property Name="code" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="datecreate" Type="DateTime" Precision="3" />
+          <Property Name="lastupdate" Type="DateTime" Precision="3" />
+          <Property Name="usercreate" Type="Int32" />
+          <Property Name="userupdate" Type="Int32" />
+          <Property Name="isdelete" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="subship">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idbill" Type="Int64" />
+          <Property Name="codebill" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="numbership" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="duedate" Type="DateTime" Precision="3" />
+          <Property Name="departuredate" Type="DateTime" Precision="3" />
+          <Property Name="dateofarrival" Type="DateTime" Precision="3" />
+          <Property Name="conDuedate" Type="DateTime" Precision="3" />
+          <Property Name="shipname" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="datecreate" Type="DateTime" Precision="3" />
+          <Property Name="lastupdate" Type="DateTime" Precision="3" />
+          <Property Name="usercreate" Type="Int32" />
+          <Property Name="userupdate" Type="Int32" />
+        </EntityType>
+        <EntityType Name="table_detail_erorr">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Item_id" Type="Int32" />
+          <Property Name="Defect_type" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="serinum" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Documents_attach" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="datecreate" Type="DateTime" Precision="3" />
+          <Property Name="lastupdate" Type="DateTime" Precision="3" />
+          <Property Name="usercreate" Type="Int32" />
+          <Property Name="userupdate" Type="Int32" />
+          <Property Name="qltincase" Type="Double" />
+          <Property Name="qltbox" Type="Double" />
+          <Property Name="qltremove" Type="Double" />
+          <Property Name="remarkremove" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="codebill" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Table_Erorr">
+          <Key>
+            <PropertyRef Name="codeid" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="numbercode" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="poor_handling_charge" Type="Int32" />
+          <Property Name="warehouse_id" Type="Int32" />
+          <Property Name="defective_processing_type" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="approved" Type="DateTime" Precision="3" />
+          <Property Name="remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="datecreate" Type="DateTime" Precision="3" />
+          <Property Name="lastupdate" Type="DateTime" Precision="3" />
+          <Property Name="usercreate" Type="Int32" />
+          <Property Name="userupdate" Type="Int32" />
+          <Property Name="codeid" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_qlt_erorr">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="item_id" Type="Int32" />
+          <Property Name="qltincase" Type="Double" />
+          <Property Name="qltbox" Type="Double" />
+          <Property Name="serinum" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Defect_type" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="datecreate" Type="DateTime" Precision="3" />
+          <Property Name="lastupdate" Type="DateTime" Precision="3" />
+          <Property Name="usercreate" Type="Int32" />
+          <Property Name="userupdate" Type="Int32" />
+          <Property Name="codebill" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tradingmission">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="isdelete" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="warehouse">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="warehousecode" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="brief" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="datecreate" Type="DateTime" Precision="3" />
+          <Property Name="lastupdate" Type="DateTime" Precision="3" />
+          <Property Name="usercreate" Type="Int32" />
+          <Property Name="userupdate" Type="Int32" />
+          <Property Name="isdelete" Type="Boolean" />
+          <Property Name="subname" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="warehouse_location">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="location" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="reg_date" Type="DateTime" Precision="3" />
+          <Property Name="reg_user" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="del_yn" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="yaji_location">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="warehouse_location_id" Type="Int32" />
+          <Property Name="location" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="reg_date" Type="DateTime" Precision="3" />
+          <Property Name="reg_user" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="del_yn" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_rawyaji_location_jigo_location">
+          <End Role="jigo_location" Type="Self.jigo_location" Multiplicity="0..1" />
+          <End Role="rawyaji_location" Type="Self.rawyaji_location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jigo_location">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="rawyaji_location">
+              <PropertyRef Name="yaji_location_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_rowjigo_location_jigo_location">
+          <End Role="jigo_location" Type="Self.jigo_location" Multiplicity="0..1" />
+          <End Role="rowjigo_location" Type="Self.rowjigo_location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jigo_location">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="rowjigo_location">
+              <PropertyRef Name="jigo_location_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="hansungEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="billbuys" EntityType="Self.billbuy" />
+          <EntitySet Name="carships" EntityType="Self.carship" />
+          <EntitySet Name="changewarehouses" EntityType="Self.changewarehouse" />
+          <EntitySet Name="container_location" EntityType="Self.container_location" />
+          <EntitySet Name="customers" EntityType="Self.customer" />
+          <EntitySet Name="departments" EntityType="Self.department" />
+          <EntitySet Name="detail_car" EntityType="Self.detail_car" />
+          <EntitySet Name="detailbillbuys" EntityType="Self.detailbillbuy" />
+          <EntitySet Name="detailchangewarehouses" EntityType="Self.detailchangewarehouse" />
+          <EntitySet Name="detailorders" EntityType="Self.detailorder" />
+          <EntitySet Name="detailships" EntityType="Self.detailship" />
+          <EntitySet Name="detailwarehouses" EntityType="Self.detailwarehouse" />
+          <EntitySet Name="historybillsales" EntityType="Self.historybillsale" />
+          <EntitySet Name="Inputwarehouses" EntityType="Self.Inputwarehouse" />
+          <EntitySet Name="inspections" EntityType="Self.inspection" />
+          <EntitySet Name="ItemLists" EntityType="Self.ItemList" />
+          <EntitySet Name="jigo_location" EntityType="Self.jigo_location" />
+          <EntitySet Name="orderslips" EntityType="Self.orderslip" />
+          <EntitySet Name="payments" EntityType="Self.payment" />
+          <EntitySet Name="paymentOrders" EntityType="Self.paymentOrder" />
+          <EntitySet Name="plans" EntityType="Self.plan" />
+          <EntitySet Name="positions" EntityType="Self.position" />
+          <EntitySet Name="rawyaji_location" EntityType="Self.rawyaji_location" />
+          <EntitySet Name="rowjigo_location" EntityType="Self.rowjigo_location" />
+          <EntitySet Name="serinumbers" EntityType="Self.serinumber" />
+          <EntitySet Name="ships" EntityType="Self.ship" />
+          <EntitySet Name="styleItems" EntityType="Self.styleItem" />
+          <EntitySet Name="subships" EntityType="Self.subship" />
+          <EntitySet Name="table_detail_erorr" EntityType="Self.table_detail_erorr" />
+          <EntitySet Name="Table_Erorr" EntityType="Self.Table_Erorr" />
+          <EntitySet Name="Table_qlt_erorr" EntityType="Self.Table_qlt_erorr" />
+          <EntitySet Name="tradingmissions" EntityType="Self.tradingmission" />
+          <EntitySet Name="warehouses" EntityType="Self.warehouse" />
+          <EntitySet Name="warehouse_location" EntityType="Self.warehouse_location" />
+          <EntitySet Name="yaji_location" EntityType="Self.yaji_location" />
+          <AssociationSet Name="FK_rawyaji_location_jigo_location" Association="Self.FK_rawyaji_location_jigo_location">
+            <End Role="jigo_location" EntitySet="jigo_location" />
+            <End Role="rawyaji_location" EntitySet="rawyaji_location" />
+          </AssociationSet>
+          <AssociationSet Name="FK_rowjigo_location_jigo_location" Association="Self.FK_rowjigo_location_jigo_location">
+            <End Role="jigo_location" EntitySet="jigo_location" />
+            <End Role="rowjigo_location" EntitySet="rowjigo_location" />
+          </AssociationSet>
+          <EntitySet Name="ObjectPropertyPermissions" EntityType="hansungModel.ObjectPropertyPermission" />
+          <EntitySet Name="employees" EntityType="hansungModel.employee" />
+          <EntitySet Name="Menus" EntityType="hansungModel.Menu" />
+          <EntitySet Name="MenuGroups" EntityType="hansungModel.MenuGroup" />
+          <EntitySet Name="MenuActionPermissions" EntityType="hansungModel.MenuActionPermission" />
+        </EntityContainer>
+        <EntityType Name="ObjectPropertyPermission">
+          <Key>
+            <PropertyRef Name="EmpId" />
+            <PropertyRef Name="ObjectName" />
+            <PropertyRef Name="PropertyName" />
+          </Key>
+          <Property Name="EmpId" Type="Int32" Nullable="false" />
+          <Property Name="ObjectName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="PropertyName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="IsAllowView" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="employeecode" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="permission" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="phonenumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="position" Type="Int32" />
+          <Property Name="department" Type="Int32" />
+          <Property Name="address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="attachments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="datecreate" Type="DateTime" Precision="3" />
+          <Property Name="lastupdate" Type="DateTime" Precision="3" />
+          <Property Name="usercreate" Type="Int32" />
+          <Property Name="userupdate" Type="Int32" />
+          <Property Name="isdelete" Type="Boolean" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuGrpId" Type="Int32" Nullable="false" />
+          <Property Name="Href" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="IndexInGrp" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="MenuCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="MenuGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Href" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Class" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="GrpIndex" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+        </EntityType>
+        <EntityType Name="MenuActionPermission">
+          <Key>
+            <PropertyRef Name="EmpId" />
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="EmpId" Type="Int32" Nullable="false" />
+          <Property Name="MenuId" Type="Int32" Nullable="false" />
+          <Property Name="IsAllowRetrieve" Type="Boolean" Nullable="false" />
+          <Property Name="IsAllowCreate" Type="Boolean" Nullable="false" />
+          <Property Name="IsAllowUpdate" Type="Boolean" Nullable="false" />
+          <Property Name="IsAllowDelete" Type="Boolean" Nullable="false" />
+          <Property Name="IsAllowUpload" Type="Boolean" Nullable="false" />
+          <Property Name="IsAllowPrint" Type="Boolean" Nullable="false" />
+          <Property Name="IsAllowExport" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="hansungModelStoreContainer" CdmEntityContainer="hansungEntities">
+          <EntitySetMapping Name="billbuys">
+            <EntityTypeMapping TypeName="hansungModel.billbuy">
+              <MappingFragment StoreEntitySet="billbuy">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="orderdate" ColumnName="orderdate" />
+                <ScalarProperty Name="tradingmission" ColumnName="tradingmission" />
+                <ScalarProperty Name="terms" ColumnName="terms" />
+                <ScalarProperty Name="contractdate" ColumnName="contractdate" />
+                <ScalarProperty Name="orderingemployer" ColumnName="orderingemployer" />
+                <ScalarProperty Name="customer" ColumnName="customer" />
+                <ScalarProperty Name="warehouse" ColumnName="warehouse" />
+                <ScalarProperty Name="paymoney" ColumnName="paymoney" />
+                <ScalarProperty Name="ordernumber" ColumnName="ordernumber" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="dateconfirmation" ColumnName="dateconfirmation" />
+                <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+                <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+                <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+                <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+                <ScalarProperty Name="namewarehouse" ColumnName="namewarehouse" />
+                <ScalarProperty Name="codeid" ColumnName="codeid" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="notebill" ColumnName="notebill" />
+                <ScalarProperty Name="currency" ColumnName="currency" />
+                <ScalarProperty Name="paymentoption" ColumnName="paymentoption" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="money" ColumnName="money" />
+                <ScalarProperty Name="tolerancepercent" ColumnName="tolerancepercent" />
+                <ScalarProperty Name="tolerancemoney" ColumnName="tolerancemoney" />
+                <ScalarProperty Name="usance" ColumnName="usance" />
+                <ScalarProperty Name="datebeginpayment" ColumnName="datebeginpayment" />
+                <ScalarProperty Name="creditduedate" ColumnName="creditduedate" />
+                <ScalarProperty Name="orderbill" ColumnName="orderbill" />
+                <ScalarProperty Name="history" ColumnName="history" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="carships">
+            <EntityTypeMapping TypeName="hansungModel.carship">
+              <MappingFragment StoreEntitySet="carship">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="codebill" ColumnName="codebill" />
+                <ScalarProperty Name="codeid" ColumnName="codeid" />
+                <ScalarProperty Name="company" ColumnName="company" />
+                <ScalarProperty Name="numberofvehicles" ColumnName="numberofvehicles" />
+                <ScalarProperty Name="rate" ColumnName="rate" />
+                <ScalarProperty Name="verifyingacceptance" ColumnName="verifyingacceptance" />
+                <ScalarProperty Name="deliveryworker" ColumnName="deliveryworker" />
+                <ScalarProperty Name="shippingtime" ColumnName="shippingtime" />
+                <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+                <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+                <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+                <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+                <ScalarProperty Name="forwardingnumber" ColumnName="forwardingnumber" />
+                <ScalarProperty Name="numbill" ColumnName="numbill" />
+                <ScalarProperty Name="qltBox" ColumnName="qltBox" />
+                <ScalarProperty Name="ship" ColumnName="ship" />
+                <ScalarProperty Name="indexbox" ColumnName="indexbox" />
+                <ScalarProperty Name="agree" ColumnName="agree" />
+                <ScalarProperty Name="history" ColumnName="history" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="changewarehouses">
+            <EntityTypeMapping TypeName="hansungModel.changewarehouse">
+              <MappingFragment StoreEntitySet="changewarehouse">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="codedate" ColumnName="codedate" />
+                <ScalarProperty Name="worker" ColumnName="worker" />
+                <ScalarProperty Name="sendwarehouse" ColumnName="sendwarehouse" />
+                <ScalarProperty Name="rcvwarehouse" ColumnName="rcvwarehouse" />
+                <ScalarProperty Name="company" ColumnName="company" />
+                <ScalarProperty Name="carnum" ColumnName="carnum" />
+                <ScalarProperty Name="transportfee" ColumnName="transportfee" />
+                <ScalarProperty Name="verificatio" ColumnName="verificatio" />
+                <ScalarProperty Name="datecheck" ColumnName="datecheck" />
+                <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+                <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+                <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+                <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="codeid" ColumnName="codeid" />
+                <ScalarProperty Name="ordate" ColumnName="ordate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="container_location">
+            <EntityTypeMapping TypeName="hansungModel.container_location">
+              <MappingFragment StoreEntitySet="container_location">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="warehouse_location_id" ColumnName="warehouse_location_id" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="reg_date" ColumnName="reg_date" />
+                <ScalarProperty Name="reg_user" ColumnName="reg_user" />
+                <ScalarProperty Name="del_yn" ColumnName="del_yn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customers">
+            <EntityTypeMapping TypeName="hansungModel.customer">
+              <MappingFragment StoreEntitySet="customer">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="salesemployee" ColumnName="salesemployee" />
+                <ScalarProperty Name="zonecode" ColumnName="zonecode" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="registrationnumber" ColumnName="registrationnumber" />
+                <ScalarProperty Name="representative" ColumnName="representative" />
+                <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+                <ScalarProperty Name="fax" ColumnName="fax" />
+                <ScalarProperty Name="mobilephone" ColumnName="mobilephone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="headofficeaddress" ColumnName="headofficeaddress" />
+                <ScalarProperty Name="destinationphone" ColumnName="destinationphone" />
+                <ScalarProperty Name="destinationaddress" ColumnName="destinationaddress" />
+                <ScalarProperty Name="transactionbalance" ColumnName="transactionbalance" />
+                <ScalarProperty Name="creditlimit" ColumnName="creditlimit" />
+                <ScalarProperty Name="transactionaccountnumber" ColumnName="transactionaccountnumber" />
+                <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+                <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+                <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+                <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+                <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+                <ScalarProperty Name="idcode" ColumnName="idcode" />
+                <ScalarProperty Name="icondola" ColumnName="icondola" />
+                <ScalarProperty Name="iconwon" ColumnName="iconwon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="departments">
+            <EntityTypeMapping TypeName="hansungModel.department">
+              <MappingFragment StoreEntitySet="department">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="detail_car">
+            <EntityTypeMapping TypeName="hansungModel.detail_car">
+              <MappingFragment StoreEntitySet="detail_car">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ship" ColumnName="ship" />
+                <ScalarProperty Name="codeitem" ColumnName="codeitem" />
+                <ScalarProperty Name="qltbox" ColumnName="qltbox" />
+                <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+                <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+                <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+                <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+                <ScalarProperty Name="codecar" ColumnName="codecar" />
+                <ScalarProperty Name="codebill" ColumnName="codebill" />
+                <ScalarProperty Name="history" ColumnName="history" />
+                <ScalarProperty Name="iditem" ColumnName="iditem" />
+                <ScalarProperty Name="box" ColumnName="box" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="detailbillbuys">
+            <EntityTypeMapping TypeName="hansungModel.detailbillbuy">
+              <MappingFragment StoreEntitySet="detailbillbuy">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="iditem" ColumnName="iditem" />
+                <ScalarProperty Name="nameitem" ColumnName="nameitem" />
+                <ScalarProperty Name="standard" ColumnName="standard" />
+                <ScalarProperty Name="quantityincase" ColumnName="quantityincase" />
+                <ScalarProperty Name="qltcase" ColumnName="qltcase" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="pricesupply" ColumnName="pricesupply" />
+                <ScalarProperty Name="vat" ColumnName="vat" />
+                <ScalarProperty Name="totalamount" ColumnName="totalamount" />
+                <ScalarProperty Name="qltcontainer" ColumnName="qltcontainer" />
+                <ScalarProperty Name="sqm" ColumnName="sqm" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+                <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+                <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+                <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+                <ScalarProperty Name="codeitem" ColumnName="codeitem" />
+                <ScalarProperty Name="codebill" ColumnName="codebill" />
+                <ScalarProperty Name="codeid" ColumnName="codeid" />
+                <ScalarProperty Name="codeship" ColumnName="codeship" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="detailchangewarehouses">
+            <EntityTypeMapping TypeName="hansungModel.detailchangewarehouse">
+              <MappingFragment StoreEntitySet="detailchangewarehouse">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="codebill" ColumnName="codebill" />
+                <ScalarProperty Name="itemcode" ColumnName="itemcode" />
+                <ScalarProperty Name="standard" ColumnName="standard" />
+                <ScalarProperty Name="nameitem" ColumnName="nameitem" />
+                <ScalarProperty Name="qltincase" ColumnName="qltincase" />
+                <ScalarProperty Name="qltbox" ColumnName="qltbox" />
+                <ScalarProperty Name="serinum" ColumnName="serinum" />
+                <ScalarProperty Name="proplem" ColumnName="proplem" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+                <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+                <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+                <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+                <ScalarProperty Name="itemid" ColumnName="itemid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="detailorders">
+            <EntityTypeMapping TypeName="hansungModel.detailorder">
+              <MappingFragment StoreEntitySet="detailorder">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="codebill" ColumnName="codebill" />
+                <ScalarProperty Name="itemid" ColumnName="itemid" />
+                <ScalarProperty Name="itemcode" ColumnName="itemcode" />
+                <ScalarProperty Name="itemname" ColumnName="itemname" />
+                <ScalarProperty Name="standard" ColumnName="standard" />
+                <ScalarProperty Name="qltincase" ColumnName="qltincase" />
+                <ScalarProperty Name="qltcase" ColumnName="qltcase" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="pricesupply" ColumnName="pricesupply" />
+                <ScalarProperty Name="vat" ColumnName="vat" />
+                <ScalarProperty Name="totalamount" ColumnName="totalamount" />
+                <ScalarProperty Name="itemremarks" ColumnName="itemremarks" />
+                <ScalarProperty Name="serialNo" ColumnName="serialNo" />
+                <ScalarProperty Name="caseNo" ColumnName="caseNo" />
+                <ScalarProperty Name="PRODNo" ColumnName="PRODNo" />
+                <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+                <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+                <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+                <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+                <ScalarProperty Name="codeid" ColumnName="codeid" />
+                <ScalarProperty Name="history" ColumnName="history" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="detailships">
+            <EntityTypeMapping TypeName="hansungModel.detailship">
+              <MappingFragment StoreEntitySet="detailship">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="codebill" ColumnName="codebill" />
+                <ScalarProperty Name="codeid" ColumnName="codeid" />
+                <ScalarProperty Name="orderbill" ColumnName="orderbill" />
+                <ScalarProperty Name="numbership" ColumnName="numbership" />
+                <ScalarProperty Name="duedate" ColumnName="duedate" />
+                <ScalarProperty Name="departuredate" ColumnName="departuredate" />
+                <ScalarProperty Name="dateofarrival" ColumnName="dateofarrival" />
+                <ScalarProperty Name="conDuedate" ColumnName="conDuedate" />
+                <ScalarProperty Name="shipname" ColumnName="shipname" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+                <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+                <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+                <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+                <ScalarProperty Name="nameshipname" ColumnName="nameshipname" />
+                <ScalarProperty Name="qltbox" ColumnName="qltbox" />
+                <ScalarProperty Name="dateclearance" ColumnName="dateclearance" />
+                <ScalarProperty Name="customsday" ColumnName="customsday" />
+                <ScalarProperty Name="port" ColumnName="port" />
+                <ScalarProperty Name="containernumber" ColumnName="containernumber" />
+                <ScalarProperty Name="daycertificate" ColumnName="daycertificate" />
+                <ScalarProperty Name="sizefit" ColumnName="sizefit" />
+                <ScalarProperty Name="containerday" ColumnName="containerday" />
+                <ScalarProperty Name="conreturnday" ColumnName="conreturnday" />
+                <ScalarProperty Name="requestday" ColumnName="requestday" />
+                <ScalarProperty Name="confirmreceiptday" ColumnName="confirmreceiptday" />
+                <ScalarProperty Name="serinumber" ColumnName="serinumber" />
+                <ScalarProperty Name="prodcode" ColumnName="prodcode" />
+                <ScalarProperty Name="casenom" ColumnName="casenom" />
+                <ScalarProperty Name="proddate" ColumnName="proddate" />
+                <ScalarProperty Name="shipnum" ColumnName="shipnum" />
+                <ScalarProperty Name="indexbox" ColumnName="indexbox" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="detailwarehouses">
+            <EntityTypeMapping TypeName="hansungModel.detailwarehouse">
+              <MappingFragment StoreEntitySet="detailwarehouse">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="destination" ColumnName="destination" />
+                <ScalarProperty Name="rowdestination" ColumnName="rowdestination" />
+                <ScalarProperty Name="YajiSelection" ColumnName="YajiSelection" />
+                <ScalarProperty Name="rowYaji" ColumnName="rowYaji" />
+                <ScalarProperty Name="container" ColumnName="container" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="historybillsales">
+            <EntityTypeMapping TypeName="hansungModel.historybillsale">
+              <MappingFragment StoreEntitySet="historybillsale">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idold" ColumnName="idold" />
+                <ScalarProperty Name="contenold" ColumnName="contenold" />
+                <ScalarProperty Name="contennew" ColumnName="contennew" />
+                <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+                <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+                <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+                <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+                <ScalarProperty Name="actions" ColumnName="actions" />
+                <ScalarProperty Name="codeid" ColumnName="codeid" />
+                <ScalarProperty Name="subcode" ColumnName="subcode" />
+                <ScalarProperty Name="inforbill" ColumnName="inforbill" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inputwarehouses">
+            <EntityTypeMapping TypeName="hansungModel.Inputwarehouse">
+              <MappingFragment StoreEntitySet="Inputwarehouse">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="seriesnum" ColumnName="seriesnum" />
+                <ScalarProperty Name="destination" ColumnName="destination" />
+                <ScalarProperty Name="rowdestination" ColumnName="rowdestination" />
+                <ScalarProperty Name="YajiSelection" ColumnName="YajiSelection" />
+                <ScalarProperty Name="rowYaji" ColumnName="rowYaji" />
+                <ScalarProperty Name="container" ColumnName="container" />
+                <ScalarProperty Name="itemid" ColumnName="itemid" />
+                <ScalarProperty Name="itemcode" ColumnName="itemcode" />
+                <ScalarProperty Name="itemname" ColumnName="itemname" />
+                <ScalarProperty Name="size" ColumnName="size" />
+                <ScalarProperty Name="qltincase" ColumnName="qltincase" />
+                <ScalarProperty Name="qltbox" ColumnName="qltbox" />
+                <ScalarProperty Name="problems" ColumnName="problems" />
+                <ScalarProperty Name="defecttype" ColumnName="defecttype" />
+                <ScalarProperty Name="manufacturer" ColumnName="manufacturer" />
+                <ScalarProperty Name="remarksitem" ColumnName="remarksitem" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="purchasenotes" ColumnName="purchasenotes" />
+                <ScalarProperty Name="attachments" ColumnName="attachments" />
+                <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+                <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+                <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+                <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+                <ScalarProperty Name="inspnumber" ColumnName="inspnumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="inspections">
+            <EntityTypeMapping TypeName="hansungModel.inspection">
+              <MappingFragment StoreEntitySet="inspection">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="inspnumber" ColumnName="inspnumber" />
+                <ScalarProperty Name="codebill" ColumnName="codebill" />
+                <ScalarProperty Name="warehouse" ColumnName="warehouse" />
+                <ScalarProperty Name="workerone" ColumnName="workerone" />
+                <ScalarProperty Name="workertwo" ColumnName="workertwo" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+                <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+                <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+                <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+                <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+                <ScalarProperty Name="warehousename" ColumnName="warehousename" />
+                <ScalarProperty Name="employeeone" ColumnName="employeeone" />
+                <ScalarProperty Name="employeetwo" ColumnName="employeetwo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemLists">
+            <EntityTypeMapping TypeName="hansungModel.ItemList">
+              <MappingFragment StoreEntitySet="ItemList">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="itemcode" ColumnName="itemcode" />
+                <ScalarProperty Name="itemduzoncode" ColumnName="itemduzoncode" />
+                <ScalarProperty Name="itemname" ColumnName="itemname" />
+                <ScalarProperty Name="quantityincase" ColumnName="quantityincase" />
+                <ScalarProperty Name="specifiedarea" ColumnName="specifiedarea" />
+                <ScalarProperty Name="safetystockquantity" ColumnName="safetystockquantity" />
+                <ScalarProperty Name="manufacturer" ColumnName="manufacturer" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="itembrief" ColumnName="itembrief" />
+                <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+                <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+                <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+                <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+                <ScalarProperty Name="standard" ColumnName="standard" />
+                <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+                <ScalarProperty Name="width" ColumnName="width" />
+                <ScalarProperty Name="unitprice1" ColumnName="unitprice1" />
+                <ScalarProperty Name="unitprice2" ColumnName="unitprice2" />
+                <ScalarProperty Name="unitprice3" ColumnName="unitprice3" />
+                <ScalarProperty Name="height" ColumnName="height" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="jigo_location">
+            <EntityTypeMapping TypeName="hansungModel.jigo_location">
+              <MappingFragment StoreEntitySet="jigo_location">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="warehourse_location_id" ColumnName="warehourse_location_id" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="reg_date" ColumnName="reg_date" />
+                <ScalarProperty Name="reg_user" ColumnName="reg_user" />
+                <ScalarProperty Name="del_yn" ColumnName="del_yn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="orderslips">
+            <EntityTypeMapping TypeName="hansungModel.orderslip">
+              <MappingFragment StoreEntitySet="orderslips">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="orderdate" ColumnName="orderdate" />
+                <ScalarProperty Name="salesrepresentative" ColumnName="salesrepresentative" />
+                <ScalarProperty Name="customercompany" ColumnName="customercompany" />
+                <ScalarProperty Name="customercontacts" ColumnName="customercontacts" />
+                <ScalarProperty Name="terms" ColumnName="terms" />
+                <ScalarProperty Name="receivables" ColumnName="receivables" />
+                <ScalarProperty Name="warehouse" ColumnName="warehouse" />
+                <ScalarProperty Name="issuedate" ColumnName="issuedate" />
+                <ScalarProperty Name="contactphone" ColumnName="contactphone" />
+                <ScalarProperty Name="frame" ColumnName="frame" />
+                <ScalarProperty Name="destinationaddress" ColumnName="destinationaddress" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+                <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+                <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+                <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+                <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+                <ScalarProperty Name="codeid" ColumnName="codeid" />
+                <ScalarProperty Name="transactionbalancectm" ColumnName="transactionbalancectm" />
+                <ScalarProperty Name="orderdatetime" ColumnName="orderdatetime" />
+                <ScalarProperty Name="history" ColumnName="history" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="payments">
+            <EntityTypeMapping TypeName="hansungModel.payment">
+              <MappingFragment StoreEntitySet="payment">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="codeorder" ColumnName="codeorder" />
+                <ScalarProperty Name="paymentdate" ColumnName="paymentdate" />
+                <ScalarProperty Name="employer" ColumnName="employer" />
+                <ScalarProperty Name="customer" ColumnName="customer" />
+                <ScalarProperty Name="transactionterms" ColumnName="transactionterms" />
+                <ScalarProperty Name="cashT_T" ColumnName="cashT_T" />
+                <ScalarProperty Name="billL_C" ColumnName="billL_C" />
+                <ScalarProperty Name="paymentaccount" ColumnName="paymentaccount" />
+                <ScalarProperty Name="feesmoney" ColumnName="feesmoney" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="codebill" ColumnName="codebill" />
+                <ScalarProperty Name="codeid" ColumnName="codeid" />
+                <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+                <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+                <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+                <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+                <ScalarProperty Name="employerstr" ColumnName="employerstr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="paymentOrders">
+            <EntityTypeMapping TypeName="hansungModel.paymentOrder">
+              <MappingFragment StoreEntitySet="paymentOrder">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="codeorder" ColumnName="codeorder" />
+                <ScalarProperty Name="paymentdate" ColumnName="paymentdate" />
+                <ScalarProperty Name="employer" ColumnName="employer" />
+                <ScalarProperty Name="customer" ColumnName="customer" />
+                <ScalarProperty Name="transactionterms" ColumnName="transactionterms" />
+                <ScalarProperty Name="cashT_T" ColumnName="cashT_T" />
+                <ScalarProperty Name="billL_C" ColumnName="billL_C" />
+                <ScalarProperty Name="paymentaccount" ColumnName="paymentaccount" />
+                <ScalarProperty Name="feesmoney" ColumnName="feesmoney" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="codebill" ColumnName="codebill" />
+                <ScalarProperty Name="codeid" ColumnName="codeid" />
+                <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+                <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+                <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+                <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+                <ScalarProperty Name="employerstr" ColumnName="employerstr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="plans">
+            <EntityTypeMapping TypeName="hansungModel.plan">
+              <MappingFragment StoreEntitySet="plans">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="worker" ColumnName="worker" />
+                <ScalarProperty Name="time" ColumnName="time" />
+                <ScalarProperty Name="money" ColumnName="money" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+                <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+                <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+                <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+                <ScalarProperty Name="codeid" ColumnName="codeid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="positions">
+            <EntityTypeMapping TypeName="hansungModel.position">
+              <MappingFragment StoreEntitySet="position">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rawyaji_location">
+            <EntityTypeMapping TypeName="hansungModel.rawyaji_location">
+              <MappingFragment StoreEntitySet="rawyaji_location">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="yaji_location_id" ColumnName="yaji_location_id" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="reg_date" ColumnName="reg_date" />
+                <ScalarProperty Name="reg_user" ColumnName="reg_user" />
+                <ScalarProperty Name="del_yn" ColumnName="del_yn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rowjigo_location">
+            <EntityTypeMapping TypeName="hansungModel.rowjigo_location">
+              <MappingFragment StoreEntitySet="rowjigo_location">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="jigo_location_id" ColumnName="jigo_location_id" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="reg_date" ColumnName="reg_date" />
+                <ScalarProperty Name="reg_user" ColumnName="reg_user" />
+                <ScalarProperty Name="del_yn" ColumnName="del_yn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="serinumbers">
+            <EntityTypeMapping TypeName="hansungModel.serinumber">
+              <MappingFragment StoreEntitySet="serinumber">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="codebill" ColumnName="codebill" />
+                <ScalarProperty Name="codeparent" ColumnName="codeparent" />
+                <ScalarProperty Name="seriNum" ColumnName="seriNum" />
+                <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+                <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+                <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+                <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ships">
+            <EntityTypeMapping TypeName="hansungModel.ship">
+              <MappingFragment StoreEntitySet="ship">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="codebill" ColumnName="codebill" />
+                <ScalarProperty Name="codeid" ColumnName="codeid" />
+                <ScalarProperty Name="orderbill" ColumnName="orderbill" />
+                <ScalarProperty Name="numbership" ColumnName="numbership" />
+                <ScalarProperty Name="duedate" ColumnName="duedate" />
+                <ScalarProperty Name="departuredate" ColumnName="departuredate" />
+                <ScalarProperty Name="dateofarrival" ColumnName="dateofarrival" />
+                <ScalarProperty Name="conDuedate" ColumnName="conDuedate" />
+                <ScalarProperty Name="shipname" ColumnName="shipname" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+                <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+                <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+                <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+                <ScalarProperty Name="nameshipname" ColumnName="nameshipname" />
+                <ScalarProperty Name="qltbox" ColumnName="qltbox" />
+                <ScalarProperty Name="dateclearance" ColumnName="dateclearance" />
+                <ScalarProperty Name="customsday" ColumnName="customsday" />
+                <ScalarProperty Name="port" ColumnName="port" />
+                <ScalarProperty Name="containernumber" ColumnName="containernumber" />
+                <ScalarProperty Name="daycertificate" ColumnName="daycertificate" />
+                <ScalarProperty Name="sizefit" ColumnName="sizefit" />
+                <ScalarProperty Name="containerday" ColumnName="containerday" />
+                <ScalarProperty Name="conreturnday" ColumnName="conreturnday" />
+                <ScalarProperty Name="requestday" ColumnName="requestday" />
+                <ScalarProperty Name="confirmreceiptday" ColumnName="confirmreceiptday" />
+                <ScalarProperty Name="serinumber" ColumnName="serinumber" />
+                <ScalarProperty Name="prodcode" ColumnName="prodcode" />
+                <ScalarProperty Name="casenom" ColumnName="casenom" />
+                <ScalarProperty Name="proddate" ColumnName="proddate" />
+                <ScalarProperty Name="shipnum" ColumnName="shipnum" />
+                <ScalarProperty Name="indexbox" ColumnName="indexbox" />
+                <ScalarProperty Name="history" ColumnName="history" />
+                <ScalarProperty Name="historydetail" ColumnName="historydetail" />
+                <ScalarProperty Name="codeship" ColumnName="codeship" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="styleItems">
+            <EntityTypeMapping TypeName="hansungModel.styleItem">
+              <MappingFragment StoreEntitySet="styleItem">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="size" ColumnName="size" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+                <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+                <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+                <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+                <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="subships">
+            <EntityTypeMapping TypeName="hansungModel.subship">
+              <MappingFragment StoreEntitySet="subship">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idbill" ColumnName="idbill" />
+                <ScalarProperty Name="codebill" ColumnName="codebill" />
+                <ScalarProperty Name="numbership" ColumnName="numbership" />
+                <ScalarProperty Name="duedate" ColumnName="duedate" />
+                <ScalarProperty Name="departuredate" ColumnName="departuredate" />
+                <ScalarProperty Name="dateofarrival" ColumnName="dateofarrival" />
+                <ScalarProperty Name="conDuedate" ColumnName="conDuedate" />
+                <ScalarProperty Name="shipname" ColumnName="shipname" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+                <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+                <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+                <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="table_detail_erorr">
+            <EntityTypeMapping TypeName="hansungModel.table_detail_erorr">
+              <MappingFragment StoreEntitySet="table_detail_erorr">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Item_id" ColumnName="Item_id" />
+                <ScalarProperty Name="Defect_type" ColumnName="Defect_type" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="serinum" ColumnName="serinum" />
+                <ScalarProperty Name="Documents_attach" ColumnName="Documents_attach" />
+                <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+                <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+                <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+                <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+                <ScalarProperty Name="qltincase" ColumnName="qltincase" />
+                <ScalarProperty Name="qltbox" ColumnName="qltbox" />
+                <ScalarProperty Name="qltremove" ColumnName="qltremove" />
+                <ScalarProperty Name="remarkremove" ColumnName="remarkremove" />
+                <ScalarProperty Name="codebill" ColumnName="codebill" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Erorr">
+            <EntityTypeMapping TypeName="hansungModel.Table_Erorr">
+              <MappingFragment StoreEntitySet="Table_Erorr">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="numbercode" ColumnName="numbercode" />
+                <ScalarProperty Name="poor_handling_charge" ColumnName="poor_handling_charge" />
+                <ScalarProperty Name="warehouse_id" ColumnName="warehouse_id" />
+                <ScalarProperty Name="defective_processing_type" ColumnName="defective_processing_type" />
+                <ScalarProperty Name="approved" ColumnName="approved" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+                <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+                <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+                <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+                <ScalarProperty Name="codeid" ColumnName="codeid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_qlt_erorr">
+            <EntityTypeMapping TypeName="hansungModel.Table_qlt_erorr">
+              <MappingFragment StoreEntitySet="Table_qlt_erorr">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="item_id" ColumnName="item_id" />
+                <ScalarProperty Name="qltincase" ColumnName="qltincase" />
+                <ScalarProperty Name="qltbox" ColumnName="qltbox" />
+                <ScalarProperty Name="serinum" ColumnName="serinum" />
+                <ScalarProperty Name="Defect_type" ColumnName="Defect_type" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+                <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+                <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+                <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+                <ScalarProperty Name="codebill" ColumnName="codebill" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tradingmissions">
+            <EntityTypeMapping TypeName="hansungModel.tradingmission">
+              <MappingFragment StoreEntitySet="tradingmission">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="warehouses">
+            <EntityTypeMapping TypeName="hansungModel.warehouse">
+              <MappingFragment StoreEntitySet="warehouse">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="warehousecode" ColumnName="warehousecode" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="brief" ColumnName="brief" />
+                <ScalarProperty Name="telephone" ColumnName="telephone" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+                <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+                <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+                <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+                <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+                <ScalarProperty Name="subname" ColumnName="subname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="warehouse_location">
+            <EntityTypeMapping TypeName="hansungModel.warehouse_location">
+              <MappingFragment StoreEntitySet="warehouse_location">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="reg_date" ColumnName="reg_date" />
+                <ScalarProperty Name="reg_user" ColumnName="reg_user" />
+                <ScalarProperty Name="del_yn" ColumnName="del_yn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="yaji_location">
+            <EntityTypeMapping TypeName="hansungModel.yaji_location">
+              <MappingFragment StoreEntitySet="yaji_location">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="warehouse_location_id" ColumnName="warehouse_location_id" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="reg_date" ColumnName="reg_date" />
+                <ScalarProperty Name="reg_user" ColumnName="reg_user" />
+                <ScalarProperty Name="del_yn" ColumnName="del_yn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ObjectPropertyPermissions">
+            <EntityTypeMapping TypeName="hansungModel.ObjectPropertyPermission">
+              <MappingFragment StoreEntitySet="ObjectPropertyPermission">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsAllowView" ColumnName="IsAllowView" />
+                <ScalarProperty Name="PropertyName" ColumnName="PropertyName" />
+                <ScalarProperty Name="ObjectName" ColumnName="ObjectName" />
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="employees">
+            <EntityTypeMapping TypeName="hansungModel.employee">
+              <MappingFragment StoreEntitySet="employee">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+                <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+                <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+                <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+                <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+                <ScalarProperty Name="attachments" ColumnName="attachments" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="department" ColumnName="department" />
+                <ScalarProperty Name="position" ColumnName="position" />
+                <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="permission" ColumnName="permission" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="employeecode" ColumnName="employeecode" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menus">
+            <EntityTypeMapping TypeName="hansungModel.Menu">
+              <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="MenuCode" ColumnName="MenuCode" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IndexInGrp" ColumnName="IndexInGrp" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Href" ColumnName="Href" />
+                <ScalarProperty Name="MenuGrpId" ColumnName="MenuGrpId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MenuGroups">
+            <EntityTypeMapping TypeName="hansungModel.MenuGroup">
+              <MappingFragment StoreEntitySet="MenuGroup">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="GrpIndex" ColumnName="GrpIndex" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Class" ColumnName="Class" />
+                <ScalarProperty Name="Href" ColumnName="Href" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MenuActionPermissions">
+            <EntityTypeMapping TypeName="hansungModel.MenuActionPermission">
+              <MappingFragment StoreEntitySet="MenuActionPermission">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsAllowExport" ColumnName="IsAllowExport" />
+                <ScalarProperty Name="IsAllowPrint" ColumnName="IsAllowPrint" />
+                <ScalarProperty Name="IsAllowUpload" ColumnName="IsAllowUpload" />
+                <ScalarProperty Name="IsAllowDelete" ColumnName="IsAllowDelete" />
+                <ScalarProperty Name="IsAllowUpdate" ColumnName="IsAllowUpdate" />
+                <ScalarProperty Name="IsAllowCreate" ColumnName="IsAllowCreate" />
+                <ScalarProperty Name="IsAllowRetrieve" ColumnName="IsAllowRetrieve" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

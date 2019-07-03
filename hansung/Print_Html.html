@@ -1,0 +1,93 @@
+﻿<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="/css/jquery-ui.css" type="text/css">
+    <link rel="stylesheet" href="/css/mycss.css" type="text/css">
+  <style>
+      table {
+          border-collapse: collapse;
+      }
+
+      table, th, td {
+          border: 1px solid black;
+      }
+  </style>
+</head>
+<body>
+
+    <table class="" style="width: unset">
+        <thead>
+            <tr>
+                <th>발주 일자(번호)</th>
+                <th>발주담당</th>
+                <th>거래사명</th>
+                <th>고객사 연락처</th>
+
+                <th>거래조건</th>
+                <th>입고창고</th>
+                <th>계약일</th>
+                <th>미지급금</th>
+
+                <th>P/I no</th>
+                <th>발주확인</th>
+
+                <th>비 고</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="data-input pinput" data-sql="ordernumber" note_alert="발주 일자(번호)">
+                    <p class="p-input p-ordernumber">P20181225A04</p>
+                </td>
+                <td class="td-data pinput" data-sql="employer">
+                    <p class="p-input input-phone-ctr">홍길동</p>
+                </td>
+
+                <td class="td-data pinput" data-sql="tradingmission">
+                    <p class="p-input input-phone-ctr">ASIA</p>
+                </td>
+
+                <td class="pinput td-data class140" data-sql="phone" note_alert="please input phone">
+                    <p class="p-input input-phone-ctr">085-2547-5284-2547</p>
+
+                </td>
+
+                <td class="td-data pinput class80 data-not-null-td" data-sql="terms" note_alert="거래조건">
+                    <p class="p-input">CIF</p>
+                </td>
+
+                <td class="td-data pinput class80" data-sql="warehouse" note_alert="입고창고">
+                    <p class="p-input">김해창고</p>
+                </td>
+
+                <td class="td-data pinput class100 data-not-null-td" data-sql="orderdate" note_alert="계약일">
+                    <p class="p-input">2018.12.26</p>
+                </td>
+
+                <td class="td-data pinput class100" data-sql="paymoney" note_alert="please input paymoney">
+                    <p class="p-input">23,000,000</p>
+                </td>
+
+                <td class="td-data pinput class100" data-sql="notebill" note_alert="please input notebill">
+                    <p class="p-input input-notebill noline"></p>
+                </td>
+
+                <td class="td-data pinput class100 data-not-null-td" data-sql="dateconfirmation" note_alert="발주확인">
+                    <p class="p-input input-notebill noline">2018.12.27</p>
+
+                </td>
+
+                <td class="td-data pinput" data-sql="remark" note_alert="please input remark" style="border-right: 1px solid #ddd!important;">
+                    <p class="p-input input-notebill noline"></p>
+                </td>
+                <td class="pinput td-data class140 datahidden" data-sql="currency">
+                    <p class="p-input input-currency-ctr">$ </p>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

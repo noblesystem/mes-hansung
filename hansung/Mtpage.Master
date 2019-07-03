@@ -1,0 +1,339 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Mtpage.master.cs" Inherits="hansung.Mtpage" %>
+
+<%@ Register Src="UserControl/Datacommon.ascx" TagName="Datacommon" TagPrefix="uc3" %>
+<%@ Register Src="UserControl/Leftmenu.ascx" TagName="CtrLeftmenu" TagPrefix="uc1" %>
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Hansung</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <!-- Toastr style -->
+    <link href="/css/plugins/toastr/toastr.min.css" rel="stylesheet">
+
+    <!-- Gritter -->
+    <link href="/js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
+    <link href="/css/jquery-ui.css?v=1.0.0" rel="stylesheet" />
+    <link href="/css/animate.css" rel="stylesheet">
+    <link href="/css/style.css?v=1.0.0" rel="stylesheet">
+    <link href="/css/mycss.css?v=1.5.1" rel="stylesheet" />
+    <link href="/css/plugins/dataTables/jquery.dataTables.min.css" rel="stylesheet" />
+
+    <link href="/css/plugins/easyui/theme/meterial/easyui.css" rel="stylesheet" />
+
+
+    <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
+
+    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.jqueryui.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.jqueryui.min.css" rel="stylesheet" />
+    <link href="/css/ui.jqgrid.css" rel="stylesheet" /><!-- jq grid -->
+
+    <link href="/css/reponsivetable.css?v=1.0.3" rel="stylesheet" />
+
+    <link rel="stylesheet" href="/css/kendo.common.min.css" />
+    <link rel="stylesheet" href="/css/kendo.default.min.css" />
+    <link rel="stylesheet" href="/css/kendo.default.mobile.min.css" />
+<%--    <script src="/js/jquery-2.1.1.js"></script>--%>
+    <script src="/js/jquery-3.4.1.min.js"></script>
+    <script src="/js/kendo.all.min.js"></script>
+
+    <script src="/js/i18n/grid.locale-kr.js"></script><!-- jq grid -->
+    <script src="/js/jquery.jqGrid.js"></script><!-- jq grid -->
+
+
+<link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/19.1.4/css/dx.common.css" />
+<link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/19.1.4/css/dx.light.css" />
+<script src="https://cdn3.devexpress.com/jslib/19.1.4/js/dx.all.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="/Scripts/jquery-ui.js"></script>
+    <script src="/js/datajss.js?v=1.2.4"></script>
+    <script src="/js/addrowtable.js?v=1.1.9"></script>
+    <script src="/js/JsClient.js?v=1.3.0"></script>
+    <script src="/js/jquery.table2excel.js"></script>
+    <script src="/js/calculatorBill.js?v=1.0.5"></script>
+    <script src="/js/mainjs.js?v=1.8.1"></script>
+    <script src="/js/ships.js?v=1.4.1"></script>
+    <script src="/js/jQuery.print.js"></script>
+    <script src="/js/jquery.chromatable.js"></script>
+
+    <script src="/js/plugins/dataTables/jquery.dataTables.js"></script>
+
+    <script src="/js/plugins/easyui/jquery.easyui.min.js"></script>
+
+    <script src="/js/plugins/jquery.cookie.js"></script>
+
+
+
+    <!--
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqgrid/4.6.0/css/ui.jqgrid.css" rel="stylesheet"/>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqgrid/4.6.0/plugins/searchFilter.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqgrid/4.6.0/plugins/ui.multiselect.css" rel="stylesheet"/>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqgrid/4.6.0/js/jquery.jqGrid.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqgrid/4.6.0/js/jquery.jqGrid.src.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqgrid/4.6.0/js/i18n/grid.locale-el.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqgrid/4.6.0/plugins/grid.addons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqgrid/4.6.0/plugins/grid.postext.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqgrid/4.6.0/plugins/grid.setcolumns.jscc
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqgrid/4.6.0/plugins/jquery.contextmenu.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqgrid/4.6.0/plugins/jquery.searchFilter.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqgrid/4.6.0/plugins/jquery.tablednd.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqgrid/4.6.0/plugins/ui.multiselect.js"></script>
+-->
+   
+	<link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css" rel="stylesheet"/>
+	<script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+	<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+	<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+	<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
+
+    <script src="/js/jquery.form.zent.js?<%=curtime %>"></script>
+    <script src="/js/nb_util.js?<%=curtime %>"></script>
+    
+    <script>
+        $.extend(true, $.fn.dataTable.defaults, {
+            "lengthMenu": [[15, 20, 25, 30, -1], [15, 20, 25, 30, "All"]],
+            "pageLength": 15,
+            "dom": 'Bfrtip',
+            "stateSave": true,
+            "buttons": [
+                'copy', 'excel', 'print', 'pageLength'
+            ],
+            "processing": true
+        });
+
+	</script>
+	<style>
+	div.dt-buttons{
+		position:relative;
+		float:right;
+		margin-left: 20px;
+	}
+	.dt-button{
+		height:33px;
+	}
+	.buttons-copy {
+	    margin-left: 15px;
+	}
+	</style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style>
+        .loader {
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 16px solid #3498db;
+            width: 120px;
+            height: 120px;
+            -webkit-animation: spin 2s linear infinite; /* Safari */
+            animation: spin 2s linear infinite;
+            display: none
+        }
+
+        th, td {
+            white-space: nowrap;
+        }
+
+        div.dataTables_wrapper {
+            width: 100%;
+        }
+
+        /* Safari */
+        @-webkit-keyframes spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+
+        .responsive-table thead th {
+    font-size: 13px;
+    color: #676a6c;
+    background-color: #fbfbfb;
+    border: 1px solid #cac8c8;
+    font-weight: bold;
+    text-align: center;
+    color: #676a6c;
+    font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.responsive-table tbody tr {
+    margin-bottom: 1em;
+    font-size: 13px;
+    font-size: 13px;
+    color: #676a6c;
+    padding: 8px 10px;
+    height: 33px;
+}
+@media (min-width: 48em)
+.responsive-table tbody td {
+    border-left: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+@media (min-width: 48em)
+.responsive-table tbody tr {
+    display: table-row;
+    border-width: 1px;
+    height: 33px;
+}
+
+@media (min-width: 48em)
+.responsive-table tbody td:last-of-type {
+    border-right: 1px solid #ddd;
+}
+
+
+@media (min-width: 48em)
+.responsive-table tbody td {
+    border-left: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+
+.tr-active {
+    background: #c7c1c1  !important;
+}
+
+@media (min-width: 48em)
+.responsive-table tbody td {
+    border-left: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+@media (min-width: 48em)
+.responsive-table tbody td {
+    border-left: 1px solid #ddd !important
+    border-bottom: 1px solid #ddd !important
+    text-align: center;
+}
+
+@media (min-width: 48em)
+.responsive-table tbody td:last-of-type {
+    border-right: 1px solid #ddd;!important
+}
+
+.responsive-table {
+    width: 100%;
+    margin-bottom: 1.5em;
+    border-spacing: 0;
+    /* font-size: 14px !important; */
+    color: black!important;
+    border-bottom: 1px solid rgb(4, 4, 4) !important;
+}
+
+    </style>
+
+</head>
+<body>
+    <input type="file" class="fileup" style="display: none" />
+    <div class="modal" id="loadscreen">
+        <div class="modal-dialog">
+            <div class="modal-content" style="background: transparent;">
+
+                <div class="modal-body">
+                    <div class="loader"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form id="form1" runat="server">    </form>
+        <uc3:Datacommon ID="Datacommon" runat="server" />
+        <div id="wrapper">
+            <uc1:CtrLeftmenu ID="WebUserControl11" runat="server" />
+            <div id="page-wrapper" class="gray-bg dashbard-1">
+                <div class="row border-bottom">
+                    
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+        </div>
+
+
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Flot -->
+    <script src="/js/plugins/flot/jquery.flot.js"></script>
+    <script src="/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="/js/plugins/flot/jquery.flot.spline.js"></script>
+    <script src="/js/plugins/flot/jquery.flot.resize.js"></script>
+    <script src="/js/plugins/flot/jquery.flot.pie.js"></script>
+
+    <!-- Peity -->
+    <script src="/js/plugins/peity/jquery.peity.min.js"></script>
+    <script src="/js/demo/peity-demo.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="/js/inspinia.js"></script>
+    <script src="/js/plugins/pace/pace.min.js"></script>
+
+    <!-- jQuery UI -->
+    <script src="/js/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+    <!-- GITTER -->
+    <script src="/js/plugins/gritter/jquery.gritter.min.js"></script>
+
+    <!-- Sparkline -->
+    <script src="/js/plugins/sparkline/jquery.sparkline.min.js"></script>
+
+    <!-- Sparkline demo data  -->
+    <script src="/js/demo/sparkline-demo.js"></script>
+
+    <!-- ChartJS-->
+    <script src="/js/plugins/chartJs/Chart.min.js"></script>
+
+    <!-- Toastr -->
+    <script src="/js/plugins/toastr/toastr.min.js"></script>
+
+<%--    <script src="/js/common.js"></script>--%>
+    <script>
+
+        $('#logout').click(function () {
+            location.href = "/logout.aspx";
+        });
+    </script>
+</body>
+</html>

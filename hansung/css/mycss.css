@@ -1,0 +1,502 @@
+﻿.ul-button {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+.backgroud_won {
+    position: absolute;
+    right: -35px;
+    top: 0;
+    background: grey;
+    padding: 10px;
+    border: 1px solid black;
+}
+    .backgroud_won p{
+        color:white;
+        cursor:pointer;
+    }
+.won {
+    background: url('/img/won.png');
+    background-size: 10px 10px;
+    background-repeat: no-repeat;
+}
+.dola {
+    background: url('/img/dola.png');
+    background-size: 10px 10px;
+    background-repeat: no-repeat;
+}
+.tabledetailItem td {
+    background-color: #fff;
+}
+
+    .tabledetailItem td:first-child {
+        background-color: #efeeed !important;
+    }
+
+.tabledetailItem .itemname {
+    background-color: #efeeed !important;
+}
+
+.tabledetailItem .standard {
+    background-color: #efeeed !important;
+}
+
+.tabledetailItem .qltbox {
+    background-color: #efeeed !important;
+}
+.tabledetailItem_internal td {
+    background-color: #fff;
+}
+.tabledetailItem_internal td:first-child {
+    background-color: #efeeed!important;
+}
+.tabledetailItem_internal .itemname {
+    background-color: #efeeed !important;
+}
+.tabledetailItem_internal .standard {
+    background-color: #efeeed !important;
+}
+.tabledetailItem_internal .qltbox {
+    background-color: #efeeed !important;
+}
+/*var classhd = ["price", "priceandvat", "monetvat", "totalmoney", "sqm"];*/
+.modal-footer {
+    padding-top: 0;
+    height: 65px;
+    border: none
+}
+.responsive-table th{
+    text-align:center
+}
+.none_border input[type=text] {
+    background-color: transparent !important;
+    text-align: center
+}
+.fixedScroll {
+    position: relative;
+   
+    overflow: auto;
+    width: 100%;
+   
+}
+.fixedhead {
+    position: fixed;
+    display: none;
+}
+    .fixedhead p {
+        background-color: #b5d1ea;
+        padding: 5.7px;
+        text-align:center;
+        color:black
+    }
+.none_border .p-input {
+    background-color: transparent !important;
+}
+.none_border select {
+    background-color: transparent !important;
+    /*text-align-last: right;*/
+}
+.td-center {
+    text-align: center
+}
+.modal-body {
+    padding: 7px 16px 30px 16px;
+}
+.tbpayment input[type=text]{
+    width:100%!important
+}
+.tablepopup {
+    width: 1240px !important;
+    margin-bottom: 0 !important;
+}
+.tabledetail .price {
+    display: none !important;
+}
+.class_pad130 {
+    width: 126px
+}
+.class_pad100 {
+    width: 95px
+}
+.class_pad80 {
+    width: 42px;
+}
+.class105{
+    width:105px
+}
+.class110{
+    width:110px
+}
+.class83 {
+    width: 83px
+}
+.class90 {
+    width: 90px
+}
+.class50 {
+    width: 50px;
+}
+.class45 {
+    width: 45px;
+}
+.class40 {
+    width: 40px!important
+}
+
+.class100 {
+    width: 100px!important
+}
+.class80 {
+    width: 80px!important;
+}
+.class95 {
+    width: 95px!important;
+}
+.class70 {
+    width: 70px
+}
+.class60 {
+    width: 60px
+}
+.class120 {
+    width: 120px
+}
+.class150{
+    width:150px
+}
+.class200 {
+    width: 200px
+}
+.class140 {
+    width: 140px
+}
+.class130 {
+    width: 130px
+}
+.class125 {
+    width: 125px
+}
+.txtdate {
+    width: 100% !important
+}
+.none_border input[type=text] {
+    border: none !important;
+}
+.none_border select {
+    border: none !important;
+}
+.modal-body p {
+    border: none !important;
+}
+.rm-row {
+    cursor: pointer;
+}
+.btn-submit {
+    background: transparent;
+    border: none;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+.op-default{
+    display:none;
+}
+.select_search {
+    height: 36px;
+    width: 100px;
+    color: black;
+}
+.span-upload {
+    cursor: pointer;
+    color: blue;
+    width: 100px;
+}
+.dv-text {
+    background: transparent !important;
+    border: none !important;
+    color: black !important;
+}
+.ctm-hidder {
+    display: none;
+}
+.remove {
+    width: 45px;
+    cursor:pointer;
+}
+.th_white{
+    background-color:white!important;
+}
+.p_empty {
+    color: red;
+}
+.select-dt {
+    min-width: 100%;
+}
+.datecombo {
+    background-image: url('../img/calendar.png');
+    background-repeat: no-repeat;
+    background-size: 15px 15px;
+    background-position: right center;
+    cursor: pointer;
+   width:100%;
+   text-align:center;
+}
+.tabledetail .priceandvat {
+    display: none !important;
+}
+.tabledetail .monetvat {
+    display: none !important;
+}
+.tabledetail .totalmoney {
+    display: none !important;
+}
+.sub_popup {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    border: 1px solid;
+    top: 0;
+    background: #efeeed;
+    display: none;
+}
+.tb_sub {
+    width: 100%;
+}
+    .tb_sub td {
+        border: 1px solid #000;
+    }
+    .tb_sub th {
+        border: 1px solid #000;
+    }
+    .tb_sub tr {
+        border: 1px solid #000;
+    }
+.charmoney {
+    float: left;
+    line-height: 26px;
+}
+.t_tile {
+    margin-right: 10px
+}
+.sub_popup p {
+}
+    .td-right {
+        text-align: right !important;
+    }
+.txt-input {
+    border: none;
+    width: 100%;
+}
+.txt-input-new {
+    border: none;
+    width: 100%;
+}
+.inputmoney {
+    text-align: right !important;
+}
+.fotmatphone {
+    text-align: right !important;
+}
+.group-btn {
+    top: 36px;
+    position: absolute;
+    background: white;
+    width: 100%;
+    color: black;
+    left: 0;
+    display:none;
+    z-index:999999;
+}
+.select-o {
+    position: absolute;
+    top: 0px;
+    width: 93%;
+    height: 25px;
+    z-index: 0;
+}
+.pointe_hand {
+    cursor: pointer;
+}
+.datahidden {
+    display: none !important;
+}
+.btn-submit {
+    background: transparent;
+    border: none;
+}
+.select-op {
+    width: 100%;
+    height: 25px;
+}
+.btn-data {
+    float: left;
+}
+.tr-static {
+    position: relative;
+}
+.span-check {
+    padding: 0 0px 0px 15px;
+    float: right;
+}
+.td-line{
+    border-right:1px solid
+}
+.div-popup {
+    position: absolute;
+    top: 30px;
+    background: white;
+    padding: 10px;
+    color: black;
+    display: none;
+    z-index: 1;
+    width: 93%;
+    border: 1px solid;
+}
+.iconcb {
+    position: absolute;
+    right: 12px;
+    top: 10px;
+}
+.div-popup span {
+}
+.div-content-popup {
+        min-height: 100px;
+        width: 150px;
+    }
+.fileupload{
+    display:none!important
+}
+.btn-upload {
+    min-width: 154px;
+    max-width: 154px;
+    overflow: hidden;
+}
+.p-input {
+    margin: 0;
+    border: 1px solid #a9a9a9;
+    background: #fff;
+    color: #000;
+    padding: 3px;
+    height: 25px;
+    max-width: 160px;
+    z-index:1
+}
+.row-cld {
+    position: absolute;
+    right: 12px;
+    top: 10px;
+    cursor: pointer;
+}
+.span-left {
+    cursor: pointer
+}
+.modal-dialog {
+    margin: 0;
+    width: 100%;
+    text-align: -webkit-center;
+    vertical-align: middle;
+    height: 100%;
+}
+.modal-content {
+    width: fit-content;
+    margin-top: 10%;
+}
+.modal-body{
+    padding-bottom:0
+}
+.btn-popup {
+    width: 45%;
+    background: mediumpurple;
+    color: #fff
+}
+    .ul-button li {
+        float: left;
+        padding: 15px;
+        padding-right:0;
+        padding-left: 0;
+        color: #fff;
+    }
+
+.div-btn-header {
+    float: left;
+    padding: 8px;
+    border: 1px solid #000;
+    position: relative;
+    background: #3b77b4;
+    cursor: pointer;
+    min-width: 80px;
+    text-align: center;
+    height: 35px;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+.div-li-right {
+    float: left;
+    border: 1px solid #000;
+    margin: 0;
+    padding: 10px;
+    border-left: 0;
+    background: #267dd4;
+    text-align: center;
+    min-width: 80px;
+    height: 35px;
+}
+
+.modal-new-footer{
+    padding: 20px 36px 30px 38px;
+}
+.span-left-or {
+    cursor: pointer
+}
+.numberinput {
+    text-align: right
+}
+.td-quantity {
+    cursor: pointer
+}
+.item-size {
+    cursor: pointer
+}
+.input-number {
+    width: 50px;
+    text-align: right;
+}
+.input-search {
+    height: 36px;
+    width: 115px;
+    color: black;
+    text-align: center;
+    border: 1px solid;
+    margin-right:10px
+}
+.td-content-div {
+    text-align: center;
+    vertical-align: bottom;
+
+}
+.td-null {
+    background: #fff;
+    border: none;
+}
+.clear{
+    clear:both
+}
+.sp-plus {
+    float: right;
+    width: 25px;
+    border-left: 1px solid #ddd;
+    height: 25px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    line-height: 25px;
+    cursor:pointer
+}
+input[type=text]{
+    color:black;
+}
+.input50{
+    width:50px
+}
