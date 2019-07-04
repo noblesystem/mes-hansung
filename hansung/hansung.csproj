@@ -1861,6 +1861,7 @@
     <Content Include="page8\page8-5.aspx" />
     <Content Include="js\customer.js" />
     <Content Include="page9\page9-1.aspx" />
+    <Content Include="page\page1-01.html" />
     <Content Include="page\page1-2.aspx" />
     <Content Include="page\page1-1.aspx" />
     <Content Include="page\page1-3.aspx" />

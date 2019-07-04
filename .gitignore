@@ -1,5 +1,11 @@
 ﻿################################################################################
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
-
+/.vs
+/hansung/bin
+/hansung/obj
+/hansung/*.config
+/hansung/Web.config
+obj
+bin
 
