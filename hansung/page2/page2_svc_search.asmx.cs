@@ -28,18 +28,40 @@ namespace hansung.page2 {
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         //page2-2
-        public string page22_search(string param)
-        {
+        public string page22_search (string param) {
+            if(HttpContext.Current.Request.GetUserCookie("userid") == "") return "";
             FormManager fm = new FormManager();
             XmlDocument dom = new XmlDocument();
             dom.LoadXml("<xml><proc/><act/><xmldata></xmldata><xmlclipdata/></xml>");
             dom.SelectSingleNode("//act").InnerText = "proc";
             XmlNode node;
-            node = dom.CreateNode(XmlNodeType.Element, "zrow", "");
+            node = dom.CreateNode(XmlNodeType.Element,"zrow","");
             //fm.icnitMakeNode(dom, node, "varchar", "jpno", jpno, "20");
             dom.SelectSingleNode("//xmldata").AppendChild(node);
 
             string query = @"PAGE22_SEARCH";
+            dom.SelectSingleNode("//proc").InnerText = query;
+            DataTable dt = CallDB.getExecuteDataTable(dom);
+            return dt.ToJson();
+        }
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        //page2-2
+        public string page22_pop_search (string param) {
+            if(HttpContext.Current.Request.GetUserCookie("userid") == "") return "";
+
+            string jpno = JObject.Parse(param)["jpno"].ToString();
+            FormManager fm = new FormManager();
+            XmlDocument dom = new XmlDocument();
+            dom.LoadXml("<xml><proc/><act/><xmldata></xmldata><xmlclipdata/></xml>");
+            dom.SelectSingleNode("//act").InnerText = "proc";
+            XmlNode node;
+            node = dom.CreateNode(XmlNodeType.Element,"zrow","");
+            fm.icnitMakeNode(dom, node, "varchar", "jpno", jpno, "20");
+            dom.SelectSingleNode("//xmldata").AppendChild(node);
+
+            string query = @"PAGE22_POP_SEARCH";
             dom.SelectSingleNode("//proc").InnerText = query;
             DataTable dt = CallDB.getExecuteDataTable(dom);
             return dt.ToJson();

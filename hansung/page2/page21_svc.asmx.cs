@@ -31,6 +31,7 @@ namespace hansung.page2
         //선택된 발주전표 내역
         public string search(string param)
         {
+            if(HttpContext.Current.Request.GetUserCookie("userid") == "") return "";
             string jpno = JObject.Parse(param)["jpno"].ToString();
             FormManager fm = new FormManager();
             XmlDocument dom = new XmlDocument();
@@ -51,6 +52,7 @@ namespace hansung.page2
         //선택된 발주전표 내역
         public string search3(string param)
         {
+            if(HttpContext.Current.Request.GetUserCookie("userid") == "") return "";
             string jpno = JObject.Parse(param)["jpno"].ToString();
 
             FormManager fm = new FormManager();
@@ -74,6 +76,7 @@ namespace hansung.page2
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string balju_selone(string param)
         {
+            if(HttpContext.Current.Request.GetUserCookie("userid") == "") return "";
             string jpno = JObject.Parse(param)["jpno"].ToString();
 
             FormManager fm = new FormManager();
@@ -94,6 +97,7 @@ namespace hansung.page2
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string balju_detail_search(string param)
         {
+            if(HttpContext.Current.Request.GetUserCookie("userid") == "") return "";
             string jpno = JObject.Parse(param)["jpno"].ToString();
 
             FormManager fm = new FormManager();
@@ -114,6 +118,7 @@ namespace hansung.page2
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string balju_del(string param)
         {
+            if(HttpContext.Current.Request.GetUserCookie("userid") == "") return "";
             string jpno     = JObject.Parse(param)["jpno"].ToString();
             string inuser   = "100";
 
@@ -136,6 +141,7 @@ namespace hansung.page2
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string balju_save(string param, string param2)
         {
+            if(HttpContext.Current.Request.GetUserCookie("userid") == "") return "";
             //===========================================================================master
             string jpno     = JObject.Parse(param)["jpno"    ].ToString();
             string chasu    = JObject.Parse(param)["chasu"   ].ToString();
@@ -220,35 +226,35 @@ namespace hansung.page2
                 return JsonConvert.SerializeObject(result);
             }
             foreach(var item in dynJson) {
-                string mode        = item.mode       .ToString();
+                string mode = (item.mode ?? "I").ToString();
                 jpno = result.val;
-                string jpseq       = item.jpseq      .ToString();
-                string scd         = item.scd        .ToString();
-                string itemcd      = item.itemcd     .ToString();
-                string qty         = item.qty        .ToString();
-                string boxqty      = item.boxqty     .ToString();
-                string curcd       = item.curcd      .ToString();
-                string unitprice   = item.unitprice  .ToString();
-                string supplyamt   = item.supplyamt  .ToString();
-                string vat         = item.vat        .ToString();
-                string totamt      = item.totamt     .ToString();
-                string conqty      = item.conqty     .ToString();
-                string sqm         = item.sqm        .ToString();
-                       rmk         = item.rmk        .ToString();
-                string tongdt      = item.tongdt     .ToString();
-                string passdt      = item.passdt     .ToString();
-                string port        = item.port       .ToString();
-                string conno       = item.conno      .ToString();
-                string docno       = item.docno      .ToString();
-                string ckcd        = item.ckcd       .ToString();
-                string ftdt        = item.ftdt       .ToString();
-                       conbandt    = item.conbandt   .ToString();
-                string inyodt      = item.inyodt     .ToString();
-                string incheckdt   = item.incheckdt  .ToString();
-                string sno         = item.sno        .ToString();
-                string prodcd      = item.prodcd     .ToString();
-                string casenom     = item.casenom    .ToString();
-                string proddt      = item.proddt     .ToString();
+                string jpseq = (item.jpseq ?? "").ToString();
+                string scd = (item.scd ?? "").ToString();
+                string itemcd = (item.itemcd ?? "").ToString();
+                string qty = (item.qty ?? "").ToString();
+                string boxqty = (item.boxqty ?? "").ToString();
+                string curcd = (item.curcd ?? "").ToString();
+                string unitprice = (item.unitprice ?? "").ToString();
+                string supplyamt = (item.supplyamt ?? "").ToString();
+                string vat = (item.vat ?? "").ToString();
+                string totamt = (item.totamt ?? "").ToString();
+                string conqty = (item.conqty ?? "").ToString();
+                string sqm = (item.sqm ?? "").ToString();
+                rmk = (item.rmk ?? "").ToString();
+                string tongdt = (item.tongdt ?? "").ToString();
+                string passdt = (item.passdt ?? "").ToString();
+                string port = (item.port ?? "").ToString();
+                string conno = (item.conno ?? "").ToString();
+                string docno = (item.docno ?? "").ToString();
+                string ckcd = (item.ckcd ?? "").ToString();
+                string ftdt = (item.ftdt ?? "").ToString();
+                conbandt = (item.conbandt ?? "").ToString();
+                string inyodt = (item.inyodt ?? "").ToString();
+                string incheckdt = (item.incheckdt ?? "").ToString();
+                string sno = (item.sno ?? "").ToString();
+                string prodcd = (item.prodcd ?? "").ToString();
+                string casenom = (item.casenom ?? "").ToString();
+                string proddt = (item.proddt ?? "").ToString();
                 inuser = "100";
 
                 node = dom.CreateNode(XmlNodeType.Element,"zrow","");
@@ -298,6 +304,7 @@ namespace hansung.page2
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string tong_selone(string param)
         {
+            if(HttpContext.Current.Request.GetUserCookie("userid") == "") return "";
             string tongno = JObject.Parse(param)["tongno"].ToString();
 
             FormManager fm = new FormManager();
@@ -318,6 +325,7 @@ namespace hansung.page2
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string tong_detail_search(string param)
         {
+            if(HttpContext.Current.Request.GetUserCookie("userid") == "") return "";
             string tongno = JObject.Parse(param)["tongno"].ToString();
 
             FormManager fm = new FormManager();
@@ -338,6 +346,7 @@ namespace hansung.page2
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string tong_detail_search_new(string param)
         {
+            if(HttpContext.Current.Request.GetUserCookie("userid") == "") return "";
             string jpno = JObject.Parse(param)["jpno"].ToString();
 
             FormManager fm = new FormManager();
@@ -358,6 +367,7 @@ namespace hansung.page2
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string tong_search(string param)
         {
+            if(HttpContext.Current.Request.GetUserCookie("userid") == "") return "";
             string jpno = JObject.Parse(param)["jpno"].ToString();
 
             FormManager fm = new FormManager();
@@ -378,6 +388,7 @@ namespace hansung.page2
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string tong_save(string param, string param2)
         {
+            if(HttpContext.Current.Request.GetUserCookie("userid") == "") return "";
             //===========================================================================master
             string tongno = JObject.Parse(param)["tongno"].ToString();
             string jpno  = JObject.Parse(param)["jpno"].ToString();

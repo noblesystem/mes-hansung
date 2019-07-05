@@ -1,6 +1,4 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Mtpage.master.cs" Inherits="hansung.Mtpage" %>
-
-<%@ Register Src="UserControl/Datacommon.ascx" TagName="Datacommon" TagPrefix="uc3" %>
 <%@ Register Src="UserControl/Leftmenu.ascx" TagName="CtrLeftmenu" TagPrefix="uc1" %>
 <!DOCTYPE html>
 
@@ -32,37 +30,18 @@
     <link href="/css/ui.jqgrid.css" rel="stylesheet" /><!-- jq grid -->
 
     <link href="/css/reponsivetable.css?v=1.0.3" rel="stylesheet" />
-
-    <link rel="stylesheet" href="/css/kendo.common.min.css" />
-    <link rel="stylesheet" href="/css/kendo.default.min.css" />
-    <link rel="stylesheet" href="/css/kendo.default.mobile.min.css" />
-<%--    <script src="/js/jquery-2.1.1.js"></script>--%>
     <script src="/js/jquery-3.4.1.min.js"></script>
-    <script src="/js/kendo.all.min.js"></script>
-
     <script src="/js/i18n/grid.locale-kr.js"></script><!-- jq grid -->
     <script src="/js/jquery.jqGrid.js"></script><!-- jq grid -->
 
+    <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/19.1.4/css/dx.common.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/19.1.4/css/dx.light.css" />
 
-<link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/19.1.4/css/dx.common.css" />
-<link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/19.1.4/css/dx.light.css" />
-<script src="https://cdn3.devexpress.com/jslib/19.1.4/js/dx.all.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <link href="css/kendo.common.min.css" rel="stylesheet" />
+    <link href="css/kendo.default.min.css" rel="stylesheet" />
+    <link href="css/kendo.default.mobile.min.css" rel="stylesheet" />
+    <script src="https://cdn3.devexpress.com/jslib/19.1.4/js/dx.all.js"></script>
+    <script src="js/kendo.all.min.js"></script> <!-- kendu -->
     <script src="/Scripts/jquery-ui.js"></script>
     <script src="/js/datajss.js?v=1.2.4"></script>
     <script src="/js/addrowtable.js?v=1.1.9"></script>
@@ -99,6 +78,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqgrid/4.6.0/plugins/jquery.tablednd.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqgrid/4.6.0/plugins/ui.multiselect.js"></script>
 -->
+
    
 	<link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css" rel="stylesheet"/>
 	<script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
@@ -108,7 +88,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 	<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
 	<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
-
+    <script src="/js/cookie.js?<%=curtime %>"></script>
     <script src="/js/jquery.form.zent.js?<%=curtime %>"></script>
     <script src="/js/nb_util.js?<%=curtime %>"></script>
     
@@ -141,16 +121,16 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <style>
-        .loader {
+        /*.loader {
             border: 16px solid #f3f3f3;
             border-radius: 50%;
             border-top: 16px solid #3498db;
             width: 120px;
             height: 120px;
-            -webkit-animation: spin 2s linear infinite; /* Safari */
+            -webkit-animation: spin 2s linear infinite; 
             animation: spin 2s linear infinite;
             display: none
-        }
+        }*/
 
         th, td {
             white-space: nowrap;
@@ -161,7 +141,7 @@
         }
 
         /* Safari */
-        @-webkit-keyframes spin {
+        /*@-webkit-keyframes spin {
             0% {
                 -webkit-transform: rotate(0deg);
             }
@@ -169,9 +149,9 @@
             100% {
                 -webkit-transform: rotate(360deg);
             }
-        }
+        }*/
 
-        @keyframes spin {
+        /*@keyframes spin {
             0% {
                 transform: rotate(0deg);
             }
@@ -179,7 +159,7 @@
             100% {
                 transform: rotate(360deg);
             }
-        }
+        }*/
 
 
         .responsive-table thead th {
@@ -260,7 +240,9 @@
     color: black!important;
     border-bottom: 1px solid rgb(4, 4, 4) !important;
 }
-
+.dx-datagrid{
+    font:12px nanumche;
+}
     </style>
 
 </head>
@@ -269,26 +251,22 @@
     <div class="modal" id="loadscreen">
         <div class="modal-dialog">
             <div class="modal-content" style="background: transparent;">
-
                 <div class="modal-body">
                     <div class="loader"></div>
                 </div>
             </div>
         </div>
     </div>
-
-    <form id="form1" runat="server">    </form>
-        <uc3:Datacommon ID="Datacommon" runat="server" />
+    <form id="form1" runat="server">
         <div id="wrapper">
             <uc1:CtrLeftmenu ID="WebUserControl11" runat="server" />
             <div id="page-wrapper" class="gray-bg dashbard-1">
                 <div class="row border-bottom">
-                    
-                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                    </asp:ContentPlaceHolder>
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
                 </div>
             </div>
         </div>
+        </form>
 
 
     <script src="/js/bootstrap.min.js"></script>

@@ -63,18 +63,16 @@
                             </ul>
 <div class="fixedScroll">
 <!-- 전표리스트 ==================================================================================== -->
-                                <table id="grid1"></table>
-                                <div id="grid1_pager"></div>
+                                <div id="spd1"></div>
 <!-- 전표 ======================================================================================== -->
+                                chasu<input type="text" id="chasu" readonly="readonly" />cjpno<input type="text" id="cjpno" readonly="readonly" />
                                 <table class="responsive-table tb_bill tablepopup none_border" style="width: unset">
                                     <tbody>
                                         <tr>
                                             <td>전표번호</td>
-                                            <td><input type="text" id="jpno" readonly="readonly" />chasu<input type="text" id="chasu" readonly="readonly" />cjpno<input type="text" id="cjpno" readonly="readonly" /></td>
-                                            <td>gucd</td>
+                                            <td><input type="text" id="jpno" readonly="readonly" /></td>
+                                            <td>전표구분</td>
                                             <td><select id="gucd" disabled="disabled"></select></td>
-                                        </tr>
-                                        <tr>
                                             <td>발주일자</td>
                                             <td><input type="text" id="jpdt" class="datecombo"/></td>
                                             <td>발주 담당</td>
@@ -85,8 +83,6 @@
                                             <td><input id="custcd" type="hidden"/><input id="custnm" type="text"/><input type="button" value="검색" onclick="pop_cust($('#custnm').val(), 'custcd', 'custnm', 'tel')" /></td>
                                             <td>고객사 연락처</td>
                                             <td><input id="tel" type="text"/></td>
-                                        </tr>
-                                        <tr>   
                                             <td>거래조건/TERMS</td>
                                             <td><select id="termcd"></select></td>
                                             <td>입고 창고</td>
@@ -97,8 +93,6 @@
                                             <td><input id="pidt" type="text"  class="datecombo"/></td>
                                             <td>미지급금</td>
                                             <td><input id="janamt" type="text" class="inputmoney inputmoney-manager" style="width: 100%" /></td>
-                                        </tr>
-                                        <tr>
                                             <td>P/I no</td>
                                             <td><input id="pino" type="text" /></td>
                                             <td>발주 확인</td>
@@ -109,8 +103,6 @@
                                             <td><select id="paycd"></select></td>
                                             <td>L/C, T/T date</td>
                                             <td><input id="paydt" type="text"  class="datecombo"/></td>
-                                        </tr>
-                                        <tr>
                                             <td>L/C no</td>
                                             <td><input id="lcno" type="text" /></td>
                                             <td>신용장만기일(E/D)</td>
@@ -121,8 +113,6 @@
                                             <td><input id="blno" type="text" /></td>
                                             <td>선적기일(S/D)</td>
                                             <td><input id="shipdt" type="text"   class="datecombo"/></td>
-                                        </tr>
-                                        <tr>
                                             <td>AMT</td>
                                             <td><input id="amt" type="text" /></td>
                                             <td>출항예정일(ETD)</td>
@@ -133,8 +123,6 @@
                                             <td><input id="tolper" type="text" style="width: 33px" /></td>
                                             <td>입항예정일(ETA)</td>
                                             <td><input id="ipdt" type="text" class="datecombo"/></td>
-                                        </tr>
-                                        <tr>
                                             <td>TOLERANCE AMT</td>
                                             <td><input id="tolamt" type="text" /></td>
                                             <td>CON 반납기일(F/T)</td>
@@ -145,16 +133,14 @@
                                             <td><input id="usance" type="text"/></td>
                                             <td>운송사/선사</td>
                                             <td><input id="shipnm" type="text"/></td>
-                                        </tr>
-                                        <tr>
                                             <td>발주 비고</td>
                                             <td colspan="3"><input id="rmk" type="text"/></td>
                                         </tr>
                                     </tbody>
                                 </table>
-<!-- 구매전표상세 ==================================================================================== -->
+<%--<!-- 구매전표상세 ==================================================================================== -->
                                 <table id="grid2"></table>
-                                <div id="grid2_pager"></div>
+                                <div id="grid2_pager"></div>--%>
 <!-- 구매전표상세(devexpress) ==================================================================================== -->
     <div class="demo-container">
         <div id="data-grid-demo">
@@ -214,7 +200,11 @@
 
 //===================================================================
         var jpno = '<%=jpno %>';
+        var spd1;
         var spd2;
+        var ds1 = [];
+        var ds2 = [];
+
         $(document).ready(function () {
             $(".datecombo").datepicker({ dateFormat: 'yy.mm.dd' });
             $.jgrid.defaults.responsive = true;
@@ -232,230 +222,142 @@
             //=====================================================================
             //grid setting
             //=====================================================================
-            jQuery("#grid1").jqGrid({
-                colNames: ['전표번호', '구분', '차수', '공통전표', 'TERMS', '발주담당', '거래사명', '입고창고', 'P/I date', '입항예정일', '통관예정일', '통관확인',
-                    '입고확인', '품목명', '규격', '매수', '수량(B)', 'B/L no', 'C/K', 'F/T', 'CON 반납일', '입고요청일', '입고일', '발주비고'],
-                colModel: [
-                      { name: "jpno", index: "jpno", width: 100 }
-                    , { name: "gucd", index: "gucd", width: 100 }
-                    , { name: "chasu", index: "chasu", width: 100 }
-                    , { name: "cjpno", index: "cjpno", width: 100 }
-                    , { name: "termcd", index: "termcd", width: 100 }
-                    , { name: "usernm", index: "usernm", width: 100 }
-                    , { name: "custnm", index: "custnm", width: 100 }
-                    , { name: "whnm", index: "whnm", width: 100 }
-                    , { name: "pidt", index: "pidt", width: 100 }
-                    , { name: "ipdt", index: "ipdt", width: 100 }
-                    , { name: "tongdt", index: "tongdt", width: 100 }
-                    , { name: "passdt", index: "passdt", width: 100 }
-                    , { name: "inchecktime", index: "inchecktime", width: 100 }
-                    , { name: "itemnm", index: "itemnm", width: 100 }
-                    , { name: "spec", index: "spec", width: 100 }
-                    , { name: "qty", index: "qty", width: 100 }
-                    , { name: "boxqty", index: "boxqty", width: 100 }
-                    , { name: "blno", index: "blno", width: 100 }
-                    , { name: "ckcd", index: "shipdt", width: 100 }
-                    , { name: "ftdt", index: "chuldt", width: 100 }
-                    , { name: "conbandt", index: "ipdt", width: 100 }
-                    , { name: "inyodt", index: "inyodt", width: 100 }
-                    , { name: "incheckdt", index: "incheckdt", width: 100 }
-                    , { name: "rmk", index: "rmk", width: 100 }
-                ],
-
-                //forceFit: true,
-                //cellEdit: true,
-                //cellsubmit: 'clientArray',
-                onSelectRow: function (rowid, status, e) {
-                    jpno = $('#grid1').jqGrid('getCell', rowid, 'jpno');
+            spd1 = $("#spd1").dxDataGrid({
+                  dataSource : ds1
+                , columns: [
+                      { dataField : "jpno"        , caption : "전표번호"    , visible : g_t, width : 100 }
+                    , { dataField : "gucd"        , caption : "구분"        , visible : g_t, width : 100 }
+                    , { dataField : "chasu"       , caption : "차수"        , visible : g_t, width : 100 }
+                    , { dataField : "cjpno"       , caption : "공통전표"    , visible : g_t, width : 100 }
+                    , { dataField : "termcd"      , caption : "TERMS"       , visible : g_t, width : 100 }
+                    , { dataField : "usernm"      , caption : "발주담당"    , visible : g_t, width : 100 }
+                    , { dataField : "custnm"      , caption : "거래사명"    , visible : g_t, width : 100 }
+                    , { dataField : "whnm"        , caption : "입고창고"    , visible : g_t, width : 100 }
+                    , { dataField : "pidt"        , caption : "P/I date"    , visible : g_t, width : 100 }
+                    , { dataField : "ipdt"        , caption : "입항예정일"  , visible : g_t, width : 100 }
+                    , { dataField : "tongdt"      , caption : "통관예정일"  , visible : g_t, width : 100 }
+                    , { dataField : "passdt"      , caption : "통관확인"    , visible : g_t, width : 100 }
+                    , { dataField : "inchecktime" , caption : "입고확인"    , visible : g_t, width : 100 }
+                    , { dataField : "itemnm"      , caption : "품목명"      , visible : g_t, width : 100 }
+                    , { dataField : "spec"        , caption : "규격"        , visible : g_t, width : 100 }
+                    , { dataField : "qty"         , caption : "매수"        , visible : g_t, width : 100 }
+                    , { dataField : "boxqty"      , caption : "수량(B)"     , visible : g_t, width : 100 }
+                    , { dataField : "blno"        , caption : "B/L no"      , visible : g_t, width : 100 } 
+                    , { dataField : "ckcd"        , caption : "C/K"         , visible : g_t, width : 100 }
+                    , { dataField : "ftdt"        , caption : "F/T"         , visible : g_t, width : 100 }
+                    , { dataField : "conbandt"    , caption : "CON 반납일"  , visible : g_t, width : 100 }
+                    , { dataField : "inyodt"      , caption : "입고요청일"  , visible : g_t, width : 100 }
+                    , { dataField : "incheckdt"   , caption : "입고일"      , visible : g_t, width : 100 }
+                    , { dataField : "rmk"         , caption : "발주비고"    , visible : g_t, width : 100 }
+                ]
+                , showColumnLines: true
+                , showRowLines: true
+                //, rowAlternationEnabled: true
+                , showBorders: true
+                //, dataSource: employeesStore
+                //, paging: { enabled: false }.
+                , selection: {
+                    mode: "single"
+                }
+                //, selection: { mode: "multiple" }
+                , onSelectionChanged: function(selectedItems) {
+                    //deleteButton.option("disabled", !data.selectedRowsData.length);
+                    //var data = selectedItems.selectedRowsData[0];
+                    //if(data) {
+                        //$(".employeeNotes").text(data.Notes);
+                        //$(".employeePhoto").attr("src", data.Picture);
+                    //}
+                }
+                , onRowClick: function(e) {
+                    jpno = this.cellValue(e.rowIndex, 'jpno');
                     balju_selone();
-                },
-                //rowNum: 10,
-                //rowList: [10, 20, 30],
-                //pager: '#pager2',
-                //sortname: 'id',
-                viewrecords: true,
-                //sortorder: "desc",
-                height : 100,
-                caption: ""
-            });
-            jQuery("#grid1").jqGrid('navGrid', '#grid1_pager', { edit: false, add: false, del: false });
-
-
-            var lastsel;
-            jQuery("#grid2").jqGrid({
-                colNames: ['mode', '전표', '번호', '품목코드', '품목명', '규격', '매수', '수량(B)', '수정전표', '화폐단위', '단가', '공급가액', '부가세', '합계 금액', '수량(C)', 'SQM', '항목비고',
-                    '품목통관 예정일', '품목 통관일', 'PORT', 'CON No', '원산지증명서', 'C/K', 'F/T', 'CON반납일',
-                    '입고요청일', '입고확인', '시리얼 No', 'PROD code', 'CASE nom', 'PROD date'
-                ],
-                colModel: [
-                      { name: "mode", index: "mode", width: 100, editable: false }
-                    , { name: "jpno", index: "jpno", width: 100, editable: false }
-                    , { name: "jpseq", index: "jpseq", width: 100, editable: false }
-                    , { name: "itemcd", index: "itemcd", width: 100, editable: false }
-                    , { name: "itemnm", index: "itemnm", width: 100, editable: false }
-                    , { name: "spec", index: "spec", width: 100, editable: false }
-                    , { name: "qty", index: "qty", width: 100, editable: false }
-                    , { name: "boxqty", index: "boxqty", width: 100, editable: true }
-                    , { name: "scd", index: "scd", width: 100, editable: true, formatter: "select", edittype: "select", editoptions: { value: string_scd } }
-                    , { name: "curcd", index: "curcd", width: 100, editable: true, formatter: "select", edittype: "select", editoptions: { value: string_curcd } }
-                    , { name: "unitprice", index: "unitprice", width: 100, editable: true }
-                    , { name: "supplyamt", index: "supplyamt", width: 100, editable: true }
-                    , { name: "vat", index: "vat", width: 100, editable: true }
-                    , { name: "totamt", index: "totamt", width: 100, editable: true,
-                        editoptions: {
-                            size: '50', maxlength: '100', dataEvents: [{
-                                type: 'keydown', fn: function (e) {                                    //keydown Event
-                                    //if (e.keyCode == 9 || e.keyCode == 13) {      //Enter Key or Tab Key
-                                    //var totamt = $("#bd_totamt").val();
-                                    //if (totamt == '0' || totamt == '') return;
-
-                                    //var supplyamt = parseInt(totamt / 1.1);
-                                    //var vat = totamt - supplyamt;
-                                    //$("#grid2").jgQrid('setCell', ids[i], 'supplyamt', supplyamt);
-                                    //$("#grid2").jgQrid('setCell', ids[i], 'vat', vat);
-                                    //}
-                                }
-                            }]    //dataEvents 종료
-                        }
-                    }  //editoptions 종료, 칼럼정의 종료
-                    , { name: "conqty", index: "conqty", width: 100, editable: true }
-                    , { name: "sqm", index: "sqm", width: 100, editable: true }
-                    , { name: "rmk", index: "rmk", width: 100, editable: true }
-                    , { name: "tongdt", index: "tongdt", width: 100, editable: true }
-                    , { name: "passdt", index: "passdt", width: 100, editable: true }
-                    , { name: "port", index: "port", width: 100, editable: true }
-                    , { name: "conno", index: "conno", width: 100, editable: true }
-                    , { name: "docno", index: "docno", width: 100, editable: true }
-                    , { name: "ckcd", index: "ckcd", width: 100, editable: true, formatter: "select", edittype: "select", editoptions: { value: string_ckcd } } 
-                    , { name: "ftdt", index: "ftdt", width: 100, editable: true }
-                    , { name: "conbandt", index: "conbandt", width: 100, editable: true }
-                    , { name: "inyodt", index: "inyodt", width: 100, editable: true }
-                    , { name: "incheckdt", index: "incheckdt", width: 100, editable: true }
-                    , { name: "sno", index: "sno", width: 100, editable: true }
-                    , { name: "prodcd", index: "prodcd", width: 100, editable: true }
-                    , { name: "casenom", index: "casenom", width: 100, editable: true }
-                    , { name: "proddt", index: "proddt", width: 100, editable: true }
-                ],
-                onSelectRow: function (rowid, status, e) {
-                    var $this = $(this);
-
-                    //$this.jqGrid('setGridParam', { cellEdit: true });
-                    //$this.jqGrid('editCell', iRow, iCol, true);
-                    //$this.jqGrid('setGridParam', { cellEdit: false });
-                    //if (rowid && rowid !== lastsel) {
-                    //    jQuery('#grid2').jqGrid('restoreRow', lastsel);
-                    //    jQuery('#grid2').jqGrid('editRow', rowid, true);
-                    //    lastsel = rowid;
+                }
+		        , onContentReady: function(e) {
+			        //$('.chart').height(e.element.height());
+                    if(this.totalCount() > 0) {
+                        //alert(this.totalCount());
+                        var cjpno = this.cellValue(0, 'cjpno');
+                        $('#cjpno').val(cjpno);
+                    }
+                    //var cm = jQuery("#grid2").jqGrid("getGridParam", "colModel");
+                    //if (cm[col].name == "itemnm") {
+                    //    var searchword = $('#grid2').jqGrid('getCell', rowid, 'itemnm');
+                    //    var cjpno = $('#cjpno').val();
+                    //    var gucd = $('#gucd').val();
+                    //    if (gucd == "B") {
+                    //        pop_item('', 'grid2', rowid);
+                    //    }
+                    //    else {
+                    //        pop_item_buy('', 'grid2', rowid, cjpno);
+                    //    }
                     //}
-                },
-                //loadonce: true,
-                //gridview: true,
-                rownumbers: true,                datatype: 'json',                //viewrecords: true,                //height: 'auto',                //editurl: 'clientArray',                forceFit: true,
-                cellEdit: true,
-                cellsubmit: 'clientArray',
-                afterSaveCell: function (rowid, cellname, value, iRow, iCol) {
-                    if (cellname == "totamt") {
-                        var totamt = value;
-                        if (totamt == '0' || totamt == '') return;
-                        var supplyamt = parseInt(totamt / 1.1);
-                        var vat = totamt - supplyamt;
-                        $("#grid2").jqGrid('setRowData', rowid, { 'supplyamt': supplyamt });
-                        $("#grid2").jqGrid('setRowData', rowid, { 'vat': vat });
-                    }
-                },
-                afterEditCell: function (rowid, cellname, value, iRow, iCol) {
-                    if (cellname == 'tongdt') { $("#" + iRow + "_tongdt", "#grid2").datepicker({ dateFormat: "yy.mm.dd" }); }
-                    if (cellname == 'passdt') { $("#" + iRow + "_passdt", "#grid2").datepicker({ dateFormat: "yy.mm.dd" }); }
-                    if (cellname == 'ftdt') { $("#" + iRow + "_ftdt", "#grid2").datepicker({ dateFormat: "yy.mm.dd" }); }
-                    if (cellname == 'conbandt') { $("#" + iRow + "_conbandt", "#grid2").datepicker({ dateFormat: "yy.mm.dd" }); }
-                    if (cellname == 'inyodt') { $("#" + iRow + "_inyodt", "#grid2").datepicker({ dateFormat: "yy.mm.dd" }); }
-                    if (cellname == 'indt') { $("#" + iRow + "_indt", "#grid2").datepicker({ dateFormat: "yy.mm.dd" }); }
-                    if (cellname == 'proddt') { $("#" + iRow + "_proddt", "#grid2").datepicker({ dateFormat: "yy.mm.dd" }); }
-                    //afterEditCell: function (rowid, nm, tmp, iRow, iCol) {
-                    var $grid = $(this);
+		        }
+                //, onContentReady: function(e) {
+                //    alert(this.totalCount());
+                    
+                //    var count = 3;
+                //    //var count = spd1._controllers.data._dataSource.totalCount();
+                //    //alert(count);
+                //    if (count > 0) {
+                //        var cjpno = spd1.cellValue(0, 'cjpno');
+                //        $('#cjpno').val(cjpno);
+                //    }
+                //    else {
+                //        $('#cjpno').val('');
+                //    }
+                //}
+                //, onCellDblClick: function(e) {
+                //    var a = "";
+                //    var b = "";
+                //    var rowid = e.rowIndex;
+                //    var cjpno = this.cellValue(0, 'cjpno');
+                //    var gucd = $('#gucd').val();
+                //    if (e.rowType == 'data' && e.column.dataField == "itemnm") {
+                //        if (gucd == "B") {
+                //            pop_item('', 'spd2', rowid);
+                //        }
+                //        else {
+                //            pop_item_buy('', 'spd2', rowid, cjpno);
+                //        }
+                //    }
+            }).dxDataGrid("instance");
+            
 
-                    $(this.rows[iRow].cells[iCol])
-                        .find("input,textarea,select,button,object,*[tabindex]")
-                        .filter(":input:visible:not(:disabled)")
-                        .first()
-                        .on("focusout", function (e) {
-                            var p = $grid.jqGrid('getGridParam');
-
-                            if ($(e.relatedTarget).closest('.ui-datepicker').length === 0) {
-                                $grid.jqGrid('saveCell', p.iRow, p.iCol);
-                            }
-                        });
-                    //}
-                },
-                /*
-                afterEditCell: function (id, name, val, iRow, iCol) {
-                    if (name == 'invdate') {
-                        jQuery("#" + iRow + "_invdate", "#list").datepicker({ dateFormat: "yy-mm-dd" });
-                    }
-                },
-                */
-                ondblClickRow: function (rowid, row, col) {
-                    var cm = jQuery("#grid2").jqGrid("getGridParam", "colModel");
-                    if (cm[col].name == "itemnm") {
-                        var searchword = $('#grid2').jqGrid('getCell', rowid, 'itemnm');
-                        var cjpno = $('#cjpno').val();
-                        var gucd = $('#gucd').val();
-                        if (gucd == "B") {
-                            pop_item('', 'grid2', rowid);
-                        }
-                        else {
-                            pop_item_buy('', 'grid2', rowid, cjpno);
-                        }
-                    }
-                },
-                //rowNum: 10,
-                //rowList: [10, 20, 30],
-                //pager: '#pager2',
-                //sortname: 'id',
-                viewrecords: true,
-                //sortorder: "desc",
-                height: 80,
-                caption: ""
-            });
-            jQuery("#grid2").jqGrid('navGrid', '#grid2_pager', { edit: false, add: false, del: false });
-            $("#grid2 > .ui-jqgrid-titlebar").hide();
-            $("#grid2 > .ui-jqgrid-titlebar").hide();
-            $("#grid2 > .ui-jqgrid-titlebar").hide();
 
             spd2 = $("#spd2").dxDataGrid({
-                columns: [
-                      { caption: '#', cellTemplate: function(cellElement, cellInfo) { cellElement.text(cellInfo.row.rowIndex)} }
-                    , { dataField : "mode"       , caption : "mode"            , width : 100 }
-                    , { dataField : "jpno"       , caption : "jpno"            , width : 100 }
-                    , { dataField : "jpseq"      , caption : "번호"            , width : 100 }
-                    , { dataField : "itemcd"     , caption : "품목코드"        , width : 100 }
-                    , { dataField : "itemnm"     , caption : "품목명"          , width : 100 }
-                    , { dataField : "spec"       , caption : "규격"            , width : 100 }
-                    , { dataField : "qty"        , caption : "매수"            , width : 100 }
-                    , { dataField : "boxqty"     , caption : "수량(B)"         , width : 100 }
-                    , { dataField : "scd"        , caption : "수정전표"        , width : 100,  lookup: { dataSource: string_scd  , displayExpr: "codenm", valueExpr: "code" }}
-                    , { dataField : "curcd"      , caption : "화폐단위"        , width : 100,  lookup: { dataSource: string_curcd, displayExpr: "codenm", valueExpr: "code" }}
-                    , { dataField : "unitprice"  , caption : "단가"            , width : 100 }
-                    , { dataField : "supplyamt"  , caption : "공급가액"        , width : 100 }
-                    , { dataField : "vat"        , caption : "부가세"          , width : 100 }
-                    , { dataField : "totamt"     , caption : "합계 금액"       , width : 100 }
-                    , { dataField : "conqty"     , caption : "수량(C)"         , width : 100 }
-                    , { dataField : "sqm"        , caption : "SQM"             , width : 100 }
-                    , { dataField : "rmk"        , caption : "항목비고"        , width : 100 }
-                    , { dataField : "tongdt"     , caption : "품목통관 예정일" , width : 100,  dataType: "date", format: "yyyy.MM.dd" } 
-                    , { dataField : "passdt"     , caption : "품목 통관일"     , width : 100,  dataType: "date", format: "yyyy.MM.dd" } 
-                    , { dataField : "port"       , caption : "PORT"            , width : 100 }
-                    , { dataField : "conno"      , caption : "CON No"          , width : 100 }
-                    , { dataField : "docno"      , caption : "원산지증명서"    , width : 100 }
-                    , { dataField : "ckcd"       , caption : "C/K"             , width : 100,  lookup: { dataSource: string_ckcd, displayExpr: "codenm", valueExpr: "code" }}
-                    , { dataField : "ftdt"		 , caption : "F/T"             , width : 100,  dataType: "date", format: "yyyy.MM.dd" } 
-                    , { dataField : "conbandt"   , caption : "CON반납일"       , width : 100,  dataType: "date", format: "yyyy.MM.dd" } 
-                    , { dataField : "inyodt"     , caption : "입고요청일"      , width : 100,  dataType: "date", format: "yyyy.MM.dd" } 
-                    , { dataField : "incheckdt"  , caption : "입고확인"        , width : 100,  dataType: "date", format: "yyyy.MM.dd" }  
-                    , { dataField : "sno"		 , caption : "시리얼 No"       , width : 100 }
-                    , { dataField : "prodcd"     , caption : "PROD code"       , width : 100 }
-                    , { dataField : "casenom"    , caption : "CASE nom"        , width : 100 }
-                    , { dataField : "proddt"     , caption : "PROD date"       , width : 100 }
+                  dataSource : ds2
+                , columns: [
+                      { dataField : "mode"       , caption : "mode"            , visible : g_t, allowEditing : g_f, width : 100 }
+                    , { dataField : "jpno"       , caption : "jpno"            , visible : g_t, allowEditing : g_f, width : 100 }
+                    , { dataField : "jpseq"      , caption : "번호"            , visible : g_t, allowEditing : g_f, width : 100 }
+                    , { dataField : "itemcd"     , caption : "품목코드"        , visible : g_t, allowEditing : g_f, width : 100 }
+                    , { dataField : "itemnm"     , caption : "품목명"          , visible : g_t, allowEditing : g_t, width : 100 }
+                    , { dataField : "spec"       , caption : "규격"            , visible : g_t, allowEditing : g_t, width : 100 }
+                    , { dataField : "qty"        , caption : "매수"            , visible : g_t, allowEditing : g_t, width : 100 }
+                    , { dataField : "boxqty"     , caption : "수량(B)"         , visible : g_t, allowEditing : g_t, width : 100 }
+                    , { dataField : "scd"        , caption : "수정전표"        , visible : g_t, allowEditing : g_t, width : 100,  lookup: { dataSource: string_scd  , displayExpr: "codenm", valueExpr: "code" }}
+                    , { dataField : "curcd"      , caption : "화폐단위"        , visible : g_t, allowEditing : g_t, width : 100,  lookup: { dataSource: string_curcd, displayExpr: "codenm", valueExpr: "code" }}
+                    , { dataField : "unitprice"  , caption : "단가"            , visible : g_t, allowEditing : g_t, width : 100 }
+                    , { dataField : "supplyamt"  , caption : "공급가액"        , visible : g_t, allowEditing : g_t, width : 100 }
+                    , { dataField : "vat"        , caption : "부가세"          , visible : g_t, allowEditing : g_t, width : 100 }
+                    , { dataField : "totamt"     , caption : "합계 금액"       , visible : g_t, allowEditing : g_t, width : 100 }
+                    , { dataField : "conqty"     , caption : "수량(C)"         , visible : g_t, allowEditing : g_t, width : 100 }
+                    , { dataField : "sqm"        , caption : "SQM"             , visible : g_t, allowEditing : g_t, width : 100 }
+                    , { dataField : "rmk"        , caption : "항목비고"        , visible : g_t, allowEditing : g_t, width : 100 }
+                    , { dataField : "tongdt"     , caption : "품목통관 예정일" , visible : g_t, allowEditing : g_t, width : 100,  dataType: "date", format: "yyyy.MM.dd" } 
+                    , { dataField : "passdt"     , caption : "품목 통관일"     , visible : g_t, allowEditing : g_t, width : 100,  dataType: "date", format: "yyyy.MM.dd" } 
+                    , { dataField : "port"       , caption : "PORT"            , visible : g_t, allowEditing : g_t, width : 100 }
+                    , { dataField : "conno"      , caption : "CON No"          , visible : g_t, allowEditing : g_t, width : 100 }
+                    , { dataField : "docno"      , caption : "원산지증명서"    , visible : g_t, allowEditing : g_t, width : 100 }
+                    , { dataField : "ckcd"       , caption : "C/K"             , visible : g_t, allowEditing : g_t, width : 100,  lookup: { dataSource: string_ckcd, displayExpr: "codenm", valueExpr: "code" }}
+                    , { dataField : "ftdt"		 , caption : "F/T"             , visible : g_t, allowEditing : g_t, width : 100,  dataType: "date", format: "yyyy.MM.dd" } 
+                    , { dataField : "conbandt"   , caption : "CON반납일"       , visible : g_t, allowEditing : g_t, width : 100,  dataType: "date", format: "yyyy.MM.dd" } 
+                    , { dataField : "inyodt"     , caption : "입고요청일"      , visible : g_t, allowEditing : g_t, width : 100,  dataType: "date", format: "yyyy.MM.dd" } 
+                    , { dataField : "incheckdt"  , caption : "입고확인"        , visible : g_t, allowEditing : g_t, width : 100,  dataType: "date", format: "yyyy.MM.dd" }  
+                    , { dataField : "sno"		 , caption : "시리얼 No"       , visible : g_t, allowEditing : g_t, width : 100 }
+                    , { dataField : "prodcd"     , caption : "PROD code"       , visible : g_t, allowEditing : g_t, width : 100 }
+                    , { dataField : "casenom"    , caption : "CASE nom"        , visible : g_t, allowEditing : g_t, width : 100 }
+                    , { dataField : "proddt"     , caption : "PROD date"       , visible : g_t, allowEditing : g_t, width : 100 }
                 ]
                 , showColumnLines: true
                 , showRowLines: true
@@ -467,27 +369,18 @@
                     mode: "single"
                 }
                 , editing: {
-                    mode: "cell",
-                    allowUpdating: true
+                    mode: "cell", allowUpdating: true
                 }
                 //, selection: { mode: "multiple" }
                 , height : 200
-                , onSelectionChanged: function(selectedItems) {
-                    //deleteButton.option("disabled", !data.selectedRowsData.length);
-                    //var data = selectedItems.selectedRowsData[0];
-                    //if(data) {
-                        //$(".employeeNotes").text(data.Notes);
-                        //$(".employeePhoto").attr("src", data.Picture);
-                    //}
-                }
                 , onCellDblClick: function(e) {
                     var a = "";
                     var b = "";
                     var rowid = e.rowIndex;
-                    var cjpno = this.cellValue(0, 'cjpno');
-                    var gucd = $('#gucd').val();
+                    var cjpno = $('#cjpno').val();
+                    var gucd  = $('#gucd').val();
                     if (e.rowType == 'data' && e.column.dataField == "itemnm") {
-                        if (gucd == "B") {
+                        if (gucd == "B" || jpno == '') {
                             pop_item('', 'spd2', rowid);
                         }
                         else {
@@ -510,7 +403,9 @@
                     //}
                 }
             }).dxDataGrid("instance");
-            fn_search();
+
+            if (jpno == '') {spd2.option('dataSource', []); }
+            else fn_search();
         });
 
         //===============================================================
@@ -526,16 +421,10 @@
                 dataType: "json",
                 async: false,
                 success: function (data) {
-                    $('#grid1')[0].addJSONData(JSON.parse(data.d));
-                    var count = $("#grid1").getGridParam("reccount");
-                    if (count > 0) {
-                        var rowid = $("#grid1").getDataIDs()[0];
-                        var cjpno = $('#grid1').getCell(rowid, 'cjpno');
-                        $('#cjpno').val(cjpno);
-                    }
-                    else {
-                        $('#cjpno').val('');
-                    }
+                    data = JSON.parse(data.d);
+                    $("#spd1").dxDataGrid({ dataSource: data });
+
+                    //rowcount 를 얻을 수 없음...
                 },
                 error: function (request, status, error) {
                     //alert("code = " + request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
@@ -584,6 +473,9 @@
                     $('#usance').val(result[0].usance);
                     $('#shipnm').val(result[0].shipnm);
                     $('#rmk').val(result[0].rmk);
+
+                    spd2.option('dataSource', []);
+                    spd2.remove();
                 },
                 error: function (request, status, error) {
                     alert("code = " + request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
@@ -603,7 +495,7 @@
                 dataType: "json",
                 async: false,
                 success: function (data) {
-                    $('#grid2')[0].addJSONData(JSON.parse(data.d));
+                    spd2.option('dataSource', []);
                     $("#spd2").dxDataGrid({ dataSource: JSON.parse(data.d) });
                 },
                 error: function (request, status, error) {
@@ -648,7 +540,7 @@
             $('#usance').val('');
             $('#shipnm').val('');
             $('#rmk').val('');
-            $('#grid2').clearGridData();
+            spd2.option('dataSource', []);
         }
         //===============================================================
         // 버튼~~(구매전표)
@@ -658,6 +550,8 @@
         }
         var param_del = [];
         function balju_save() {
+            if (checklogin() != 1) { location.href = '/login.aspx'; return; } //logincheck
+
             //var rowid_list = jQuery("#grid2").jqGrid('getDataIDs');
             //for (var i = 0; i < rowid_list.length; i++) {
             //    var rowid = rowid_list[i];
@@ -698,7 +592,7 @@
             param.conbandt = $.trim($("#conbandt").val());
             param.shipnm = $.trim($("#shipnm").val());
             param.rmk = $.trim($("#rmk").val());
-            //if (param.jpdt   == '') { alert('발주일자를 입력해주세요!'); return; }
+            if (param.jpdt   == '') { alert('발주일자를 입력해주세요!'); return; }
             //if (param.userid == '') { alert('담당자를 입력해주세요!'); return; }
             //if (param.usernm == '') { alert('담당자를 입력해주세요!'); return; }
             //if (param.custcd == '') { alert('거래처를 입력해주세요!'); return; }
@@ -815,104 +709,31 @@
                     , "prodcd"    : ''
                     , "casenom"   : ''
                     , "proddt"    : '' 
-
             }
-            var rowid = $("#grid2").getGridParam("reccount"); // 페이징 처리 시 현 페이지의 Max RowId 값
-            $("#grid2").jqGrid("addRowData", rowid + 1, rowData, 'last'); // 마지막 행에 Row 추가
+            spd2.addRow(rowData);
+            //var rowid = $("#grid2").getGridParam("reccount"); // 페이징 처리 시 현 페이지의 Max RowId 값
+            //$("#grid2").jqGrid("addRowData", rowid + 1, rowData, 'last'); // 마지막 행에 Row 추가
         }
         function balju_row_del() {
-            var rowid = $('#grid2').jqGrid('getGridParam', 'selrow');
-            //if (rowid == undefined) { alert('선택된 행이 없습니다'); return; }
+            //var rowid = $('#grid2').jqGrid('getGridParam', 'selrow');
+            ////if (rowid == undefined) { alert('선택된 행이 없습니다'); return; }
 
-            var row = $("#grid2").jqGrid('getRowData', rowid);
-            if (row.jpseq != '') {
-                row.mode = 'D';
-                param_del.push(row);
-            }
-            $("#grid2").jqGrid("delRowData", rowid); // 행 삭제
-            //dxgrid
-            rowid = spd2.getSelectedRowKeys();
-            if (rowid.length > 0) {
-                spd2.deleteRow(rowid);
-                var param = spd2.getDataSource.data();
-            }
-            else {
-                alert('선택된 항목이 없습니다');
-                return;
-            }
-        }
-        //===============================================================
-        // 버튼~~(통관전표)
-        //===============================================================
-        function tong_new() {
-            if (jpno == '') { alert('구매전표가 존재하지 않습니다'); return; }
-            tong_init();
-            tong_detail_select_new();
-        }
-        function tong_save() {
-            if (jpno == '') { alert('구매전표가 존재하지 않습니다'); return; }
-            //validate check == master
-            var param = {};
-            param.tongno = $.trim($('#t_tongno').val());
-            param.jpno = jpno;
-            param.paycd = $.trim($('#paycd').val());
-            param.lcno = $.trim($('#lcno').val());
-            param.amt = $.trim($('#amt').val());
-            param.tolper = $.trim($('#tolper').val());
-            param.tolamt = $.trim($('#tolamt').val());
-            param.t_usance = $.trim($('#usance').val());
-            param.paydt = $.trim($('#paydt').val());
-            param.mandt = $.trim($('#mandt').val());
-            param.blno = $.trim($('#blno').val());
-            param.shipdt = $.trim($('#shipdt').val());
-            param.chuldt = $.trim($('#chuldt').val());
-            param.ipdt = $.trim($('#ipdt').val());
-            param.conbandt = $.trim($('#conbandt').val());
-            param.shipnm = $.trim($('#shipnm').val());
-
-            //if (param.orderdt == '') { alert('발주일자를 입력해주세요!'); return; }
-            //if (param.userid == '') { alert('담당자를 입력해주세요!'); return; }
-            //if (param.usernm == '') { alert('담당자를 입력해주세요!'); return; }
-            //if (param.custcd == '') { alert('거래처를 입력해주세요!'); return; }
-            //if (param.custnm == '') { alert('거래처를 입력해주세요!'); return; }
-            //if (param.whcd == '') { alert('창고를 선택해주세요!'); return; }
-            var param = JSON.stringify(param);
-            //validate check == detail
-            var param2 = [];
-            var row = $('#tong_grid').getRowData();
-
-            for (var i = 0; i < row.length; i++) {
-                param2.push(row[i]);
-            }
-            param2 = JSON.stringify(param2);
-
-            $.ajax({
-                type: "POST",
-                url: "/page2/page21_svc.asmx/tong_save",
-                data: JSON.stringify({ 'param': param, 'param2': param2 }),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                async: false,
-                success: function (data) {
-                    //var table = $('#grid21').DataTable();
-                    //table.clear().rows.add(JSON.parse(data.d)).draw();
-                    var result = JSON.parse(data.d);
-                    if (result.code == "OK") {
-                        //alert(result.val);
-                        tong_init();
-                        tong_select();
-                    }
-                    else { alert("저장오류!"); return; }
-
-                },
-                error: function (request, status, error) {
-                    //alert(100);
-                    //alert("code = " + request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
-                    alert("code = " + request.status + " error = " + error); // 실패 시 처리
-                }
-            });
-        }
-        function tong_del() {
+            //var row = $("#grid2").jqGrid('getRowData', rowid);
+            //if (row.jpseq != '') {
+            //    row.mode = 'D';
+            //    param_del.push(row);
+            //}
+            //$("#grid2").jqGrid("delRowData", rowid); // 행 삭제
+            ////dxgrid
+            //rowid = spd2.getSelectedRowKeys();
+            //if (rowid.length > 0) {
+            //    spd2.deleteRow(rowid);
+            //    var param = spd2.getDataSource.data();
+            //}
+            //else {
+            //    alert('선택된 항목이 없습니다');
+            //    return;
+            //}
         }
         //===============================================================
         // 기타 함수
@@ -943,24 +764,24 @@
             //alert(pop_item_name);
             spd2.cellValue(pop_item_row, 'itemcd', param.itemcd);
             spd2.cellValue(pop_item_row, 'itemnm', param.itemnm );
-            //$("#" + pop_item_grid).cellValue(pop_item_row, 'spec', param.spec);
-            //$("#" + pop_item_grid).cellValue(pop_item_row, 'qty', param.qty);
-            //$("#" + pop_item_grid).cellValue(pop_item_row, 'unitprice', param.unitprice);
-            //$("#" + pop_item_grid).cellValue(pop_item_row, 'sqm', param.sqm);
+            spd2.cellValue(pop_item_row, 'spec', param.spec);
+            spd2.cellValue(pop_item_row, 'qty', param.qty);
+            spd2.cellValue(pop_item_row, 'unitprice', param.unitprice);
+            spd2.cellValue(pop_item_row, 'sqm', param.sqm);
         }
-        function pop_result_item_grid2(param) {
-            $("#" + pop_item_grid).cellValue(pop_item_row, 'itemcd', param.itemcd);
-            //$("#" + pop_item_name).cellValue(pop_item_row, 'itemnm', param.itemnm);
-            //$("#" + pop_item_name).cellValue(pop_item_row, 'spec', param.spec);
-            //$("#" + pop_item_name).cellValue(pop_item_row, 'qty', param.qty);
-            //$("#" + pop_item_name).cellValue(pop_item_row, 'boxqty', param.boxqty);
-            //$("#" + pop_item_name).cellValue(pop_item_row, 'curcd', param.curcd);
-            //$("#" + pop_item_name).cellValue(pop_item_row, 'unitprice', param.unitprice);
-            //$("#" + pop_item_name).cellValue(pop_item_row, 'supplyamt', param.supplyamt);
-            //$("#" + pop_item_name).cellValue(pop_item_row, 'vat', param.vat);
-            //$("#" + pop_item_name).cellValue(pop_item_row, 'totamt', param.totamt);
-            //$("#" + pop_item_name).cellValue(pop_item_row, 'conqty', param.conqty);
-            //$("#" + pop_item_name).cellValue(pop_item_row, 'sqm', param.sqm);
+        function pop_result_item_buy(param) {
+            spd2.cellValue(pop_item_row, 'itemcd', param.itemcd);
+            spd2.cellValue(pop_item_row, 'itemnm', param.itemnm);
+            spd2.cellValue(pop_item_row, 'spec', param.spec);
+            spd2.cellValue(pop_item_row, 'qty', param.qty);
+            spd2.cellValue(pop_item_row, 'boxqty', param.boxqty);
+            spd2.cellValue(pop_item_row, 'curcd', param.curcd);
+            spd2.cellValue(pop_item_row, 'unitprice', param.unitprice);
+            spd2.cellValue(pop_item_row, 'supplyamt', param.supplyamt);
+            spd2.cellValue(pop_item_row, 'vat', param.vat);
+            spd2.cellValue(pop_item_row, 'totamt', param.totamt);
+            spd2.cellValue(pop_item_row, 'conqty', param.conqty);
+            spd2.cellValue(pop_item_row, 'sqm', param.sqm);
         }
     </script>
 </asp:Content>

@@ -63,54 +63,37 @@
             <input type="button" value="선택" id="btnSelect" />
             <input type="button" value="닫기" id="btnClose" />
 
-            <div id="grid"></div>
-            
+            <table id="grid" class="grid table-striped table-bordered"  style="width:100%">
+            <thead>
+                <tr>
+                    <th scope="col">거래처코드</th>
+                    <th scope="col">거래처명</th>
+                    <th scope="col">전화번호</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+            </table>
         </div>
     </form>
 <script>
     var searchword = '<%=searchword %>';
     $(document).ready(function () {
-        grid1 = $("#grid1").dxDataGrid({
+        $('#grid').DataTable({
             columns: [
-                { dataField: "custcd", caption: "코드", width: 100 }
-                , { dataField: "custnm", caption: "거래처명", width: 100 }
-                , { dataField: "tel", caption: "전화번호", width: 100 }
-            ]
-            , showColumnLines: true
-            , showRowLines: true
-            , rowAlternationEnabled: false
-            , showBorders: true
-            , selection: {
-                mode: "single"
+                  { data: "custcd" }
+                , { data: "custnm" }
+                , { data: "tel" }
+            ],
+            "language": {
+                "search": ""
+            },
+            "order": [[1, "desc"]],
+            "scrollX": true,
+            "initComplete": function (settings, json) {
+                $('#grid_filter input').addClass('form-control');
+                $("#grid_filter input").attr("placeholder", "검색");
             }
-            , scrolling: {
-                columnRenderingMode: "virtual"
-            }
-            , paging: {
-                enabled: false
-            }
-            , width: 750
-            , height: 200
-            , onRowClick: function (data) {
-                fn_selone(data.key.whcd);
-            }
-        }).dxDataGrid("instance");
-        //$('#grid').DataTable({
-        //    columns: [
-        //          { data: "custcd" }
-        //        , { data: "custnm" }
-        //        , { data: "tel" }
-        //    ],
-        //    "language": {
-        //        "search": ""
-        //    },
-        //    "order": [[1, "desc"]],
-        //    "scrollX": true,
-        //    "initComplete": function (settings, json) {
-        //        $('#grid_filter input').addClass('form-control');
-        //        $("#grid_filter input").attr("placeholder", "검색");
-        //    }
-        //});
+        });
         $('#grid tbody').on('click', 'tr', function () {
             var table = $('#grid').DataTable();
             var row = table.row(this).data();

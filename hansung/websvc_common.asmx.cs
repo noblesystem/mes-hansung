@@ -74,6 +74,7 @@ namespace hansung
         //코드콤보
         public string combocode(string param)
         {
+            if(HttpContext.Current.Request.GetUserCookie("userid") == "") return "";
             //gbncd
             string gbncd = JObject.Parse(param)["gbncd"].ToString();
             FormManager fm = new FormManager();
@@ -94,6 +95,7 @@ namespace hansung
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string combowhcd()
         {
+            if(HttpContext.Current.Request.GetUserCookie("userid") == "") return "";
             FormManager fm = new FormManager();
             XmlDocument dom = new XmlDocument();
             dom.LoadXml("<xml><proc/><act/><xmldata></xmldata><xmlclipdata/></xml>");
@@ -111,6 +113,7 @@ namespace hansung
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string combogbncd()
         {
+            if(HttpContext.Current.Request.GetUserCookie("userid") == "") return "";
             FormManager fm = new FormManager();
             XmlDocument dom = new XmlDocument();
             dom.LoadXml("<xml><proc/><act/><xmldata></xmldata><xmlclipdata/></xml>");
@@ -129,6 +132,7 @@ namespace hansung
         //사원콤보
         public string search_user(string param)
         {
+            if(HttpContext.Current.Request.GetUserCookie("userid") == "") return "";
             string usernm = JObject.Parse(param)["searchword"].ToString();
             FormManager fm = new FormManager();
             XmlDocument dom = new XmlDocument();
@@ -149,6 +153,7 @@ namespace hansung
         //거래처콤보
         public string search_cust(string param)
         {
+            if(HttpContext.Current.Request.GetUserCookie("userid") == "") return "";
             string custnm = JObject.Parse(param)["searchword"].ToString();
             FormManager fm = new FormManager();
             XmlDocument dom = new XmlDocument();
@@ -168,6 +173,7 @@ namespace hansung
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string search_item(string param)
         {
+            if(HttpContext.Current.Request.GetUserCookie("userid") == "") return "";
             string itemnm = JObject.Parse(param)["searchword"].ToString();
             FormManager fm = new FormManager();
             XmlDocument dom = new XmlDocument();
@@ -187,6 +193,7 @@ namespace hansung
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string search_item_buy(string param)
         {
+            if(HttpContext.Current.Request.GetUserCookie("userid") == "") return "";
             string itemnm = JObject.Parse(param)["searchword"].ToString();
             string cjpno = JObject.Parse(param)["cjpno"].ToString();
             FormManager fm = new FormManager();
@@ -208,6 +215,7 @@ namespace hansung
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string search_item_sale(string param)
         {
+            if(HttpContext.Current.Request.GetUserCookie("userid") == "") return "";
             string itemnm = JObject.Parse(param)["searchword"].ToString();
             string csaleno = JObject.Parse(param)["csaleno"].ToString();
             FormManager fm = new FormManager();

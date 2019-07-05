@@ -29,6 +29,8 @@ namespace hansung.page3 {
         //선택된 발주전표 내역
         public string search(string param)
         {
+            if(HttpContext.Current.Request.GetUserCookie("userid") == "") return "";
+
             string saleno = JObject.Parse(param)["saleno"].ToString();
             FormManager fm = new FormManager();
             XmlDocument dom = new XmlDocument();
@@ -49,6 +51,8 @@ namespace hansung.page3 {
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string selone(string param)
         {
+            if(HttpContext.Current.Request.GetUserCookie("userid") == "") return "";
+
             string saleno = JObject.Parse(param)["saleno"].ToString();
 
             FormManager fm = new FormManager();
@@ -69,6 +73,8 @@ namespace hansung.page3 {
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string detail_search(string param)
         {
+            if(HttpContext.Current.Request.GetUserCookie("userid") == "") return "";
+
             string saleno = JObject.Parse(param)["saleno"].ToString();
 
             FormManager fm = new FormManager();
@@ -89,6 +95,8 @@ namespace hansung.page3 {
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string del(string param)
         {
+            if(HttpContext.Current.Request.GetUserCookie("userid") == "") return "";
+
             string saleno     = JObject.Parse(param)["saleno"].ToString();
             string inuser   = "100";
 
@@ -111,6 +119,7 @@ namespace hansung.page3 {
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string save(string param, string param2)
         {
+            if(HttpContext.Current.Request.GetUserCookie("userid") == "") return "";
             //===========================================================================master
             string saleno     = JObject.Parse(param)["saleno"].ToString();
             string chasu     = JObject.Parse(param)["chasu"].ToString();

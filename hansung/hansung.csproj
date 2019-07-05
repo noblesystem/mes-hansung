@@ -309,6 +309,8 @@
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="Default.aspx" />
+    <Content Include="dxDataGrid_김_tip.js" />
+    <Content Include="dxDataGrid_팁.js" />
     <Content Include="email_templates\action.html" />
     <Content Include="email_templates\alert.html" />
     <Content Include="email_templates\billing.html" />
@@ -1805,6 +1807,7 @@
     <Content Include="logout.aspx" />
     <Content Include="page2\page2-1.aspx" />
     <Content Include="page2\page2-10.aspx" />
+    <Content Include="page2\page2-2-pop.aspx" />
     <Content Include="page2\page2-2.aspx" />
     <Content Include="page2\page2-3.aspx" />
     <Content Include="page2\page2-4.aspx" />
@@ -1861,7 +1864,6 @@
     <Content Include="page8\page8-5.aspx" />
     <Content Include="js\customer.js" />
     <Content Include="page9\page9-1.aspx" />
-    <Content Include="page\page1-01.html" />
     <Content Include="page\page1-2.aspx" />
     <Content Include="page\page1-1.aspx" />
     <Content Include="page\page1-3.aspx" />
@@ -1870,14 +1872,12 @@
     <Content Include="page\page1-6.aspx" />
     <Content Include="page\page1-7.aspx" />
     <Content Include="page\page1-8.aspx" />
-    <Content Include="page\page1-9.aspx" />
     <Content Include="page\page11_svc.asmx" />
     <Content Include="page\page12_svc.asmx" />
     <Content Include="page\page13_svc.asmx" />
     <Content Include="page\page14_svc.asmx" />
     <Content Include="page\page15_svc.asmx" />
     <Content Include="page\page16_svc.asmx" />
-    <Content Include="page\page19_svc.asmx" />
     <Content Include="page\page17_svc.asmx" />
     <Content Include="page\page18_svc.asmx" />
     <Content Include="page\WebServicePage1.asmx" />
@@ -3121,6 +3121,13 @@
     <Compile Include="page2\page2-10.aspx.designer.cs">
       <DependentUpon>page2-10.aspx</DependentUpon>
     </Compile>
+    <Compile Include="page2\page2-2-pop.aspx.cs">
+      <DependentUpon>page2-2-pop.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="page2\page2-2-pop.aspx.designer.cs">
+      <DependentUpon>page2-2-pop.aspx</DependentUpon>
+    </Compile>
     <Compile Include="page2\page2-2.aspx.cs">
       <DependentUpon>page2-2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3518,13 +3525,6 @@
     <Compile Include="page\page1-8.aspx.designer.cs">
       <DependentUpon>page1-8.aspx</DependentUpon>
     </Compile>
-    <Compile Include="page\page1-9.aspx.cs">
-      <DependentUpon>page1-9.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="page\page1-9.aspx.designer.cs">
-      <DependentUpon>page1-9.aspx</DependentUpon>
-    </Compile>
     <Compile Include="page\page11_svc.asmx.cs">
       <DependentUpon>page11_svc.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -3547,10 +3547,6 @@
     </Compile>
     <Compile Include="page\page16_svc.asmx.cs">
       <DependentUpon>page16_svc.asmx</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="page\page19_svc.asmx.cs">
-      <DependentUpon>page19_svc.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="page\page17_svc.asmx.cs">

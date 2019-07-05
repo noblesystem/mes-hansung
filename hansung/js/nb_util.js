@@ -1,4 +1,8 @@
 ﻿//====================================================================================
+// 환경변수
+//====================================================================================
+var g_t = true; var g_f = false;
+
 DevExpress.config({forceIsoDateParsing: true});
 //DevExpress.ui.dxButton.defaultOptions({ 
 DevExpress.ui.dxDataGrid.defaultOptions({ 
@@ -6,6 +10,16 @@ DevExpress.ui.dxDataGrid.defaultOptions({
         dateSerializationFormat: "yyyy.MM.dd"
     }
 });
+
+//====================================================================================
+function checklogin() {
+    var userid = getCookie('userid');
+    if (userid != "" & userid != undefined) return 1;
+    else return 0;
+}
+
+//====================================================================================
+
 //====================================================================================
 //콤보 가져오기 
 /*
@@ -28,10 +42,9 @@ var pop_item_grid;
 var pop_item_row;
 //find item
 function pop_item(searchword, grid, row) {
-    alert(row);
     pop_item_grid = grid;
     pop_item_row = row;
-    var popUrl = "/popup/pop_item.aspx?searchword=" + encodeURIComponent(searchword);
+    var popUrl = "/popup/pop_item.aspx?searchword=" + escape(searchword);
     var popOption = "width=800, height=600, resizable=yes, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
     var pop_item_win = window.open(popUrl, "pop_item", popOption);
     if (pop_item_win) pop_item_win.focus();
@@ -41,8 +54,8 @@ function pop_item_buy(searchword, grid, row, cjpno) {
     pop_item_grid = grid;
     pop_item_row = row;
 
-    var popUrl = "/popup/pop_item_buy.aspx?cjpno=" + cjpno + "&searchword=" + encodeURIComponent(searchword);	//팝업창에 출력될 페이지 URL
-    var popOption = "width=1000, height=600, resizable=yes, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
+    var popUrl = "/popup/pop_item_buy.aspx?cjpno=" + cjpno + "&searchword=" + escape(searchword);	//팝업창에 출력될 페이지 URL
+    var popOption = "width=1400, height=600, resizable=yes, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
     var pop_item_buy_win = window.open(popUrl, "pop_item_buy", popOption);
     if (pop_item_buy_win) pop_item_buy_win.focus();
 }
@@ -51,7 +64,7 @@ function pop_item_sale(searchword, grid, row, csaleno) {
     pop_item_grid = grid;
     pop_item_row = row;
 
-    var popUrl = "/popup/pop_item_sale.aspx?csaleno=" + csaleno + "&searchword=" + encodeURIComponent(searchword);	//팝업창에 출력될 페이지 URL
+    var popUrl = "/popup/pop_item_sale.aspx?csaleno=" + csaleno + "&searchword=" + escape(searchword);	//팝업창에 출력될 페이지 URL
     var popOption = "width=1000, height=600, resizable=yes, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
     var pop_item_sale_win = window.open(popUrl, "pop_item_sale", popOption);
     if (pop_item_sale_win) pop_item_sale_win.focus();

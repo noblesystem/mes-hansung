@@ -28,6 +28,8 @@ namespace hansung.page6 {
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string page62_search(string param)
         {
+            if(HttpContext.Current.Request.GetUserCookie("userid") == "") return "";
+
             FormManager fm = new FormManager();
             XmlDocument dom = new XmlDocument();
             dom.LoadXml("<xml><proc/><act/><xmldata></xmldata><xmlclipdata/></xml>");

@@ -29,6 +29,8 @@ namespace hansung.page4 {
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string search(string param)
         {
+            if(HttpContext.Current.Request.GetUserCookie("userid") == "") return "";
+
             string usernm = JObject.Parse(param)["usernm"].ToString();
             FormManager fm = new FormManager();
             XmlDocument dom = new XmlDocument();
@@ -49,6 +51,7 @@ namespace hansung.page4 {
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string selone(string param)
         {
+            if(HttpContext.Current.Request.GetUserCookie("userid") == "") return "";
             string planno = JObject.Parse(param)["planno"].ToString();
             FormManager fm = new FormManager();
             XmlDocument dom = new XmlDocument();

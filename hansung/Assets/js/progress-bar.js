@@ -1,18 +1,18 @@
 ﻿var progressBarConfig = {
-    elementName: 'div',
-    tagId: 'loadpanel',
-    position: 'container',
-    message: 'Loading...',
-    height: null,
-    width: null
+    //elementName: 'div',
+    //tagId: 'loadpanel',
+    //position: 'container',
+    //message: 'Loading...',
+    //height: null,
+    //width: null
 };
 
 var progressBarMessage = {
-    saving: 'Đang lưu dữ liệu...',
-    loading: 'Đang tải dữ liệu...',
-    deleting: 'Đang xóa dữ liệu...',
-    colleating: 'Đang đối chiếu tờ khai...',
-    checking: 'Đang kiểm tra dữ liệu...'
+    //saving: 'Đang lưu dữ liệu...',
+    //loading: 'Đang tải dữ liệu...',
+    //deleting: 'Đang xóa dữ liệu...',
+    //colleating: 'Đang đối chiếu tờ khai...',
+    //checking: 'Đang kiểm tra dữ liệu...'
 };
 
 var progressBar = {

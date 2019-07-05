@@ -1,6 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Leftmenu.ascx.cs" Inherits="hansung.UserControl.Leftmenu" %>
 <%@ Import Namespace="hansung" %>
 <%@ Import Namespace="hansung.datamoder" %>
+
 <nav class="navbar-default navbar-static-side" role="navigation">
     <div class="sidebar-collapse">
         <ul class="nav metismenu" id="side-menu">
@@ -56,10 +57,17 @@
             <li class="page">
                 <a href="/"><i class="fa fa-th-large"></i><span class="nav-label">메인화면</span> </a>
             </li>
+            <%=menulist %>
 
+
+
+
+            <!--
             <li class="page">
                 <a href="javescript:void(0)"><i class="fa fa-th-large"></i><span class="nav-label">기초등록</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
+
+
                     <li><a href="/page/page1-1">거래처등록</a></li>
                     <li><a href="/page/page1-2">품목등록</a></li>
                     <li><a href="/page/page1-3">창고등록</a></li>
@@ -68,7 +76,6 @@
                     <li><a href="/page/page1-6">메뉴관리</a></li>
                     <li><a href="/page/page1-7">기초코드</a></li>
                     <li><a href="/page/page1-8">권한관리</a></li>
-                    <li><a href="/page/page1-9">test페이지</a></li>
                 </ul>
             </li>
 
@@ -247,6 +254,8 @@
                     </li>
                 </ul>
             </li>
+
+            -->
         </ul>
 
     </div>

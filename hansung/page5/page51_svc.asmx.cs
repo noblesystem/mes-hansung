@@ -31,6 +31,8 @@ namespace hansung.page5 {
         //선택된 발주전표 내역
         public string search(string param)
         {
+            if(HttpContext.Current.Request.GetUserCookie("userid") == "") return "";
+
             string stno = JObject.Parse(param)["stno"].ToString();
             FormManager fm = new FormManager();
             XmlDocument dom = new XmlDocument();
@@ -51,6 +53,8 @@ namespace hansung.page5 {
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string selone(string param)
         {
+            if(HttpContext.Current.Request.GetUserCookie("userid") == "") return "";
+
             string stno = JObject.Parse(param)["stno"].ToString();
 
             FormManager fm = new FormManager();
@@ -71,6 +75,8 @@ namespace hansung.page5 {
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string detail_search(string param)
         {
+            if(HttpContext.Current.Request.GetUserCookie("userid") == "") return "";
+
             string stno = JObject.Parse(param)["stno"].ToString();
 
             FormManager fm = new FormManager();
@@ -87,10 +93,12 @@ namespace hansung.page5 {
             DataTable dt = CallDB.getExecuteDataTable(dom);
             return dt.ToJson();
         }
-       [WebMethod]
+        [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string del(string param)
         {
+            if(HttpContext.Current.Request.GetUserCookie("userid") == "") return "";
+
             string stno     = JObject.Parse(param)["stno"].ToString();
             string inuser   = "100";
 
@@ -113,6 +121,8 @@ namespace hansung.page5 {
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string save(string param, string param2)
         {
+            if(HttpContext.Current.Request.GetUserCookie("userid") == "") return "";
+
             //===========================================================================master
             string stno     = JObject.Parse(param)["stno"].ToString();
             string iccd     = JObject.Parse(param)["iccd"].ToString();
