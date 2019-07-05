@@ -84,45 +84,69 @@
         </div>
     </div>
     <script>
-        //input 박스 및 textarea 생성
-        //onclick이벤트 들어갈 함수 넣기
-        //그리드 보여질 목로 순번(seq),제목(subject),글쓴이(inuser),날짜(updtime) 순서대로
-        //신규버튼클릭시 글작성가능하도록초기설정(readonly)
-        //신규작성 후  초기화
-        //수정할때 글쓴이는 수정되지 않도록
-        //수정후 저장시 빈값체크 seq, subject,contents,inuser
-        //검색 주소: /page/page19_svc.asmx/notice_search
-        //상세 주소: /page/page19_svc.asmx/notice_selone
-        //저장 주소: /page/page19_svc.asmx/notice_save
-        //
+        
         $(document).ready(function () {
             
             $("#grid1").kendoGrid({
                 columns: [
-                    { field: "seq", title: "seq", width: 0,hidden: true }
-                    , { field: "Num", title: "순번", width: 100 }
-                    , { field: "subject", title: "제목", width: 100 }
-                    , { field: "inuser", title: "글쓴이", width: 100 }
-                    , { field: "updtime", title: "날짜", width: 100 }
+                    //{ selectable: "row", width: "50px" },//멀티 체크박스
+                     { field: "seq", title: "seq", hidden: true }//히든값 안쓰면 hidden: false(defult)
+                    , { field: "Num", title: "순번", width: 100 ,filterable: { cell: { showOperators: false } } }//필터 오페레이터 비사용
+                    , { field: "subject", title: "제목", width: 100,filterable: { cell: { showOperators: false } } }
+                    , { field: "inuser", title: "글쓴이", width: 100,filterable: { cell: { showOperators: false } } }
+                    , { field: "updtime", title: "날짜", width: 100, format: "{0: yyyy-MM-dd }",filterable: {cell: {showOperators: false}} }//데이터 포멧
                 ]
-
+                , selectable: "row"//한줄 클릭할수있도록
+                //, selectable: "multiple"
+                , scrollable: true//스크롤 on
+                , change: onChange//체인지시 function onCHange 합수 호출
                 , width: 450
                 , height: 400
-                //, onRowClick: function (data) {
-                //    fn_selone(data.key.seq);
-                //}
+                , pageable: true//페이지 내비게이션
+                , filterable: {//필터
+                    mode: "menu,row"//종류 메뉴 or row
+                    ,operators: {
+                        string: {contains: "Contains"},//Sting 타입 필터 옵션 기초 세팅
+                        date: { eq: "Equal" }//date 타입 필터 옵션 기초 세팅
+                    }
+
+                }
             });
             fn_search();
         });
         //===============================================================
-        //검색
+        //클릭이벤트
+        //===============================================================
+        function onChange() {
+            var grid = $("#grid1").data("kendoGrid");  
+            var rowdata = grid.dataItem(grid.select());
+            fn_selone(rowdata.seq);
+        }
+        //===============================================================
+        //data 셋팅
         //===============================================================
         function fn_setData(data) {
             var grid = $("#grid1").data("kendoGrid");
-            var dataSource = new kendo.data.DataSource({ data: data });
+            var dataSource = new kendo.data.DataSource({
+                data: data,
+                schema: {
+                    model: {
+                        fields: {
+                            Num: { type: "number" },
+                            subject: { type: "string" },
+                            inuser: { type: "string" },
+                            updtime: { type: "date" }
+                        }
+                    }
+                }
+                , pageSize: 5
+                
+            });
             grid.setDataSource(dataSource);
         }
-
+        //===============================================================
+        //검색
+        //===============================================================
         function fn_search() {
             var param = JSON.stringify({ 'subject': $('#s_subject').val() });
             $.ajax({
