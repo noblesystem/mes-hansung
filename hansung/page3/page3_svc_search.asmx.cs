@@ -35,10 +35,30 @@ namespace hansung.page3 {
             dom.SelectSingleNode("//act").InnerText = "proc";
             XmlNode node;
             node = dom.CreateNode(XmlNodeType.Element, "zrow", "");
-            //fm.icnitMakeNode(dom, node, "varchar", "jpno", jpno, "20");
+            //fm.icnitMakeNode(dom, node, "varchar", "saleno", saleno, "20");
             dom.SelectSingleNode("//xmldata").AppendChild(node);
 
             string query = @"PAGE32_SEARCH";
+            dom.SelectSingleNode("//proc").InnerText = query;
+            DataTable dt = CallDB.getExecuteDataTable(dom);
+            return dt.ToJson();
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string page32_pop_search (string param) {
+            if(HttpContext.Current.Request.GetUserCookie("userid") == "") return "";
+
+            string saleno = JObject.Parse(param)["saleno"].ToString();
+            FormManager fm = new FormManager();
+            XmlDocument dom = new XmlDocument();
+            dom.LoadXml("<xml><proc/><act/><xmldata></xmldata><xmlclipdata/></xml>");
+            dom.SelectSingleNode("//act").InnerText = "proc";
+            XmlNode node;
+            node = dom.CreateNode(XmlNodeType.Element,"zrow","");
+            fm.icnitMakeNode(dom, node, "varchar", "saleno", saleno, "20");
+            dom.SelectSingleNode("//xmldata").AppendChild(node);
+
+            string query = @"PAGE32_POP_SEARCH";
             dom.SelectSingleNode("//proc").InnerText = query;
             DataTable dt = CallDB.getExecuteDataTable(dom);
             return dt.ToJson();

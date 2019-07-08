@@ -103,36 +103,7 @@ namespace hansung.page {
             return JsonConvert.SerializeObject(result);
         }
 
-        [WebMethod]
-        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public string notice_save(string param)
-        {
-            string seq = JObject.Parse(param)["seq"].ToString();
-            string mode = JObject.Parse(param)["mode"].ToString();
 
-            string subject = JObject.Parse(param)["subject"].ToString();
-            string contents = JObject.Parse(param)["contents"].ToString();
-            string inuser = JObject.Parse(param)["inuser"].ToString();
-
-            FormManager fm = new FormManager();
-            XmlDocument dom = new XmlDocument();
-            dom.LoadXml("<xml><proc/><act/><xmldata></xmldata><xmlclipdata/></xml>");
-            dom.SelectSingleNode("//act").InnerText = "proc";
-            XmlNode node;
-            node = dom.CreateNode(XmlNodeType.Element, "zrow", "");
-            fm.icnitMakeNode(dom, node, "varchar", "mode", mode, "10");
-            fm.icnitMakeNode(dom, node, "int", "seq", seq, "20");
-            fm.icnitMakeNode(dom, node, "varchar", "subject", subject, "20");
-            fm.icnitMakeNode(dom, node, "varchar", "contents", contents, "200");
-            fm.icnitMakeNode(dom, node, "varchar", "inuser", inuser, "20");
-
-            dom.SelectSingleNode("//xmldata").AppendChild(node);
-
-            string query = @"NOTICE_TEST_SAVE";
-            dom.SelectSingleNode("//proc").InnerText = query;
-            result result = CallDB.getXmlTrans(dom);
-            return JsonConvert.SerializeObject(result);
-        }
 
 
     }

@@ -10,6 +10,27 @@ DevExpress.ui.dxDataGrid.defaultOptions({
         dateSerializationFormat: "yyyy.MM.dd"
     }
 });
+$(document).ready(function (e) {
+    $(".datecombo").datepicker({ dateFormat: 'yy.mm.dd' });
+})
+function isEmpty(str){
+    if(typeof str == "undefined" || str == null || str == "")
+        return true;
+    else
+        return false ;
+}
+function isNumeric(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+}
+function getBoolean(str) {
+    if("true".startsWith(str)){
+        return true;
+    } else if("false".startsWith(str)){
+        return false;
+    } else {
+        return null;
+    }          
+}
 
 //====================================================================================
 function checklogin() {
@@ -17,7 +38,6 @@ function checklogin() {
     if (userid != "" & userid != undefined) return 1;
     else return 0;
 }
-
 //====================================================================================
 
 //====================================================================================

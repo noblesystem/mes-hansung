@@ -60,7 +60,7 @@ namespace hansung
         /// 
         /// ==========================================================================
         #region width xml - getXmlTrans
-        public static object ExcuteScalar(XmlDocument dom)
+        public static object getExcuteScalar(XmlDocument dom)
         {
             /*DB 처리*/
             DataSet ds = null;
@@ -280,7 +280,93 @@ namespace hansung
             }
             return result;
         }
+        public static result getXmlTransAll(List<XmlDocument> domList)
+        {
+            //지역변수
+            result result = new result();
+            string ItemName = string.Empty;
+            string ItemValue = string.Empty;
+            int ItemSize = 0;
+            try
+            {
+                using (TransactionScope scope = new TransactionScope())
+                {
+                    //-------------------------------------------------------------
+                    // start : XMLDOM LOOP
+                    //-------------------------------------------------------------
+                    for(int x = 0; x < domList.Count; x++) {
+                        XmlDocument dom = domList[x];
+                        string pPackageName = dom.SelectSingleNode("//xml/proc").InnerText;	//패키지명
+                        int ParamCnt = dom.SelectSingleNode("//xmldata").ChildNodes[0].ChildNodes.Count;	//파라미터 카운트
+                        int RowCnt = dom.SelectNodes("//xmldata/zrow").Count;									//행의 카운트
 
+                        SqlParameter[] lac_Params = get_SqlParams(ParamCnt + 3);
+                        for (int k = 0; k < RowCnt; k++)
+                        {
+                            XmlNode node = dom.SelectSingleNode("//xml/xmldata").ChildNodes[k];
+
+                            for (int i = 0; i < ParamCnt; i++)
+                            {
+                                ItemName = node.ChildNodes[i].Name;			    //IN 파라메터 명
+                                ItemValue = node.ChildNodes[i].InnerText;		//IN 파라메터 값
+                                ItemSize = ItemValue.Length;					//IN 파라메터 길이
+                                if (ItemSize == 0) ItemSize = 1;
+
+                                if (node.ChildNodes[i].Attributes["coltype"].Value == "varchar") lac_Params[i] = new SqlParameter(ItemName, SqlDbType.VarChar, Int32.Parse(node.ChildNodes[i].Attributes["size"].Value));
+                                else if (node.ChildNodes[i].Attributes["coltype"].Value == "nvarchar") lac_Params[i] = new SqlParameter(ItemName, SqlDbType.NVarChar, Int32.Parse(node.ChildNodes[i].Attributes["size"].Value));
+                                else if (node.ChildNodes[i].Attributes["coltype"].Value == "char") lac_Params[i] = new SqlParameter(ItemName, SqlDbType.VarChar, Int32.Parse(node.ChildNodes[i].Attributes["size"].Value));
+                                else if (node.ChildNodes[i].Attributes["coltype"].Value == "int") lac_Params[i] = new SqlParameter(ItemName, SqlDbType.Int);
+                                else if (node.ChildNodes[i].Attributes["coltype"].Value == "numeric") lac_Params[i] = new SqlParameter(ItemName, SqlDbType.Float);
+                                else if (node.ChildNodes[i].Attributes["coltype"].Value == "datetime") lac_Params[i] = new SqlParameter(ItemName, SqlDbType.DateTime);
+
+                                if (node.ChildNodes[i].Attributes["output"].Value == "output") lac_Params[i].Direction = ParameterDirection.Output;
+
+                                if (node.ChildNodes[i].Attributes["coltype"].Value == "int") ItemValue = ItemValue.Replace(",", "");
+                                if (node.ChildNodes[i].Attributes["coltype"].Value == "numeric") ItemValue = ItemValue.Replace(",", "");
+
+                                if (node.ChildNodes[i].Attributes["coltype"].Value == "int" && ItemValue == "") lac_Params[i].Value = 0;
+                                else if (node.ChildNodes[i].Attributes["coltype"].Value == "numeric" && ItemValue == "") lac_Params[i].Value = 0;
+                                else lac_Params[i].Value = ItemValue;
+                            }
+                            lac_Params[ParamCnt] = new SqlParameter("@vo_code", SqlDbType.VarChar, 2);
+                            lac_Params[ParamCnt].Direction = ParameterDirection.Output;
+
+                            lac_Params[ParamCnt + 1] = new SqlParameter("@vo_msg", SqlDbType.VarChar, 200);
+                            lac_Params[ParamCnt + 1].Direction = ParameterDirection.Output;
+
+                            lac_Params[ParamCnt + 2] = new SqlParameter("@vo_val", SqlDbType.VarChar, 200);
+                            lac_Params[ParamCnt + 2].Direction = ParameterDirection.Output;
+
+                            if (dom.SelectNodes("//act").Count == 1 && dom.SelectSingleNode("//act").InnerText.ToLower() == "proc")
+                                SqlHelper.ExecuteScalar(constr(), CommandType.StoredProcedure, pPackageName, lac_Params); //프로시저
+                            else
+                                SqlHelper.ExecuteScalar(constr(), CommandType.Text, pPackageName, lac_Params); //프로시저
+
+                            result.code = (string)lac_Params[ParamCnt].Value;
+                            result.msg = (string)lac_Params[ParamCnt + 1].Value;
+                            result.val = (string)lac_Params[ParamCnt + 2].Value;
+                            if (!result.code.Equals("OK"))
+                            {
+                                throw new NullReferenceException();
+                            }
+                        }
+                    }
+                    scope.Complete();
+                    //-------------------------------------------------------------
+                    // end : XMLDOM LOOP
+                    //-------------------------------------------------------------
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.code = "N";
+                result.msg  = ex.Message; // ex.Message;
+                result.val  = ex.Message;
+            }
+
+            return result;
+        }
         public static result getXmlTransMulti(XmlDocument dom)
         {
             //지역변수

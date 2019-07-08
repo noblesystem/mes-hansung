@@ -33,241 +33,293 @@
                             </ul>
 <div class="fixedScroll">
 <!-- 전표리스트 ==================================================================================== -->
-                                <table id="grid1"></table>
-                                <div id="grid1_pager"></div>
+<div id="grid1"></div>
 <!-- 전표 ======================================================================================== -->
-                                <table class="responsive-table tb_bill tablepopup none_border" style="width: unset">
-                                    <tbody>
-                                        <tr>
-                                            <td>전표번호</td>
-                                            <td><input type="text" id="saleno" readonly="readonly" />차수<input type="text" id="chasu" readonly="readonly" />공통전표<input type="text" id="csaleno" readonly="readonly" /></td>
-                                            <td>전표구분</td>
-                                            <td><select id="gucd" disabled="disabled"></select></td>
-                                        </tr>
-                                        <tr>
-                                            <td>수주일자(번호)</td>
-                                            <td><input type="text" id="saledt" class="datecombo"/></td>
-                                            <td>영업 담당</td>
-                                            <td><input id="userid" type="hidden"/><input id="usernm" type="text"/><input type="button" value="검색" onclick="pop_user($('#usernm').val(), 'userid', 'usernm')" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td>고객사명</td>
-                                            <td><input id="custcd" type="hidden"/><input id="custnm" type="text"/><input type="button" value="검색" onclick="pop_cust($('#custnm').val(), 'custcd', 'custnm', 'tel')" /></td>
-                                            <td>고객사 연락처</td>
-                                            <td><input id="tel" type="text"/></td>
-                                        </tr>
-                                        <tr>   
-                                            <td>거래조건</td>
-                                            <td><select id="termcd"></select></td>
-                                            <td>미수금</td>
-                                            <td><input id="janamt" type="text" class="inputmoney inputmoney-manager" style="width: 100%" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td>출고 창고</td>
-                                            <td><select id="whcd"></select></td>
-                                            <td>출고예정일</td>
-                                            <td><input id="ydt" type="text"  class="datecombo"/></td>
-                                        </tr>
-                                        <tr>
-                                            <td>도착지 연락처</td>
-                                            <td><input id="doaddr" type="text" /></td>
-                                            <td>프레임</td>
-                                            <td><select id="framecd"></select></td>
-                                        </tr>
-                                        <tr>
-                                            <td>발주 비고</td>
-                                            <td colspan="3"><input id="rmk" type="text"/></td>
-                                        </tr>
-                                        <tr>
-                                            <td>운송사</td>
-                                            <td><input id="carnm" type="text" /></td>
-                                            <td>차량번호</td>
-                                            <td><input id="carno" type="text" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td>운임</td>
-                                            <td><input id="carpayamt" type="text" /></td>
-                                            <td>승인확인</td>
-                                            <td><input id="checkdt" type="text" class="datecombo" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td>출고확인</td>
-                                            <td><input id="outdt" type="text"  class="datecombo" /></td>
-                                            <td>출고시간</td>
-                                            <td><input id="outtime" type="text"/></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-<!-- 구매전표상세 ==================================================================================== -->
+<table><tr><td width="100">[HIDDEN]</td><td>
+    chasu<input type="text" id="chasu"      readonly="readonly" />
+    csaleno<input type="text" id="csaleno"    readonly="readonly" />
+    useyn<input type="text" id="useyn"      readonly="readonly" />
+</td></tr></table>
+<table class="responsive-table tb_bill tablepopup none_border" style="width: unset">
+    <tbody>
+        <tr>
+            <td>전표번호</td>
+            <td><input type="text" id="saleno" readonly="readonly" /></td>
+            <td>전표구분</td>
+            <td><select id="gucd" disabled="disabled"></select></td>
+            <td>마감여부</td>
+            <td><select id="scd"></select></td>
+        </tr>
+        <tr>
+            <td>수주일자(c)</td>
+            <td><input type="text" id="saledt" class="datecombo"/></td>
+            <td>영업 담당</td>
+            <td><input id="userid" type="hidden"/><input id="usernm" type="text"/><input type="button" value="검색" onclick="pop_user($('#usernm').val(), 'userid', 'usernm')" /></td>
+            <td>고객사명(c)</td>
+            <td><input id="custcd" type="hidden"/><input id="custnm" type="text"/><input type="button" value="검색" onclick="pop_cust($('#custnm').val(), 'custcd', 'custnm', 'tel')" /></td>
+        </tr>
+        <tr>
+            <td>고객사 연락처(c)</td>
+            <td><input id="tel" type="text"/></td>
+            <td>거래조건(c)</td>
+            <td><select id="termcd"></select></td>
+            <td>미수금</td>
+            <td><input id="janamt" type="text" class="inputmoney inputmoney-manager" style="width: 100%" /></td>
+        </tr>
+        <tr>
+            <td>출고창고(c)</td>
+            <td><select id="whcd"></select></td>
+            <td>출고예정일(c)</td>
+            <td><input id="ydt" type="text"  class="datecombo"/></td>
+            <td>도착지 연락처(c)</td>
+            <td><input id="doaddr" type="text" /></td>
+        </tr>
+        <tr>
+            <td>프레임(c)</td>
+            <td><select id="framecd"></select></td>
+            <td>발주 비고</td>
+            <td colspan="5"><input id="rmk" type="text"/></td>
+        </tr>
+        <tr>
+            <td>운송사</td>
+            <td><input id="carnm" type="text" /></td>
+            <td>차량번호</td>
+            <td><input id="carno" type="text" /></td>
+            <td>운임</td>
+            <td><input id="carpayamt" type="text" /></td>
+        </tr>
+        <tr>
+            <td>승인확인</td>
+            <td><input id="checkdt" type="text" class="datecombo" /></td>
+            <td>출고확인</td>
+            <td><input id="outdt" type="text"  class="datecombo" /></td>
+            <td>출고시간</td>
+            <td><input id="outtime" type="text"/></td>
+        </tr>
+    </tbody>
+</table>
+<!-- 영업전표상세 ==================================================================================== -->
+<div id="grid2"></div>
+<br/>[작업 내역 리스트]
+<br/>* 테스트 및 보완 필요
+<br/>* 요청사항 보완
+<br/>* 컬럼 넓이 수정
 
-                                <table id="grid2"></table>
-                                <div id="grid2_pager"></div>
-</div>
 				    </div>
 			    </div>
 		    </div>
 	    </div> 
     </div>
+<style>
+#data-grid-demo {
+    min-height: 700px;
+}
+#gridContainer {
+    padding-top: 45px;
+}
+#gridDeleteSelected {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    margin: 1px;
+    top: 0;
+}
+.dx-button-text {
+    line-height: 0;
+}
+</style>
     <script>
         var saleno = '<%=saleno %>';
         $(document).ready(function () {
-            $(".datecombo").datepicker({ dateFormat: 'yy.mm.dd' });
-            //saleno = $('#saleno').val();
-            //if (saleno == '') saleno = '';
-            $('#termcd').zentSetCombo('C001', '', '==선택==');
-            $('#curcd').zentSetCombo('C002', '', '==선택==');
-            $('#whcd').zentSetComboWhcd('', '==선택==');
-            //$('#paycd').zentSetCombo('C003', '', '==선택==');
-            $('#gucd').zentSetCombo('C013', '', '==선택==');
-            //var string_scd = combo_code_string('C010', '', '==선택==');
+            //combo
+            $('#scd'    ).zentSetCombo('C010', '', '==선택==');
+            $('#termcd' ).zentSetCombo('C001', '', '==선택==');
+            $('#curcd'  ).zentSetCombo('C002', '', '==선택==');
+            $('#whcd'   ).zentSetComboWhcd('', '==선택==');
+            $('#gucd'   ).zentSetCombo('C013', '', '==선택==');
+
             var string_curcd = combo_code_string('C002', '', '==선택==');
-            //var string_ckcd = combo_code_string('C005', '', '==선택==');
+            //=====================================================================
+            //grid column option
+            //=====================================================================
+            var grid_combo = function(container, options) {
+                var combo = [];
+                if (options.field == 'curcd') combo = string_curcd;
+                if (options.field == 'ckcd')  combo = string_ckcd;
+                $('<input required name="' + options.field + '"/>')
+                    .appendTo(container)
+                    .kendoDropDownList({
+                          autoBind: false
+                        , dataTextField : "codenm"
+                        , dataValueField: "code"
+                        , dataSource    : { data : combo }
+                    });
+            }
+            var editor_cal = function(container, options){
+                var input = $("<input/>"); 
+                input.attr("name",options.field); 
+                input.appendTo(container); 
+                input.kendoDateTimePicker({
+                    format: "yyyy.MM.dd"
+                    , dateInput: false
+                });
+            }
             //=====================================================================
             //grid setting
             //=====================================================================
-            jQuery("#grid1").jqGrid({
-                colNames: ['전표번호', 'gucd', 'chasu', 'csaleno', '영업담당', '고객사명', '출고창고', '출고예정일', '승인확인', '출고확인', '품목명', '규격',
-                    '매수', '수량(B)', '운송사', '차량번호', '운임', '수주비고'],
-                colModel: [
-                      { name: "saleno", index: "saleno", width: 100 }
-                    , { name: "gucd", index: "gucd", width: 100 }
-                    , { name: "chasu", index: "chasu", width: 100 }
-                    , { name: "csaleno", index: "csaleno", width: 100 }
-                    , { name: "usernm", index: "usernm", width: 100 }
-                    , { name: "custnm", index: "custnm", width: 100 }
-                    , { name: "whnm", index: "whnm", width: 100 }
-                    , { name: "ydt", index: "ydt", width: 100 }
-                    , { name: "checkdt", index: "checkdt", width: 100 }
-                    , { name: "outdt", index: "outdt", width: 100 }
-                    , { name: "itemnm", index: "itemnm", width: 100 }
-                    , { name: "spec", index: "spec", width: 100 }
-                    , { name: "qty", index: "qty", width: 100 }
-                    , { name: "boxqty", index: "boxqty", width: 100 }
-                    , { name: "carnm", index: "carnm", width: 100 }
-                    , { name: "carno", index: "carno", width: 100 }
-                    , { name: "carpayamt", index: "carpayamt", width: 100 }
-                    , { name: "rmk", index: "rmk", width: 100 }
-                ],
-
-                //forceFit: true,
-                //cellEdit: true,
-                //cellsubmit: 'clientArray',
-                onSelectRow: function (rowid, status, e) {
-                    saleno = $('#grid1').jqGrid('getCell', rowid, 'saleno');
-                    fn_selone();
-                },
-                //rowNum: 10,
-                //rowList: [10, 20, 30],
-                //pager: '#pager2',
-                //sortname: 'id',
-                viewrecords: true,
-                //sortorder: "desc",
-                height: 100,
-                caption: ""
+			$("#grid1").kendoGrid({
+                dataSource: {
+                      schema: {
+                        model: {
+                            fields: {
+                                  saleno     : { type : "string" }
+                                , gucd       : { type : "string" }
+                                , chasu      : { type : "number" }
+                                , csaleno    : { type : "string" }
+                                , usernm     : { type : "string" }
+                                , custnm     : { type : "string" }
+                                , whnm       : { type : "string" }
+                                , ydt        : { type : "string" }
+                                , checkdt    : { type : "string" }
+                                , outdt      : { type : "string" }
+                                , itemnm     : { type : "string" }
+                                , spec       : { type : "string" }
+                                , qty        : { type : "string" }
+                                , boxqty     : { type : "string" }
+                                , carnm      : { type : "string" }
+                                , carno      : { type : "number" }
+                                , carpayamt  : { type : "number" }
+                                , rmk        : { type : "string" }
+                            }
+                        }
+                    }
+                }
+                , columns: [
+                      { field : "saleno"    , title : '전표번호'   , hidden : false , width : 120 }
+                    , { field : "gucd"      , title : 'gucd'       , hidden : false , width : 100 }
+                    , { field : "chasu"     , title : 'chasu'      , hidden : true  , width : 100 }
+                    , { field : "csaleno"   , title : 'csaleno'    , hidden : true  , width : 100 }
+                    , { field : "usernm"    , title : '영업담당'   , hidden : false , width : 100 }
+                    , { field : "custnm"    , title : '고객사명'   , hidden : false , width : 100 }
+                    , { field : "whnm"      , title : '출고창고'   , hidden : false , width : 100 }
+                    , { field : "ydt"       , title : '출고예정일' , hidden : false , width : 100 }
+                    , { field : "checkdt"   , title : '승인확인'   , hidden : false , width : 100 }
+                    , { field : "outdt"     , title : '출고확인'   , hidden : false , width : 100 }
+                    , { field : "itemnm"    , title : '품목명'     , hidden : false , width : 100 }
+                    , { field : "spec"      , title : '규격'       , hidden : false , width : 100 }
+                    , { field : "qty"       , title : '매수'       , hidden : false , width : 100 }
+                    , { field : "boxqty"    , title : '수량(B)'    , hidden : false , width : 100 }
+                    , { field : "carnm"     , title : '운송사'     , hidden : false , width : 100 }
+                    , { field : "carno"     , title : '차량번호'   , hidden : false , width : 100 }
+                    , { field : "carpayamt" , title : '운임'       , hidden : false , width : 100 }
+                    , { field : "rmk"       , title : '수주비고'   , hidden : false , width : 100 } 
+                ]
+                , selectable: "row" //row, multiple
+                , scrollable: true
+                , resizable : true
+                , height    : 200
+                , change    : function(e) {
+                        var row = this.select();
+                        jpno = this.dataItem(row[0]).jpno;
+                        fn_selone();
+                    }
             });
-            jQuery("#grid1").jqGrid('navGrid', '#grid1_pager', { edit: false, add: false, del: false });
-            jQuery("#grid2").jqGrid({
-                colNames: ['mode', '전표', '번호', '품목코드', '품목명', '규격', '매수', '수량(B)', '화폐단위', '단가', '공급가액', '부가세', '합계 금액',
-                    '항목비고', '시리얼 No', 'CASE No', 'PROD No'],
-                colModel: [
-                      { name: "mode", index: "mode", width: 100, editable: false }
-                    , { name: "saleno", index: "saleno", width: 100, editable: false }
-                    , { name: "saleseq", index: "saleseq", width: 100, editable: false }
-                    , { name: "itemcd", index: "itemcd", width: 100, editable: false }
-                    , { name: "itemnm", index: "itemnm", width: 100, editable: false }
-                    , { name: "spec", index: "spec", width: 100, editable: false }
-                    , { name: "qty", index: "qty", width: 100, editable: false }
-                    , { name: "boxqty", index: "boxqty", width: 100, editable: true }
-                    , { name: "curcd", index: "curcd", width: 100, editable: true, formatter: "select", edittype: "select", editoptions: { value: string_curcd } }
-                    , { name: "unitprice", index: "unitprice", width: 100, editable: true }
-                    , { name: "supplyamt", index: "supplyamt", width: 100, editable: true }
-                    , { name: "vat", index: "vat", width: 100, editable: true }
-                    , { name: "totamt", index: "totamt", width: 100, editable: true,
-                        editoptions: {
-                            size: '50', maxlength: '100', dataEvents: [{
-                                type: 'keydown', fn: function (e) { }
-                            }]    //dataEvents 종료
-                        }
-                    }  //editoptions 종료, 칼럼정의 종료
-                    , { name: "rmk", index: "rmk", width: 100, editable: true }
-                    , { name: "sno", index: "sno", width: 100, editable: true }
-                    , { name: "caseno", index: "caseno", width: 100, editable: true }
-                    , { name: "prodno", index: "prodno", width: 100, editable: true }
-                ],
-                onSelectRow: function (rowid, status, e) {
-                    var $this = $(this);
-
-                    //$this.jqGrid('setGridParam', { cellEdit: true });
-                    //$this.jqGrid('editCell', iRow, iCol, true);
-                    //$this.jqGrid('setGridParam', { cellEdit: false });
-                    //if (rowid && rowid !== lastsel) {
-                    //    jQuery('#grid2').jqGrid('restoreRow', lastsel);
-                    //    jQuery('#grid2').jqGrid('editRow', rowid, true);
-                    //    lastsel = rowid;
-                    //}
-                },
-                //loadonce: true,
-                //gridview: true,
-                rownumbers: true,                datatype: 'json',                //viewrecords: true,                //height: 'auto',                //editurl: 'clientArray',                forceFit: true,
-                cellEdit: true,
-                cellsubmit: 'clientArray',
-                afterSaveCell: function (rowid, cellname, value, iRow, iCol) {
-                    if (cellname == "totamt") {
-                        var totamt = value;
-                        if (totamt == '0' || totamt == '') return;
-                        var supplyamt = parseInt(totamt / 1.1);
-                        var vat = totamt - supplyamt;
-                        $("#grid2").jqGrid('setRowData', rowid, { 'supplyamt': supplyamt });
-                        $("#grid2").jqGrid('setRowData', rowid, { 'vat': vat });
-                    }
-                },
-                afterEditCell: function (rowid, cellname, value, iRow, iCol) {
-                    //if (cellname == 'tongdt') { $("#" + iRow + "_tongdt", "#grid2").datepicker({ dateFormat: "yy.mm.dd" }); }
-                    //if (cellname == 'passdt') { $("#" + iRow + "_passdt", "#grid2").datepicker({ dateFormat: "yy.mm.dd" }); }
-                    //if (cellname == 'ftdt') { $("#" + iRow + "_ftdt", "#grid2").datepicker({ dateFormat: "yy.mm.dd" }); }
-                    //if (cellname == 'conbandt') { $("#" + iRow + "_conbandt", "#grid2").datepicker({ dateFormat: "yy.mm.dd" }); }
-                    //if (cellname == 'inyodt') { $("#" + iRow + "_inyodt", "#grid2").datepicker({ dateFormat: "yy.mm.dd" }); }
-                    //if (cellname == 'indt') { $("#" + iRow + "_indt", "#grid2").datepicker({ dateFormat: "yy.mm.dd" }); }
-                    //if (cellname == 'proddt') { $("#" + iRow + "_proddt", "#grid2").datepicker({ dateFormat: "yy.mm.dd" }); }
-                    //$("#" + rowid + "_" + cellname).blur(function () {
-                    //    $("#tong_grid").jqGrid("saveCell", iRow, iCol);
-                    //});
-                },
-                /*
-                afterEditCell: function (id, name, val, iRow, iCol) {
-                    if (name == 'invdate') {
-                        jQuery("#" + iRow + "_invdate", "#list").datepicker({ dateFormat: "yy-mm-dd" });
-                    }
-                },
-                */
-                ondblClickRow: function (rowid, row, col) {
-                    var cm = jQuery("#grid2").jqGrid("getGridParam", "colModel");
-                    if (cm[col].name == "itemnm") {
-                        var searchword = $('#grid2').jqGrid('getCell', rowid, 'itemnm');
-                        var csaleno = $('#csaleno').val();
-                        var gucd = $('#gucd').val();
-                        if (gucd == "S") {
-                            pop_item('', 'grid2', rowid);
-                        }
-                        else {
-                            pop_item_sale('', 'grid2', rowid, csaleno);
+			$("#grid2").kendoGrid({
+                dataSource: {
+                    schema: {
+                        model: {
+                            fields: {
+                                  saleno   : { type : "string" }
+                                , saleseq  : { type : "number" }
+                                , itemcd   : { type : "string" }
+                                , itemnm   : { type : "string" }
+                                , spec     : { type : "string" }
+                                , qty      : { type : "number" }
+                                , boxqty   : { type : "number" }
+                                , curcd    : { type : "string" }
+                                , unitprice: { type : "number" }
+                                , supplyamt: { type : "number" }
+                                , vat      : { type : "number" }
+                                , totamt   : { type : "number" }
+                                , rmk      : { type : "string" }
+                                , sno      : { type : "string" }
+                                , caseno   : { type : "string" }
+                                , prodno   : { type : "string" }
+                            }
                         }
                     }
-                },
-                //rowNum: 10,
-                //rowList: [10, 20, 30],
-                //pager: '#pager2',
-                //sortname: 'id',
-                viewrecords: true,
-                //sortorder: "desc",
-                //height: 80,
-                caption: ""
+                }
+                , columns: [
+                      { field : "saleno"     , title : '전표'     , hidden : false , width : 120 }
+                    , { field : "saleseq"    , title : '번호'     , hidden : false , width : 100 }
+                    , { field : "itemcd"     , title : '품목코드' , hidden : false , width : 100 }
+                    , { field : "itemnm"     , title : '품목명'   , hidden : false , width : 100 }
+                    , { field : "spec"       , title : '규격'     , hidden : false , width : 100 }
+                    , { field : "qty"        , title : '매수'     , hidden : false , width : 100 }
+                    , { field : "boxqty"     , title : '수량(B)'  , hidden : false , width : 100 }
+                    , { field : "curcd"      , title : '화폐단위' , hidden : false , width : 100, editor : grid_combo }
+                    , { field : "unitprice"  , title : '단가'     , hidden : false , width : 100 }
+                    , { field : "supplyamt"  , title : '공급가액' , hidden : false , width : 100 }
+                    , { field : "vat"        , title : '부가세'   , hidden : false , width : 100 }
+                    , { field : "totamt"     , title : '합계 금액', hidden : false , width : 100 }
+                    , { field : "rmk"        , title : '항목비고' , hidden : false , width : 100 }
+                    , { field : "sno"        , title : '시리얼 No', hidden : false , width : 100 }
+                    , { field : "caseno"     , title : 'CASE No'  , hidden : false , width : 100 }
+                    , { field : "prodno"     , title : 'PROD No'  , hidden : false , width : 100 }
+                    ]
+                , autoSync      : true
+                , navigatable   : true
+                , selectable    : "row" //row, multiple
+                , scrollable    : true
+                , editable      : true
+                , resizable     : true
+                //, change    : grid1_change
+                //, dataBound : grid2_dataBound
+                //, width     : 450
+                , height        : 200
+                , edit          : function(e) {
+                        var grid = this;
+                        grid.tbody.find("td").keydown(function(e) {
+                            if (event.keyCode == 13) {
+                                var colid = e.target.title;
+                                if (colid == 'itemnm') {
+                                    var gucd  = $('#gucd').val();
+                                    var rowid = grid.select().index();
+                                    var sw = e.target.value;
+                                    if (gucd == "B" || saleno == '') {
+                                        pop_item(sw, 'grid2', rowid);
+                                    }
+                                }
+                                if (colid == 'totamt') {
+                                    var termcd  = $('#termcd').val();
+                                    if (termcd == '1') { //내수일경우
+                                        var dataItem = grid.dataItem(grid.select());
+                                        var totamt = e.target.value;
+                                        var supplyamt = parseInt(totamt / 1.1);
+                                        var vat = totamt - supplyamt;
+                                        dataItem.set('vat', vat);
+                                        dataItem.set('supplyamt', supplyamt);
+                                    }
+                                }
+                            }
+                        });
+                    }
+                , dataBound     : function(e) {
+                    var grid = this;
+				}
+				, save: function(e) {
+	        	    if (e.values.hasOwnProperty('CD_GD')) { 
+	        	    }
+	        	    if (e.values.hasOwnProperty('NUM_PT')) {
+	        	    }	
+				}
             });
-            jQuery("#grid2").jqGrid('navGrid', '#grid2_pager', { edit: false, add: false, del: false });
-            //$("#grid2 > .ui-jqgrid-titlebar").hide();
-            //$("#grid2 > .ui-jqgrid-titlebar").hide();
-            //$("#grid2 > .ui-jqgrid-titlebar").hide();
-            fn_search();
+
+            grid1 = $('#grid1').data('kendoGrid');
+            grid2 = $('#grid2').data('kendoGrid');
+
+            if (saleno == '') { grid2.dataSource.data([]); }
+            else { fn_search(); fn_selone(); }
         });
         //===============================================================
         // 검색
@@ -282,16 +334,15 @@
                 dataType: "json",
                 async: false,
                 success: function (data) {
-                    $('#grid1')[0].addJSONData(JSON.parse(data.d));
-                    var count = $("#grid1").getGridParam("reccount");
-                    if (count > 0) {
-                        var rowid = $("#grid1").getDataIDs()[0];
-                        var csaleno = $('#grid1').getCell(rowid, 'csaleno');
-                        $('#csaleno').val(csaleno);
-                    }
-                    else {
-                        $('#csaleno').val('');
-                    }
+                    data = JSON.parse(data.d);
+
+                    var grid = $('#grid1').data('kendoGrid');
+                    grid.dataSource.data(data);
+                    
+                    //첫 행 선택
+                    var row = grid.tbody.find(">tr:not(.k-grouping-row)").eq(0);
+                    grid.select(row);
+                    $('#csaleno').val(grid.dataItem(row).csaleno);
                 },
                 error: function (request, status, error) {
                     //alert("code = " + request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
@@ -310,36 +361,40 @@
                 async: false,
                 success: function (data) {
                     var result = JSON.parse(data.d);
-                    $('#saleno').val(result[0].saleno);
-                    $('#chasu').val(result[0].chasu);
-                    $('#csaleno').val(result[0].csaleno);
-                    $('#gucd').val(result[0].gucd);
-                    $('#saledt').val(result[0].saledt);
-                    $('#userid').val(result[0].userid);
-                    $('#custcd').val(result[0].custcd);
-                    $('#termcd').val(result[0].termcd);
-                    $('#janamt').val(result[0].janamt);
-                    $('#whcd').val(result[0].whcd);
-                    $('#ydt').val(result[0].ydt);
-                    $('#dotel').val(result[0].dotel);
-                    $('#framecd').val(result[0].framecd);
-                    $('#doaddr').val(result[0].doaddr);
-                    $('#rmk').val(result[0].rmk);
-                    $('#carnm').val(result[0].carnm);
-                    $('#carno').val(result[0].carno);
-                    $('#carpayamt').val(result[0].carpayamt);
-                    $('#checkdt').val(result[0].checkdt);
-                    $('#outdt').val(result[0].outdt);
-                    $('#outtime').val(result[0].outtime);
+                    $('#saleno'     ).val(result[0].saleno   );
+                    $('#chasu'      ).val(result[0].chasu    );
+                    $('#csaleno'    ).val(result[0].csaleno  );
+                    $('#gucd'       ).val(result[0].gucd     );
+                    $('#scd'        ).val(result[0].scd      );
+                    $('#saledt'     ).val(result[0].saledt   );
+                    $('#userid'     ).val(result[0].userid   );
+                    $('#custcd'     ).val(result[0].custcd   );
+                    $('#termcd'     ).val(result[0].termcd   );
+                    $('#janamt'     ).val(result[0].janamt   );
+                    $('#whcd'       ).val(result[0].whcd     );
+                    $('#ydt'        ).val(result[0].ydt      );
+                    $('#dotel'      ).val(result[0].dotel    );
+                    $('#framecd'    ).val(result[0].framecd  );
+                    $('#doaddr'     ).val(result[0].doaddr   );
+                    $('#rmk'        ).val(result[0].rmk      );
+                    $('#carnm'      ).val(result[0].carnm    );
+                    $('#carno'      ).val(result[0].carno    );
+                    $('#carpayamt'  ).val(result[0].carpayamt);
+                    $('#checkdt '   ).val(result[0].checkdt  );
+                    $('#outdt'      ).val(result[0].outdt    );
+                    $('#outtime'    ).val(result[0].outtime  );
+                    $('#useyn'      ).val(result[0].useyn    );
+
+                    grid2.dataSource.data([]);
                 },
                 error: function (request, status, error) {
                     alert("code = " + request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
                     //alert("code = " + request.status + " error = " + error); // 실패 시 처리
                 }
             });
-            fn_select_detail();
+            fn_detail_search();
         }
-        function fn_select_detail() {
+        function fn_detail_search() {
             var param = JSON.stringify({ 'saleno': saleno });
 
             $.ajax({
@@ -350,7 +405,9 @@
                 dataType: "json",
                 async: false,
                 success: function (data) {
-                    $('#grid2')[0].addJSONData(JSON.parse(data.d));
+                    data = JSON.parse(data.d)
+                    var grid = $('#grid2').data('kendoGrid');
+                    grid.dataSource.data(data);
                 },
                 error: function (request, status, error) {
                     //alert("code = " + request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
@@ -367,6 +424,7 @@
             $('#chasu').val('');
             //$('#csaleno').val('');
             $('#gucd').val('');
+            $('#scd').val('');
             $('#saledt').val('');
             $('#userid').val('');
             $('#custcd').val('');
@@ -384,67 +442,128 @@
             $('#checkdt').val('');
             $('#outdt').val('');
             $('#outtime').val('');
-
-            $('#grid2').clearGridData();
         }
         //===============================================================
         // 버튼~~(구매전표)
         //===============================================================
         function fn_new() {
             fn_init();
+            var csaleno = $('#csaleno').val();
+            if (csaleno == '') return;
+
+            var param = JSON.stringify({ 'csaleno': csaleno });
+            //통관전표
+            $.ajax({
+                type: "POST",
+                url: "/page3/page31_svc.asmx/selone_init",
+                data: JSON.stringify({ 'param': param }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                async: false,
+                success: function (data) {
+                    var result = JSON.parse(data.d);
+                    if (result.length == 0) {
+                        return true;
+                    }
+                    //$('#saleno'     ).val(result[0].saleno   );
+                    //$('#chasu'      ).val(result[0].chasu    );
+                    $('#csaleno'    ).val(result[0].csaleno  );
+                    //$('#gucd'       ).val(result[0].gucd     );
+                    //$('#scd'        ).val(result[0].scd     );
+                    $('#saledt'     ).val(result[0].saledt   );
+                    $('#userid'     ).val(result[0].userid   );
+                    $('#usernm'     ).val(result[0].usernm   );
+                    $('#custcd'     ).val(result[0].custcd   );
+                    $('#custnm'     ).val(result[0].custnm   );
+                    $('#termcd'     ).val(result[0].termcd   );
+                    //$('#janamt'     ).val(result[0].janamt   );
+                    $('#whcd'       ).val(result[0].whcd     );
+                    $('#ydt'        ).val(result[0].ydt      );
+                    $('#dotel'      ).val(result[0].dotel    );
+                    $('#framecd'    ).val(result[0].framecd  );
+                    $('#doaddr'     ).val(result[0].doaddr   );
+                    $('#rmk'        ).val(result[0].rmk      );
+                    //$('#carnm'      ).val(result[0].carnm    );
+                    //$('#carno'      ).val(result[0].carno    );
+                    //$('#carpayamt'  ).val(result[0].carpayamt);
+                    //$('#checkdt '   ).val(result[0].checkdt  );
+                    //$('#outdt'      ).val(result[0].outdt    );
+                    //$('#outtime'    ).val(result[0].outtime  );
+                    //$('#useyn'      ).val(result[0].useyn    );
+                },
+                error: function (request, status, error) {
+                    alert("code = " + request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
+                    //alert("code = " + request.status + " error = " + error); // 실패 시 처리
+                }
+            });
+            //품목리스트 
+            $.ajax({
+                type: "POST",
+                url: "/page3/page31_svc.asmx/detail_search_init",
+                data: JSON.stringify({ 'param': param }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                async: false,
+                success: function (data) {
+                    data = JSON.parse(data.d);
+                    var grid = $('#grid2').data('kendoGrid');
+                    grid.dataSource.data(data);
+                },
+                error: function (request, status, error) {
+                    //alert("code = " + request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
+                    alert("code = " + request.status + " error = " + error); // 실패 시 처리
+                }
+            });
         }
         var param_del = [];
         function fn_save() {
-            //var rowid_list = jQuery("#grid2").jqGrid('getDataIDs');
-            //for (var i = 0; i < rowid_list.length; i++) {
-            //    var rowid = rowid_list[i];
-            //    //$('#grid2').jqGrid('saveRow', rowid);
-            //    //$("#grid2").saveRow(rowid, true, 'clientArray');
-            //    $("#grid2").jqGrid('saveRow', rowid);
-            //}
-            //return;
-            //$('#grid2').jqGrid('saveRow', capturedIdOfRowInEditMode);
-            //$("#grid2").saveRow(jqMFPLastRowId, true, 'clientArray');
-            //alert('111');
             var param = {};
-            param.mode = $.trim($('#mode').val());
-            param.saleno = $.trim($('#saleno').val());
-            param.chasu = $.trim($('#chasu').val());
-            param.csaleno = $.trim($('#csaleno').val());
-            param.gucd = $.trim($('#gucd').val());
-            param.saledt = $.trim($('#saledt').val());
-            param.userid = $.trim($('#userid').val());
-            param.custcd = $.trim($('#custcd').val());
-            param.termcd = $.trim($('#termcd').val());
-            param.janamt = $.trim($('#janamt').val());
-            param.whcd = $.trim($('#whcd').val());
-            param.ydt = $.trim($('#ydt').val());
-            param.dotel = $.trim($('#dotel').val());
-            param.framecd = $.trim($('#framecd').val());
-            param.doaddr = $.trim($('#doaddr').val());
-            param.rmk = $.trim($('#rmk').val());
-            param.carnm = $.trim($('#carnm').val());
-            param.carno = $.trim($('#carno').val());
-            param.carpayamt = $.trim($('#carpayamt').val());
-            param.checkdt = $.trim($('#checkdt').val());
-            param.outdt = $.trim($('#outdt').val());
-            param.outtime = $.trim($('#outtime').val());
-
-            //if (param.saledt   == '') { alert('발주일자를 입력해주세요!'); return; }
+            param.mode      = $.trim($('#mode'      ).val());
+            param.saleno    = $.trim($('#saleno'    ).val());
+            param.chasu     = $.trim($('#chasu'     ).val());
+            param.csaleno   = $.trim($('#csaleno'   ).val());
+            param.gucd      = $.trim($('#gucd'      ).val());
+            param.scd       = $.trim($("#scd"       ).val());
+            param.saledt    = $.trim($('#saledt'    ).val());
+            param.userid    = $.trim($('#userid'    ).val());
+            param.custcd    = $.trim($('#custcd'    ).val());
+            param.termcd    = $.trim($('#termcd'    ).val());
+            param.janamt    = $.trim($('#janamt'    ).val());
+            param.whcd      = $.trim($('#whcd'      ).val());
+            param.ydt       = $.trim($('#ydt'       ).val());
+            param.dotel     = $.trim($('#dotel'     ).val());
+            param.framecd   = $.trim($('#framecd'   ).val());
+            param.doaddr    = $.trim($('#doaddr'    ).val());
+            param.rmk       = $.trim($('#rmk'       ).val());
+            param.carnm     = $.trim($('#carnm'     ).val());
+            param.carno     = $.trim($('#carno'     ).val());
+            param.carpayamt = $.trim($('#carpayamt' ).val());
+            param.checkdt   = $.trim($('#checkdt'   ).val());
+            param.outdt     = $.trim($('#outdt'     ).val());
+            param.outtime   = $.trim($('#outtime'   ).val());
+            param.useyn     = $.trim($('#useyn'     ).val());
+            if (param.saledt   == '') { alert('수주일자를 입력해주세요!'); return; }
             //if (param.userid == '') { alert('담당자를 입력해주세요!'); return; }
             //if (param.usernm == '') { alert('담당자를 입력해주세요!'); return; }
             //if (param.custcd == '') { alert('거래처를 입력해주세요!'); return; }
             //if (param.custnm == '') { alert('거래처를 입력해주세요!'); return; }
             //if (param.whcd == '') { alert('창고를 선택해주세요!'); return; }
             var param = JSON.stringify(param);
-            //validate check == detail
             var param2 = [];
-            for (var i = 0; i < param_del.length; i++) {
-                param2.push(param_del[i]);
-            }
-            var row = $('#grid2').getRowData();
+            var row = grid2.dataSource.data();
             for (var i = 0; i < row.length; i++) {
+                //================================================================
+                // validation check
+                //================================================================
+
+
+
+
                 param2.push(row[i]);
+            }
+            if(param2.length == 0) {
+                alert('품목을 입력해주세요!');
+                return;
             }
             param2 = JSON.stringify(param2);
             $.ajax({
@@ -467,13 +586,19 @@
 
                 },
                 error: function (request, status, error) {
-                    //alert(100);
                     //alert("code = " + request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
                     alert("code = " + request.status + " error = " + error); // 실패 시 처리
                 }
             });
         }
         function fn_del() {
+            if (!confirm('해당 전표를 삭제하시겠습니까?')) return;
+
+            var count = grid1.dataSource.data().length - 1;
+            var rowid = grid1.select().index();
+
+            if (count != rowid) { alert('마지막 행만 삭제 가능합니다'); return; }
+
             var param = {};
             param.saleno = $.trim($("#saleno").val());
             if (param.saleno == '') {
@@ -488,25 +613,22 @@
                 dataType: "json",
                 async: false,
                 success: function (data) {
-                    //var table = $('#grid21').DataTable();
-                    //table.clear().rows.add(JSON.parse(data.d)).draw();
                     var result = JSON.parse(data.d);
                     if (result.code == "OK") {
                         fn_init();
-                        var count = $("#grid1").getGridParam("reccount");
+                        fn_search();
+                        var count = grid1.dataSource.data().length;
                         if (count > 0) {
-                            var rowid = $("#grid1").getDataIDs()[0];
-                            var csaleno = $('#grid1').getCell(rowid, 'csaleno');
-                            $('#csaleno').val(csaleno);
-                            saleno = $('#grid1').getCell(rowid, 'saleno');
+                            var row = grid.tbody.find(">tr:not(.k-grouping-row)").eq(0);
+                            grid.select(row);
+                            $('#csaleno').val(grid.dataItem(row).csaleno);
                         }
                         else {
                             $('#csaleno').val('');
                         }
-                        fn_search();
                         alert('삭제 되었습니다');
                     }
-                    else { alert("저장오류!"); return; }
+                    else { alert("삭제 오류!"); return; }
                 },
                 error: function (request, status, error) {
                     //alert("code = " + request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
@@ -516,62 +638,58 @@
         }
         function fn_row_add() {
             var rowData = {
-                  "mode": 'I'
-                , "saleno": ''
-                , "saleseq": ''
-                , "itemcd": ''
-                , "itemnm": ''
-                , "spec": ''
-                , "qty": ''
-                , "boxqty": ''
-                , "curcd": ''
-                , "unitprice": ''
-                , "supplyamt": ''
-                , "vat": ''
-                , "totamt": ''
-                , "rmk": ''
-                , "sno": ''
-                , "caseno": ''
-                , "prodno": '' 
+                  "saleno"      : saleno
+                , "saleseq"     : 0
+                , "itemcd"      : ''
+                , "itemnm"      : ''
+                , "spec"        : ''
+                , "qty"         : ''
+                , "boxqty"      : ''
+                , "curcd"       : ''
+                , "unitprice"   : ''
+                , "supplyamt"   : ''
+                , "vat"         : ''
+                , "totamt"      : ''
+                , "rmk"         : ''
+                , "sno"         : ''
+                , "caseno"      : ''
+                , "prodno"      : '' 
             }
-            var rowid = $("#grid2").getGridParam("reccount"); // 페이징 처리 시 현 페이지의 Max RowId 값
-            $("#grid2").jqGrid("addRowData", rowid + 1, rowData, 'last'); // 마지막 행에 Row 추가
+            grid = grid2;
+            grid.dataSource.add(rowData); //grid2.addRow() : 오늘일자로 세팅되며 제일 첫줄에 신규 행이 발생
+            var count = grid.dataSource.data().length;
+            var row = grid.tbody.find(">tr:not(.k-grouping-row)").eq(count - 1);
+            grid.select(row);
         }
         function fn_row_del() {
-            var rowid = $('#grid2').jqGrid('getGridParam', 'selrow');
-            if (rowid == undefined) { alert('선택된 행이 없습니다'); return; }
-
-            var row = $("#grid2").jqGrid('getRowData', rowid);
-            if (row.jpseq != '') {
-                row.mode = 'D';
-                param_del.push(row);
-            }
-            $("#grid2").jqGrid("delRowData", rowid); // 행 삭제
+            var grid = grid2;
+            var row  = grid.select();
+            var dataItem = grid.dataItem(row);
+            grid.dataSource.remove(dataItem);
         }
         //===============================================================
         // 기타 함수
         //===============================================================
-        function pop_result_item(param) {
-            alert(pop_item_row);
-            $("#" + pop_item_grid).jqGrid('setCell', pop_item_row, 'itemcd', param.itemcd);
-            $("#" + pop_item_grid).jqGrid('setCell', pop_item_row, 'itemnm', param.itemnm);
-            $("#" + pop_item_grid).jqGrid('setCell', pop_item_row, 'spec', param.spec);
-            $("#" + pop_item_grid).jqGrid('setCell', pop_item_row, 'qty', param.qty);
-            $("#" + pop_item_grid).jqGrid('setCell', pop_item_row, 'unitprice', param.unitprice);
-            $("#" + pop_item_grid).jqGrid('setCell', pop_item_row, 'sqm', param.sqm);
-        }
-        function pop_result_item_sale(param) {
-            $("#" + pop_item_grid).jqGrid('setCell', pop_item_row, 'itemcd', param.itemcd);
-            $("#" + pop_item_grid).jqGrid('setCell', pop_item_row, 'itemnm', param.itemnm);
-            $("#" + pop_item_grid).jqGrid('setCell', pop_item_row, 'spec', param.spec);
-            $("#" + pop_item_grid).jqGrid('setCell', pop_item_row, 'qty', param.qty);
-            $("#" + pop_item_grid).jqGrid('setCell', pop_item_row, 'boxqty', param.boxqty);
-            $("#" + pop_item_grid).jqGrid('setCell', pop_item_row, 'curcd', param.curcd);
-            $("#" + pop_item_grid).jqGrid('setCell', pop_item_row, 'unitprice', param.unitprice);
-            $("#" + pop_item_grid).jqGrid('setCell', pop_item_row, 'supplyamt', param.supplyamt);
-            $("#" + pop_item_grid).jqGrid('setCell', pop_item_row, 'vat', param.vat);
-            $("#" + pop_item_grid).jqGrid('setCell', pop_item_row, 'totamt', param.totamt);
-            //$("#" + pop_item_grid).jqGrid('setCell', pop_item_row, 'sqm', param.sqm);
+        function pop_result_item_grid(param) {
+            var grid = grid2;
+            var count = 0;
+            for (var i = 0; i < grid2.dataSource.data().length; i++) {
+                var row = grid.dataSource.data()[i]; //index 0부터 시작
+                if (row.itemcd == param.itemcd) {
+                    count = count + 1;
+                    alert('동일한 품목이 존재 합니다!');
+                    return;
+                }
+            }
+            var dataItem  = grid.dataSource.data()[pop_item_row]; //index 0부터 시작
+            //var row = grid.tbody.find(">tr:not(.k-grouping-row)").eq(1); //ok : index 0 부터 시작
+            //var dataItem = grid.dataItem(row); //ok
+            dataItem.set("itemcd"   , param.itemcd      );
+            dataItem.set("itemnm"   , param.itemnm      );
+            dataItem.set("spec"     , param.spec        );
+            dataItem.set("qty"      , param.qty         );
+            dataItem.set("unitprice", param.unitprice   );
+            dataItem.set("sqm"      , param.sqm         );
         }
     </script>
 

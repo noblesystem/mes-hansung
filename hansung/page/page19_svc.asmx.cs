@@ -24,7 +24,6 @@ namespace hansung.page {
     [System.Web.Script.Services.ScriptService]
     public class page19_svc:System.Web.Services.WebService {
 
-
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string search(string param)
@@ -37,7 +36,7 @@ namespace hansung.page {
             dom.SelectSingleNode("//act").InnerText = "proc";
             XmlNode node;
             node = dom.CreateNode(XmlNodeType.Element, "zrow", "");
-            fm.icnitMakeNode(dom, node, "varchar", "gbncd", gbncd, "100");    
+            fm.icnitMakeNode(dom, node, "varchar", "gbncd", gbncd, "100");
             fm.icnitMakeNode(dom, node, "varchar", "codenm", codenm, "100");
             dom.SelectSingleNode("//xmldata").AppendChild(node);
 
@@ -73,13 +72,13 @@ namespace hansung.page {
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string save(string param)
         {
-            string mode     = JObject.Parse(param)["mode"].ToString();
-            string gbncd     = JObject.Parse(param)["gbncd"].ToString();
-            string code     = JObject.Parse(param)["code"].ToString();
-            string codenm     = JObject.Parse(param)["codenm"].ToString();
-            string codeseq     = JObject.Parse(param)["codeseq"].ToString();
-            string useyn     = JObject.Parse(param)["useyn"].ToString();
-            string inuser   = "100";
+            string mode = JObject.Parse(param)["mode"].ToString();
+            string gbncd = JObject.Parse(param)["gbncd"].ToString();
+            string code = JObject.Parse(param)["code"].ToString();
+            string codenm = JObject.Parse(param)["codenm"].ToString();
+            string codeseq = JObject.Parse(param)["codeseq"].ToString();
+            string useyn = JObject.Parse(param)["useyn"].ToString();
+            string inuser = "100";
 
             FormManager fm = new FormManager();
             XmlDocument dom = new XmlDocument();
@@ -150,7 +149,7 @@ namespace hansung.page {
         {
             string seq = JObject.Parse(param)["seq"].ToString();
             string mode = JObject.Parse(param)["mode"].ToString();
-            
+
             string subject = JObject.Parse(param)["subject"].ToString();
             string contents = JObject.Parse(param)["contents"].ToString();
             string inuser = JObject.Parse(param)["inuser"].ToString();
@@ -174,7 +173,5 @@ namespace hansung.page {
             result result = CallDB.getXmlTrans(dom);
             return JsonConvert.SerializeObject(result);
         }
-
-
     }
 }

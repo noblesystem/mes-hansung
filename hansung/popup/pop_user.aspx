@@ -41,15 +41,15 @@
             <input type="button" value="조회" id="btnSearch" />
             <input type="button" value="선택" id="btnSelect" />
             <input type="button" value="닫기" id="btnClose" />
-            <div id="grid2"></div>
+            <div id="grid1"></div>
         </div>
     </form>
 <script>
     var searchword = '';
+    var grid1;
     $(document).ready(function () {
-        $("#grid2").kendoGrid({
+        $("#grid1").kendoGrid({
             dataSource: {
-                //data: user,
                 schema: {
                     model: {
                         fields: {
@@ -58,76 +58,42 @@
                         }
                     }
                 }
-            },
-            height: 550,
-            scrollable: true,
-            //sortable: true,
-            //selectable: "cell",
-            editable: true,
-            columns: [
+            }
+            , columns: [
                   { field: "userid", title: "아이디", width: "130px" }
                 , { field: "usernm", title: "사원명", width: "130px" }
-            ],
-            change: onChange,
-            dataBound: function (e) {
-               var grid = this;
-               grid.tbody.find("tr").dblclick(function (e) {
-                  var dataItem = grid.dataItem(this);
-                });
-            }
+            ]
+            , height: 550
+            , resizable     : true  //컬럼넓이 조정
+            , selectable    : "row" //row, multiple
+            , scrollable    : true
+            , dataBound     : function(e) {
+                    var grid = this;
+                    grid.tbody.find("tr").dblclick(function(e) {
+                        var row = grid.dataItem(this);
+                        var param = {};
+                        param.userid = row.userid;
+                        param.usernm = row.usernm;
+                        opener.pop_result_user(param);
+                        window.close();
+                    });
+			}
         });
-        function onChange(e) {
-              var cell = this.select();
-              //alert(cell.
-              //var cellIndex = cell[0].cellIndex;
-              //var column = this.columns[cellIndex];
-              //var dataItem = this.dataItem(cell.closest("tr"));
-              //alert("Selected value " + dataItem[column.field]);
-            //var selected = $.map(this.select(), function(item) {
-            //    return $(item).text();
-            //});
+        grid1 = $('#grid1').data('kendoGrid');
 
-            //kendoConsole.log("Selected: " + selected.length + " item(s), [" + selected.join(", ") + "]");
-        }
-
-        //$('#grid tbody').on('click', 'tr', function () {
-        //    var table = $('#grid').DataTable();
-        //    var row = table.row(this).data();
-        //    if ($(this).hasClass('selected')) {
-        //        $(this).removeClass('selected');
-        //    }
-        //    else {
-        //        table.$('tr.selected').removeClass('selected');
-        //        $(this).addClass('selected');
-        //    }
-        //});
         $('#btnSearch').on('click', function () {
             fnSearch();
-            //모든 데이타
-            var displayedData = $("#grid2").data().kendoGrid.dataSource.view()
-            alert(JSON.stringify(displayedData));
-            
-            var grid = $("#grid2").data("kendoGrid");
-            //$("#grid2").data.dataSource.add({ userid: '10002', usernm: 'bbb' });
-            //var dataSource = grid.dataSource;
-            //var total = dataSource.data().length;
-            //dataSource.insert(total, { userid: '10002', usernm: 'bbb' );
-            //dataSource.page(dataSource.totalPages());
-            //grid.editRow(grid.tbody.children().last());
         });
         $('#btnSelect').on('click', function () {
-            //var table = $('#grid').DataTable();
-            //var row = table.rows('.selected').data();
-            //if (row.length == 0) {
-            //    alert('선택된 사원이 없습니다');
-            //    return;
-            //}
-            //var param = {};
-            //param.userid = row[0]["userid"];
-            //param.usernm = row[0]["usernm"];
-            
-            //opener.pop_result_user(param);
-            //window.close();
+            var grid = grid1;
+            var rowid = grid.select().index();
+            alert(rowid);
+            var dataItem = grid.dataItem(grid.select());
+            var param = {};
+            param.userid = row.userid;
+            param.usernm = row.usernm;
+            opener.pop_result_user(param);
+            window.close();
         });
         $('#btnClose').on('click', function () {
             window.close();
@@ -142,8 +108,10 @@
                 dataType: "json",
                 async: false,
                 success: function (data) {
-                    $('#grid2').data('kendoGrid').dataSource.data(JSON.parse(data.d));
-                    //alert($('#grid2').data('kendoGrid').dataSource.total());
+                    data = JSON.parse(data.d);
+
+                    var grid = $('#grid1').data('kendoGrid');
+                    grid.dataSource.data(data);
                 },
                 error: function (request, status, error) {
                     //alert(100);

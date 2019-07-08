@@ -10,9 +10,7 @@
 				    <div class="ibox-content">
 					    <h2>영업전표조회</h2>
 <!-- 전표리스트 ==================================================================================== -->
-                            <table id="grid1"></table>
-                            <div id="grid1_pager"></>
-
+                        <div id="spd1"></div>
 				    </div>
 			    </div>
 		    </div>
@@ -20,56 +18,67 @@
     </div>
 
     <script>
+        function page32_pop(saleno) {
+            var popUrl = "/page3/page3-2-pop.aspx?jpno=" + saleno;
+            var popOption = "width=800, height=600, resizable=yes, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
+            var page32pop = window.open(popUrl, "page32pop", popOption);
+            if (page32pop) page32pop.focus();
+        }
+
         $(document).ready(function () {
 
-            jQuery("#grid1").jqGrid({
-                colNames: ['전표번호', 'gucd', 'chasu', 'csaleno', '영업담당', '고객사명', '출고창고', '출고예정일', '승인확인', '출고확인', '품목명', '규격',
-                    '매수', '수량(B)', '운송사', '차량번호', '운임', '수주비고'],
-                colModel: [
-                    { name: "saleno", index: "saleno", width: 100 }
-                    , { name: "gucd", index: "gucd", width: 100 }
-                    , { name: "chasu", index: "chasu", width: 100 }
-                    , { name: "csaleno", index: "csaleno", width: 100 }
-                    , { name: "usernm", index: "usernm", width: 100 }
-                    , { name: "custnm", index: "custnm", width: 100 }
-                    , { name: "whnm", index: "whnm", width: 100 }
-                    , { name: "ydt", index: "ydt", width: 100 }
-                    , { name: "checkdt", index: "checkdt", width: 100 }
-                    , { name: "outdt", index: "outdt", width: 100 }
-                    , { name: "itemnm", index: "itemnm", width: 100 }
-                    , { name: "spec", index: "spec", width: 100 }
-                    , { name: "qty", index: "qty", width: 100 }
-                    , { name: "boxqty", index: "boxqty", width: 100 }
-                    , { name: "carnm", index: "carnm", width: 100 }
-                    , { name: "carno", index: "carno", width: 100 }
-                    , { name: "carpayamt", index: "carpayamt", width: 100 }
-                    , { name: "rmk", index: "rmk", width: 100 }
-                ],
-
-                //forceFit: true,
-                //cellEdit: true,
-                //cellsubmit: 'clientArray',
-                onSelectRow: function (rowid, status, e) {
-                    saleno = $('#grid1').jqGrid('getCell', rowid, 'saleno');
-                    //balju_selone();
-                },
-                ondblClickRow: function (rowid, row, col) {
-                    var cm = jQuery("#grid1").jqGrid("getGridParam", "colModel");
-                    if (cm[col].name != "itemname") {
-                        var saleno = $('#grid1').jqGrid('getCell', rowid, 'saleno');
-                        location.href = '/page3/page3-1.aspx?saleno=' + saleno;
+            $("#spd1").dxDataGrid({
+                columns: [
+                    { 
+                        width: "auto", 
+                        cellTemplate: function(container, options) { 
+                            //container.text(dataGrid.pageIndex() * dataGrid.pageSize() + options.rowIndex); 
+                            //var totCount = this.totalCount();
+                            container.text(options.rowIndex + 1); 
+                        } 
                     }
-                },
-                //rowNum: 10,
-                //rowList: [10, 20, 30],
-                //pager: '#pager2',
-                //sortname: 'id',
-                viewrecords: true,
-                //sortorder: "desc",
-                height: 100,
-                caption: ""
-            });
-            jQuery("#grid1").jqGrid('navGrid', '#grid1_pager', { edit: false, add: false, del: false });
+                    , { dataField :	"saleno"   , caption : '전표번호'  , width : 100 }
+                    , { dataField :	"gucd"     , caption : 'gucd'      , width : 100 }
+                    , { dataField :	"chasu"    , caption : 'chasu'     , width : 100 }
+                    , { dataField :	"csaleno"  , caption : 'csaleno'   , width : 100 }
+                    , { dataField :	"usernm"   , caption : '영업담당'  , width : 100 }
+                    , { dataField :	"custnm"   , caption : '고객사명'  , width : 100 }
+                    , { dataField :	"whnm"     , caption : '출고창고'  , width : 100 }
+                    , { dataField :	"ydt"      , caption : '출고예정일', width : 100 }
+                    , { dataField :	"checkdt"  , caption : '승인확인'  , width : 100 }
+                    , { dataField :	"outdt"    , caption : '출고확인'  , width : 100 }
+                    , { dataField :	"itemnm"   , caption : '품목명'    , width : 100 }
+                    , { dataField :	"spec"     , caption : '규격'      , width : 100 }
+                    , { dataField :	"qty"      , caption : '매수'      , width : 100 }
+                    , { dataField :	"boxqty"   , caption : '수량(B)'   , width : 100 }
+                    , { dataField :	"carnm"    , caption : '운송사'    , width : 100 }
+                    , { dataField :	"carno"    , caption : '차량번호'  , width : 100 }
+                    , { dataField :	"carpayamt", caption : '운임'      , width : 100 }
+                    , { dataField :	"rmk"      , caption : '수주비고'  , width : 100 }
+                ]
+                , searchPanel: { visible: true, width: 300, placeholder: "Search..." }
+                , headerFilter: { visible: true }
+                , filterRow: { visible: true, applyFilter: "auto" }
+                , showColumnLines: true
+                , showRowLines: true
+                //, rowAlternationEnabled: true
+                , showBorders: true
+                , hoverStateEnabled: true
+                , selection: { mode: "single" }
+                , onCellDblClick: function(e) {
+                    if (e.rowType == 'data' && e.column.dataField == "saleno") {
+                        var saleno = this.cellValue(e.rowIndex, "saleno");
+                        location.href = '/page3/page3-1.aspx?saleno=' + saleno;
+                        return true;
+                    }
+                    if (e.rowType == 'data' && e.column.dataField == "itemnm") {
+                        var saleno = this.cellValue(e.rowIndex, "saleno");
+                        page32_pop(saleno);
+                        return true;
+                    }
+                }
+            }).dxDataGrid("instance");
+
             fn_search();
         });
         //===============================================================
@@ -85,7 +94,8 @@
                 dataType: "json",
                 async: false,
                 success: function (data) {
-                    $('#grid1')[0].addJSONData(JSON.parse(data.d));
+                    data = JSON.parse(data.d);
+                    $("#spd1").dxDataGrid({ dataSource: data }); //dev
                 },
                 error: function (request, status, error) {
                     //alert("code = " + request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리

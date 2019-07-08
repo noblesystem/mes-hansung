@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="text/html; charset=UTF-8" />
+    <title>hansung</title>
+    <link rel="stylesheet" href="/css/kendo.common.min.css" />
+    <link rel="stylesheet" href="/css/kendo.default.min.css" />
+    <link rel="stylesheet" href="/css/kendo.default.mobile.min.css" />
+
+    <!--<script src="/js/jquery-3.4.1.min.js"></script>-->
+    <script src="/js/jquery-2.1.1.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="/js/kendo.all.min.js"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/19.1.4/css/dx.common.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/19.1.4/css/dx.light.css" />
+    <script src="https://cdn3.devexpress.com/jslib/19.1.4/js/dx.all.js"></script>
+</head>
+<body>
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <table width="100%">
+                            <tr>
+                                <td align="left">메뉴관리</td>
+                                <td align="right">
+                                    <input type="button" value="검색" onclick="fn_search();">
+                                    <input type="button" value="신규" onclick="fn_new();">
+                                    <input type="button" value="저장" onclick="fn_save();">
+                                    <input type="button" value="삭제" onclick="fn_del()">
+                                </td>
+                            </tr>
+                        </table>
+                        <table width="100%">
+                            <tr>
+                                <td>이름</td>
+                                <td><input id="s_usernm" type="text" value=""></td>
+                            </tr>
+                        </table>
+                        <table width="100%">
+                            <tr>
+                                <td width="40%">
+                                    <!-- 리스트 ==================================================================================== -->
+                                    <div id="grid1"></div>
+                                </td>
+                                <td width="60%">
+                                    <!-- 상세 ==================================================================================== -->
+                                    <div id="grid2"></div>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            //$('#useyn').zentSetCombo('C007', '', '==선택==');
+            grid1 = $("#grid1").kendoGrid({
+                columns: [
+                    { field: "userid", title: "아이디", width: 100 }
+                    , { field: "usernm", title: "이름", width: 100 }
+                ]
+                , selectable: "row"//한줄 클릭할수있도록
+                //, selectable: "multiple"
+                , scrollable: true//스크롤 on
+                , change: onChange1//체인지시 function onCHange 합수 호출
+                , width: 450
+                , height: 400
+                , pageable: true//페이지 내비게이션
+            });
+            fn_search();
+            grid2 = $("#grid2").kendoGrid({
+                columns: [
+                    { selectable: "row", width: "50px" },//멀티 체크박스
+                    { field: "userid",   title: "아이디", width: 100 }
+                    , { field: "menucd", title: "코드",   width: 100 }
+                    , { field: "menunm", title: "메뉴명", width: 100 }
+                    , { field: "readyn", title: "조회",   width: 100 , "template": "<input type='checkbox' #= (readyn == 'Y') ? checked ='checked' : 'N' # />" }
+                    , { field: "saveyn", title: "저장",   width: 100, "template": "<input type='checkbox' #= (saveyn == 'Y') ? checked ='checked' : 'N' # />" }
+                    , { field: "amtyn",  title: "금액",   width: 100, "template": "<input type='checkbox' #= (amtyn == 'Y') ? checked ='checked' : 'N' # />"}
+
+                ]
+               //, selectable: "row"//한줄 클릭할수있도록
+                , scrollable: true//스크롤 on
+               // , change: onChange2//체인지시 function onCHange 합수 호출
+                , width: 450
+                , height: 400
+                , pageable: true//페이지 내비게이션
+                ,editable: true
+            });
+            //grid2.table.on("click", ".row-checkbox", selectRow);
+        });
+        //===============================================================
+        //클릭이벤트1
+        //===============================================================
+        function onChange1() {
+            var grid = $("#grid1").data("kendoGrid");  
+            var rowdata = grid.dataItem(grid.select());
+            fn_selone(rowdata.userid);
+        }
+        //===============================================================
+        //클릭이벤트2
+        //===============================================================
+        //function selectRow(e) {
+        //    e.preventDefault();                      
+        //   var checkbox = $(e.node).find(":checkbox");
+        //   var checked = checkbox.prop("checked");
+        //   checkbox.prop("checked", !checked);
+        //    var grid = $("#grid2").data("kendoGrid");  
+        //    var rowdata = grid.dataItem(grid.select());
+        //    console.log(rowdata);
+        //}
+        //===============================================================
+        //data 셋팅
+        //===============================================================
+        function fn_setData1(data) {
+            var grid = $("#grid1").data("kendoGrid");
+            var dataSource = new kendo.data.DataSource({ data: data, pageSize: 10 });
+            grid.setDataSource(dataSource);
+        }
+        //===============================================================
+        //data 셋팅
+        //===============================================================
+        function fn_setData2(data) {
+            var grid = $("#grid2").data("kendoGrid");
+            var dataSource = new kendo.data.DataSource({ data: data, pageSize: 10 });
+            grid.setDataSource(dataSource);
+        }
+        //===============================================================
+        // 검색
+        //===============================================================
+        function fn_search() {
+            var param = JSON.stringify({ 'usernm': $('#s_usernm').val() });
+            $.ajax({
+                type: "POST",
+                url: "/page/page18_svc.asmx/search",
+                data: JSON.stringify({ 'param': param }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                async: false,
+                success: function (data) {
+                    fn_setData1(JSON.parse(data.d));
+                    fn_init();
+                },
+                error: function (request, status, error) {
+                    //alert("code = " + request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
+                    alert("code = " + request.status + " error = " + error); // 실패 시 처리
+                }
+            });
+        }
+        function fn_selone(userid) {
+            console.log(userid);
+            var param = JSON.stringify({ 'userid': userid });
+            $.ajax({
+                type: "POST",
+                url: "/page/page18_svc.asmx/search2",
+                data: JSON.stringify({ 'param': param }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                async: false,
+                success: function (data) {
+                    fn_setData2(JSON.parse(data.d));
+                },
+                error: function (request, status, error) {
+                    //alert("code = " + request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
+                    alert("code = " + request.status + " error = " + error); // 실패 시 처리
+                }
+            });
+        }
+        //===============================================================
+        // 초기화
+        //===============================================================
+        function fn_init() {
+            //grid2.option('dataSource', []);
+        }
+
+    </script>
+</body>
+</html>
