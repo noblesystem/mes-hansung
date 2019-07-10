@@ -186,6 +186,7 @@ namespace hansung.page2
             string whcd     = JObject.Parse(param)["whcd"    ].ToString();
             string janamt   = JObject.Parse(param)["janamt"  ].ToString();
             string pino     = JObject.Parse(param)["pino"    ].ToString();
+            string curcd    = JObject.Parse(param)["curcd"   ].ToString();
             string bcheckdt = JObject.Parse(param)["bcheckdt"].ToString();
             string paycd    = JObject.Parse(param)["paycd"   ].ToString();
             string paydt    = JObject.Parse(param)["paydt"   ].ToString();
@@ -246,6 +247,7 @@ namespace hansung.page2
             fm.icnitMakeNode(dom, node, "varchar", "whcd"    , whcd    , "20"   );	
             fm.icnitMakeNode(dom, node, "numeric", "janamt"  , janamt  , "20"   );	
             fm.icnitMakeNode(dom, node, "varchar", "pino"    , pino    , "20"   );	
+            fm.icnitMakeNode(dom, node, "varchar", "curcd"   , curcd   , "20"   );	
             fm.icnitMakeNode(dom, node, "varchar", "bcheckdt", bcheckdt, "10"   );	
             fm.icnitMakeNode(dom, node, "varchar", "paycd"   , paycd   , "10"   );	
             fm.icnitMakeNode(dom, node, "varchar", "paydt"   , paydt   , "10"   );	
@@ -288,7 +290,6 @@ namespace hansung.page2
                 string itemcd       = (item.itemcd      ?? "").ToString();
                 string qty          = (item.qty         ?? "").ToString();
                 string boxqty       = (item.boxqty      ?? "").ToString();
-                string curcd        = (item.curcd       ?? "").ToString();
                 string unitprice    = (item.unitprice   ?? "").ToString();
                 string supplyamt    = (item.supplyamt   ?? "").ToString();
                 string vat          = (item.vat         ?? "").ToString();
@@ -318,8 +319,7 @@ namespace hansung.page2
                 fm.icnitMakeNode(dom, node, "numeric", "jpseq"      , jpseq      , "20"     );      
                 fm.icnitMakeNode(dom, node, "varchar", "itemcd"     , itemcd     , "20"     );     
                 fm.icnitMakeNode(dom, node, "numeric", "qty"        , qty        , "20"     );   
-                fm.icnitMakeNode(dom, node, "numeric", "boxqty"     , boxqty     , "20"     );   
-                fm.icnitMakeNode(dom, node, "varchar", "curcd"      , curcd      , "10"     );     
+                fm.icnitMakeNode(dom, node, "numeric", "boxqty"     , boxqty     , "20"     );
                 fm.icnitMakeNode(dom, node, "numeric", "unitprice"  , unitprice  , "20"     );   
                 fm.icnitMakeNode(dom, node, "numeric", "supplyamt"  , supplyamt  , "20"     );   
                 fm.icnitMakeNode(dom, node, "numeric", "vat"        , vat        , "20"     );   
@@ -350,18 +350,18 @@ namespace hansung.page2
             domList.Add(dom);
 
             //=== jan 전표 ==============================================================            
-            fm = new FormManager();
-            dom = new XmlDocument();
-            dom.LoadXml("<xml><proc/><act/><xmldata></xmldata><xmlclipdata/></xml>");
-            dom.SelectSingleNode("//act").InnerText = "proc";
-            node = dom.CreateNode(XmlNodeType.Element, "zrow", "");
-            fm.icnitMakeNode(dom, node, "varchar", "jpno"    , jpno    , "20"   );	
-            fm.icnitMakeNode(dom, node, "varchar", "inuser"  , inuser  , "20"   );	
-            dom.SelectSingleNode("//xmldata").AppendChild(node);
+            //fm = new FormManager();
+            //dom = new XmlDocument();
+            //dom.LoadXml("<xml><proc/><act/><xmldata></xmldata><xmlclipdata/></xml>");
+            //dom.SelectSingleNode("//act").InnerText = "proc";
+            //node = dom.CreateNode(XmlNodeType.Element, "zrow", "");
+            //fm.icnitMakeNode(dom, node, "varchar", "jpno"    , jpno    , "20"   );	
+            //fm.icnitMakeNode(dom, node, "varchar", "inuser"  , inuser  , "20"   );	
+            //dom.SelectSingleNode("//xmldata").AppendChild(node);
 
-            query = @"PAGE21_SAVE_JAN";
-            dom.SelectSingleNode("//proc").InnerText = query;
-            domList.Add(dom);
+            //query = @"PAGE21_SAVE_JAN";
+            //dom.SelectSingleNode("//proc").InnerText = query;
+            //domList.Add(dom);
 
             result result = CallDB.getXmlTransAll(domList);
             return JsonConvert.SerializeObject(result);
