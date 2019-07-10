@@ -98,44 +98,50 @@
             <td><input id="pino" type="text" /></td>
         </tr>
         <tr>
+            <td>화폐단위</td>
+            <td><select id="curcd"></select></td>
             <td>발주 확인(c)</td>
             <td><input id="bcheckdt" type="text" class="datecombo" /></td>
             <td>Payment</td>
             <td><select id="paycd"></select></td>
             <td>L/C, T/T date</td>
             <td><input id="paydt" type="text"  class="datecombo"/></td>
-            <td>L/C no</td>
-            <td><input id="lcno" type="text" /></td>
+            
         </tr>
         <tr>
+            <td>L/C no</td>
+            <td><input id="lcno" type="text" /></td>
             <td>신용장만기일(E/D)</td>
             <td><input id="mandt" type="text"  class="datecombo"/></td>
             <td>B/L no</td>
             <td><input id="blno" type="text" /></td>
             <td>선적기일(S/D)</td>
             <td><input id="shipdt" type="text"   class="datecombo"/></td>
-            <td>AMT</td>
-            <td><input id="amt" type="text" /></td>
         </tr>
         <tr>
+            <td>AMT</td>
+            <td><input id="amt" type="text" /></td>
             <td>출항예정일(ETD)</td>
             <td><input id="chuldt" type="text"  class="datecombo"/></td>
             <td>TOLERANCE %</td>
             <td><input id="tolper" type="text" style="width: 33px" /></td>
             <td>입항예정일(ETA)</td>
             <td><input id="ipdt" type="text" class="datecombo"/></td>
-            <td>TOLERANCE AMT</td>
-            <td><input id="tolamt" type="text" /></td>
         </tr>
         <tr>
+            <td>TOLERANCE AMT</td>
+            <td><input id="tolamt" type="text" /></td>
             <td>CON 반납기일(F/T)</td>
             <td><input id="conbandt" type="text"  class="datecombo" onchange="bindcontainerday(this)" /></td>
             <td>USANCE</td>
             <td><input id="usance" type="text"/></td>
             <td>운송사/선사</td>
             <td><input id="shipnm" type="text"/></td>
+        </tr>
+        <tr>
             <td>발주 비고</td>
             <td><input id="rmk" type="text"/></td>
+            <td colspan="6"></td>
         </tr>
     </tbody>
 </table>
@@ -240,22 +246,25 @@
             $('#gucd').zentSetCombo('C006', '', '==선택==');
             //grid combo
             var string_curcd = combo_code_string('C002', '', '==선택==');
-            var string_ckcd  = combo_code_string('C005', '', '==선택==');
+            var string_ckcd = combo_code_string('C005', '', '==선택==');
+            
             //=====================================================================
             //grid column option
             //=====================================================================
-            var grid_combo = function(container, options) {
+            
+            function grid_combo(container, options) {
                 var combo = [];
                 if (options.field == 'curcd') combo = string_curcd;
                 if (options.field == 'ckcd')  combo = string_ckcd;
                 $('<input required name="' + options.field + '"/>')
                     .appendTo(container)
                     .kendoDropDownList({
-                          autoBind: false
+                        autoBind: false
                         , dataTextField : "codenm"
                         , dataValueField: "code"
                         , dataSource    : { data : combo }
                     });
+                //console.log(curcd);
             }
             var editor_cal = function(container, options){
                 var input = $("<input/>"); 
@@ -266,6 +275,9 @@
                     , dateInput: false
                 });
             }
+            var readonlyEditor = function (container, options) {
+                grid2.closeCell();
+            };
             //=====================================================================
             //grid setting
             //=====================================================================
@@ -383,15 +395,15 @@
                     }
                 }
                 , columns: [
-                      { field : "jpno"       , title : "jpno"           , hidden : false , width : 120 }
-                    , { field : "jpseq"      , title : "번호"           , hidden : false , width : 100 }
+                      { field : "jpno"       , title : "jpno"           , hidden : false , width : 120, editor: readonlyEditor }
+                    , { field : "jpseq"      , title : "번호"           , hidden : false , width : 100, editor: readonlyEditor }
                     , { field : "itemcd"     , title : "품목코드"       , hidden : false , width : 100 }
                     , { field : "itemnm"     , title : "품목명"         , hidden : false , width : 100 }
                     , { field : "spec"       , title : "규격"           , hidden : false , width : 100 }
                     , { field : "qty"        , title : "매수"           , hidden : false , width : 100 }
                     , { field : "boxqty"     , title : "수량(B)"        , hidden : false , width : 100 }
-                    , { field : "curcd"      , title : "화폐단위"       , hidden : false , width : 100, editor : grid_combo }
-                    , { field : "unitprice"  , title : "단가"           , hidden : false , width : 100 }
+                    , { field : "curcd"      , title : "화폐단위"       , hidden : false , width : 100, value : $("#curcd").val()}
+                    , { field : "unitprice"  , title : "단가"           , hidden : false , width : 100, format : "{0:#,###}" }
                     , { field : "supplyamt"  , title : "공급가액"       , hidden : false , width : 100 }
                     , { field : "vat"        , title : "부가세"         , hidden : false , width : 100 }
                     , { field : "totamt"     , title : "합계 금액"      , hidden : false , width : 100 }
@@ -566,6 +578,7 @@
                     $('#pidt').val(result[0].pidt);
                     $('#janamt').val(result[0].janamt);
                     $('#pino').val(result[0].pino);
+                    $('#curcd').val(result[0].curcd); console.log(result[0].curcd);
                     $('#bcheckdt').val(result[0].bcheckdt);
                     $('#paycd').val(result[0].paycd);
                     $('#paydt').val(result[0].paydt);
@@ -634,6 +647,7 @@
             $('#janamt').val('');
 
             $('#pino').val('');
+            $('#curcd').val('');
             $('#bcheckdt').val('');
             $('#paycd').val('');
             $('#paydt').val('');
@@ -687,6 +701,7 @@
                     $('#pidt').val(result[0].pidt);
                     //$('#janamt').val(result[0].janamt);
                     $('#pino').val(result[0].pino);
+                    //$('#curcd').val(result[0].curcd);
                     $('#bcheckdt').val(result[0].bcheckdt);
                     //$('#paycd').val(result[0].paycd);
                     //$('#paydt').val(result[0].paydt);
@@ -757,6 +772,7 @@
             param.whcd      = $.trim($("#whcd"      ).val());
             param.janamt    = $.trim($("#janamt"    ).val());
             param.pino      = $.trim($("#pino"      ).val());
+            param.curcd     = $.trim($("#curcd"     ).val());
             param.bcheckdt  = $.trim($("#bcheckdt"  ).val());
             param.paycd     = $.trim($("#paycd"     ).val());
             param.paydt     = $.trim($("#paydt"     ).val());
@@ -775,6 +791,7 @@
             param.rmk       = $.trim($("#rmk"       ).val());
             param.useyn     = $.trim($("#useyn"     ).val());
             if (param.jpdt   == '') { alert('발주일자를 입력해주세요!'); return; }
+            if (param.curcd  == '') { alert('화폐단위를 입력해주세요!'); return; }
             //if (param.userid == '') { alert('담당자를 입력해주세요!'); return; }
             //if (param.usernm == '') { alert('담당자를 입력해주세요!'); return; }
             //if (param.custcd == '') { alert('거래처를 입력해주세요!'); return; }

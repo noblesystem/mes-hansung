@@ -302,18 +302,18 @@ namespace hansung.page3 {
             domList.Add(dom);
 
             //=== jan 전표 ==============================================================            
-            fm = new FormManager();
-            dom = new XmlDocument();
-            dom.LoadXml("<xml><proc/><act/><xmldata></xmldata><xmlclipdata/></xml>");
-            dom.SelectSingleNode("//act").InnerText = "proc";
-            node = dom.CreateNode(XmlNodeType.Element, "zrow", "");
-            fm.icnitMakeNode(dom, node, "varchar", "saleno" , saleno    , "20"   );	
-            fm.icnitMakeNode(dom, node, "varchar", "inuser" , inuser    , "20"   );	
-            dom.SelectSingleNode("//xmldata").AppendChild(node);
+            //fm = new FormManager();
+            //dom = new XmlDocument();
+            //dom.LoadXml("<xml><proc/><act/><xmldata></xmldata><xmlclipdata/></xml>");
+            //dom.SelectSingleNode("//act").InnerText = "proc";
+            //node = dom.CreateNode(XmlNodeType.Element, "zrow", "");
+            //fm.icnitMakeNode(dom, node, "varchar", "saleno" , saleno    , "20"   );	
+            //fm.icnitMakeNode(dom, node, "varchar", "inuser" , inuser    , "20"   );	
+            //dom.SelectSingleNode("//xmldata").AppendChild(node);
 
-            query = @"PAGE31_SAVE_JAN";
-            dom.SelectSingleNode("//proc").InnerText = query;
-            domList.Add(dom);
+            //query = @"PAGE31_SAVE_JAN";
+            //dom.SelectSingleNode("//proc").InnerText = query;
+            //domList.Add(dom);
 
             result result = CallDB.getXmlTransAll(domList);
             return JsonConvert.SerializeObject(result);
